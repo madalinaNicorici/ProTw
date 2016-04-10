@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fun@Web - Contact Page</title>
+			<link rel="stylesheet" type="text/css" href="css/main.css"/>
+			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	</head>
+	<body>
+		<header class="container">
+			<div class="col-sm-12"> 
+				<h1 class="col-sm-3"><b>Fun@Web</b></h1>
+				<h4 class="col-sm-9 text-left">Have fun learning Web Technologies</h4>
+			</div>
+		</header>
+		<section class="container">
+			<div class="col-sm-2">
+				<div class="content">
+					<ul class="list-group">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="http://profs.info.uaic.ro/~busaco/teach/courses/web/web-film.html">Learning</a></li>
+						<li><a href="play_game.html">Play Game</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-sm-10">
+				<div class="central">
+					<div class="contact">
+						<h1>Contact</h1>
+							<form action="index.html">
+								<input type="text" name="Nume" value="Nume" onblur="this.value=!this.value?'Name':this.value;" onfocus="this.select()" onclick="this.value='';">
+								<input type="text" name="Email" value="Email" onblur="this.value=!this.value?'Email':this.value;" onfocus="this.select()" onclick="this.value='';">
+								<input type="text" name="Subiect" value="Subiect" onblur="this.value=!this.value?'Subject':this.value;" onfocus="this.select()" onclick="this.value='';">
+								<textarea name="meassage" cols="50" rows="7" onclick="this.value=''">Descrie opinia ta...</textarea>
+								<input type="submit" value="Send" id="submit">
+							</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer class="container">
+			<div class="row">
+			  <p class="col-sm-4">&copy; 2016 ProTW United Developers</p>
+			  <ul class="col-sm-8">
+				<li class="col-sm-1">
+					<a href="https://twitter.com/">
+						<img src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/twitter.svg">
+					</a>
+				</li>
+				<li class="col-sm-1">
+					<a href="https://www.facebook.com/">
+						<img src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/facebook.svg">
+					</a>
+				</li>
+				<li class="col-sm-1">
+					<a href="https://www.instagram.com/">
+						<img src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/instagram.svg">
+					</a>
+				</li>
+			  </ul>
+			</div>
+		</footer>
+	</body>
+</html>
