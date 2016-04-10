@@ -201,7 +201,7 @@
 				</li>
 				</ol>
 				</li>
-				<li>Dupa ce intr-un grup sunt macar doi jucatori, acestia au posibilitatea de a apasa butonul ”Start Game”.</li>
+				<li>Dupa ce intr-un grup sunt macar doi jucatori(maxim 4), acestia au posibilitatea de a apasa butonul ”Start Game”.</li>
 				<li>Utilizatorii vor primi cate o intrebare cu patru variante de raspuns si un singur raspuns corect si vor avea 20 desecunde pentru a raspunde la fiecare intrebare.</li>
 				<li>. . Daca un utilizator a terminat de raspuns, apasa ”Next Question”. Daca nu au terminat de raspuns si ceilalti, el va trebui sa ii astepte. Daca un utilizator nu apasa ”Next Question”, la expirarea celor 20 de secunde se va trece automat la intrebarea urmatoare.
 				</li>
@@ -215,6 +215,22 @@
 				</li>
 			</ol>
 			<p>Daca un jucator va parasi jocul inainte de incheierea acestuia, el nu va influenta cu nimic experinta celorlalti jucatori, ci va primi 0 puncte pentru fiecare intrebare.</p>
+			<h3>Etapele intermediare</h3>
+			<p>
+				1. Crearea fisierelor HTML si CSS pentru o viziune preliminara a aspectului sitului. Sunt implemetate in special paginile care nu sunt prea importante in logica aplicatiei, dar vor fi esentiale pentru a familiariza utilizatorul cu mediul acesteia.
+			</p>
+			<p>
+				2. Modelarea unei ierarhii de clase cu ajutorul unor diagrame de clase. 
+			</p>
+			<p>
+				3. Implemetarea, la toate nivelurile aplicatiei, a functionalitatilor de baza: autentificare, inregistrare, conectarea cu Facebook. La nivelul Model se vor crea baze de date cu informatii despre utilizatori. La nivelul View, se vor crea formulare, iar la nivelul Controller se va face legatura dintre datele primite prin formulare si datele din baza de date. Pentru conectarea cu Facebook se va folosi un API extern, cum ar fi RestFB.
+			</p>
+			<p>
+				4. Crearea modului single player. La nivelul Model, se vor crea tabele cu intreabri pentru chestionare. La nivelul View se vor afisa intrebarile sub forma unui chestionar, iar raspunsurile vor putea fi selectate cu ajutorul butoanelor radio. Controller-ul se va ocupa ca intrebarile sa fie preluate din baza de date si afisate pe sait, iar raspunsurile utilizatorului vor fi verificte daca sunt in conformitate cu raspusurile corecte din baza de date. Daca un raspuns nu este corect, la sfarsitul chestionarului Controller-ul va aduce din baza de date in View explicatiile pentru motivarea raspunsului corect. Punctajul obtinut de utilizator se va afisa in View si va produce modificari in Model, prin intermediul Controller-ului.
+			</p>
+			<p>
+				5. Crearea modului multi player. La nivelul Model, se vor utiliza tabelel cu intrebari deja create. La niveulul View, intrebarile se vor afisa individual, impreuna cu un temporizator. Nivelul Controller, in afara functionalitatilor asemanatoare cu cele de la single player, va asigura un mod concurent de joc, avand grija ca activitatea diferitelor grupuri sa nu se suprapuna.
+			</p>
 		</section>
 		<section typeof="sa:Acknowledgements" id="arhitectura">
 			<h2>Arhitectura</h2>
