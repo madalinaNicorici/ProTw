@@ -1,0 +1,123 @@
+body {
+    height: 500px;
+    margin: 0;
+    width: 100%;
+	background-color: #dcd8cf;
+}
+
+.col-sm-12 {
+	background-color: #b94629;
+	margin: 0px;
+}
+
+.col-sm-10 {
+	background-image: url(../res/wellcome.png);
+	background-size:cover;
+	border-radius: 0px;	
+}
+
+.col-sm-10 .groups {
+	text-align: left;
+	vertical-align: top;
+}
+
+.groups p {
+	font-size: 2rem;
+	font-family: verdana;
+}
+.col-sm-9 {
+	position: static;
+	padding-top: 25px;
+	color: #e3dec1;
+	font-family: lucida-bright;
+}
+
+.col-sm-3 {
+	font-family: lucida-bright;
+	color: #e3dec1;
+}
+
+.col-sm-2 {
+	background-color: #e89f65;
+}
+
+
+ul {
+	list-style-type: none;
+}
+
+section div {
+	height: 500px;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: -webkit-center;
+}
+
+.test_single {
+	overflow-y: scroll;
+	display: flex;
+	background: #e3dec1;
+	height: 500%;
+	background-image: url(res/wellcome.png);
+	background-size:cover;
+	border-radius: 0px;	
+}
+
+.central {
+	margin: auto;
+	display: center;
+	vertical-align: middle;
+}
+
+.play_game_single {
+	padding-top: 20px;
+	overflow-y: scroll;
+	display: list-item;
+	background: #e3dec1;
+	height: 500px;
+	
+}
+
+.play_game {
+	margin: auto;
+	display: center;
+	vertical-align: middle;
+}
+
+.play_game p {
+	color: #1E2E65;
+	font-size: 4rem;
+}
+
+.central p {
+	color: #1E2E65;
+	font-size: 4rem;
+}
+
+button {
+	background-color: #A8C6F3;
+	height: 40px;
+	width: 40%;
+	border-radius: 8px;
+}
+
+.fb_button {
+	width: 81%;
+	border-radius: 8px;
+}
+
+section div p {
+	color: #1E2E65;
+	font-size: 1rem;
+}
+
+.contact {
+	
+}
+
+footer {
+	
+    font-size: 1rem;
+}
+
+
