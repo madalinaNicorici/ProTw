@@ -65,7 +65,6 @@ section div {
 
 .central {
 	margin: auto;
-	display: center;
 	vertical-align: middle;
 }
 
@@ -80,7 +79,7 @@ section div {
 
 .play_game {
 	margin: auto;
-	display: center;
+	
 	vertical-align: middle;
 }
 
@@ -106,17 +105,16 @@ button {
 	border-radius: 8px;
 }
 
+.col-sm-10 p {
+	font-size: 3rem;
+}
+
 section div p {
 	color: #1E2E65;
 	font-size: 1rem;
 }
 
-.contact {
-	
-}
-
 footer {
-	
     font-size: 1rem;
 }
 
