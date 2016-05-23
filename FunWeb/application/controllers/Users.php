@@ -46,16 +46,11 @@ class Users extends REST_Controller {
 	}
 	
 	function user_post(){
-		$user=$this->post();
+		$userlog=$this->post();
 		$this->load->model('Model_users');
-		$user=$this->Model_users->get_by(array('username'=>$user['username']));
-		if (isset($user['username'])){
-			$this->response(array('status'=>'success','message'=>'logged in'));
-		}
-		else{
-			$this->response(array('status'=>'failure','message'=>'The specified user could not be found'),REST_Controller::HTTP_NOT_FOUND);
-		}
-				/*$this->load->library('form_validation');
+		$user=$this->Model_users->get_by(array('username'=>$userlog['username']));
+		if (isset($user['username'])&&isset($user['user_password'])){
+			$this->load->library('form_validation');
 			$data = remove_unknown_fields($this->post(),$this->form_validation->get_field_names('user_post'));
 			$this->form_validation->set_data($data);
 			
@@ -65,12 +60,14 @@ class Users extends REST_Controller {
 				if(!$safe_email){
 					$this->response(array('status'=>'failure','message'=>'The specified email adress is already in use.'),REST_Controller::HTTP_CONFLICT);
 				}
-				$search=$this->Model_users->update($username, $data);
-				if(!$username){
-					$this->response(array('status'=>'failure','message'=>'An unexpected error occured while trying to update the user'),REST_Controller::HTTP_INTERNAL_SERVER_ERROR);
-				}
 				else{
-					$this->response(array('status'=>'success','message'=>'updated'));
+					if($user['user_password']==$userlog['user_password']){
+						$this->response(array('status'=>'success','message'=>'logged in'));
+					}
+					else {
+					$this->response(array('status'=>'failure','message'=>'The password is incorrect.'),REST_Controller::HTTP_CONFLICT);
+				}
+					
 				}
 			}
 			else{
@@ -79,7 +76,7 @@ class Users extends REST_Controller {
 		}
 		else{
 			$this->response(array('status'=>'failure','message'=>'The specified user could not be found'),REST_Controller::HTTP_NOT_FOUND);
-		}*/
+		}
 	}
 	
 	function user_delete(){

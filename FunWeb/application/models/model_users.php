@@ -11,7 +11,7 @@ class Model_users extends MY_Model{
 	//protected $before_update=array('update_timestamp');
 	
 	protected function remove_sensitive_data($user){
-		unset($user['user_password']);
+		//unset($user['user_password']);
 		unset($user['ip_address']);
 		return $user;
 	}
