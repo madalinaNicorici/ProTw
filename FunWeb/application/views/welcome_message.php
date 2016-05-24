@@ -56,7 +56,7 @@
 				<h2>Have fun learning Web Technologies</h2>
 				<div id="logon">
 					<button type="button" class="btn btn-success" onclick="openLogin()">Log In</button>
-					<!--<button type="button" class="btn btn-primary" onclick="openSignup()">Sign Up</button>-->
+					<button type="button" class="btn btn-primary" onclick="openSignup()">Sign Up</button>
 				</div>
 					
 				<div class="row">
@@ -122,8 +122,6 @@
 			function openLogin(){
 				var mypostrequest=new ajaxRequest()
 				mypostrequest.onreadystatechange=function(){
-					alert(mypostrequest.readyState);
-					alert(mypostrequest.status);
 				 if (mypostrequest.readyState==4){
 					if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1){
 					 document.getElementById("logon").innerHTML=mypostrequest.responseText
@@ -133,12 +131,12 @@
 					}
 				 }
 				}
-				
+				var parameters = "username=Lacota_Mckenzie"
+				parameters += "&user_password=AIf96GEm0PP"
 				mypostrequest.open("POST", "users/user", true)
 				mypostrequest.setRequestHeader("X-API-Key", "123456")
 				mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-
-				mypostrequest.send("username=Lacota_Mckenzie&password=trilulilu")
+				mypostrequest.send(parameters)
 			}
 			function openSignup() {
 				var xhttp = new XMLHttpRequest();
@@ -147,7 +145,7 @@
 						document.getElementById("logon").innerHTML = xhttp.responseText;
 					}
 				};
-				xhttp.open("GET", "asserts/form-parts/signup.html", true);
+				xhttp.open("GET", "assets/form-parts/signup.html", true);
 				xhttp.send();
 			}
 		</script>
