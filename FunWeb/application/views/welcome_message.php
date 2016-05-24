@@ -8,8 +8,7 @@
     <title>Fun @ Web - Place for fun learning</title>
 
     <!-- Bootstrap -->
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
 
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
@@ -95,60 +94,13 @@
 		</div>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		
-		<script>
-			function ajaxRequest(){
-			 var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"] //activeX versions to check for in IE
-			 if (window.ActiveXObject){ //Test for support for ActiveXObject in IE first (as XMLHttpRequest in IE7 is broken)
-				for (var i=0; i<activexmodes.length; i++){
-				 try{
-					return new ActiveXObject(activexmodes[i])
-				 }
-				 catch(e){
-					//suppress error
-				 }
-				}
-			 }
-			 else if (window.XMLHttpRequest) // if Mozilla, Safari etc
-				return new XMLHttpRequest()
-			 else
-				return false
-			}
-			function openLogin(){
-				var mypostrequest=new ajaxRequest()
-				mypostrequest.onreadystatechange=function(){
-				 if (mypostrequest.readyState==4){
-					if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1){
-					 document.getElementById("logon").innerHTML=mypostrequest.responseText
-					}
-					else{
-					 alert("An error has occured making the request")
-					}
-				 }
-				}
-				var parameters = "username=Lacota_Mckenzie"
-				parameters += "&user_password=AIf96GEm0PP"
-				mypostrequest.open("POST", "users/user", true)
-				mypostrequest.setRequestHeader("X-API-Key", "123456")
-				mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-				mypostrequest.send(parameters)
-			}
-			function openSignup() {
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-					if (xhttp.readyState == 4 && xhttp.status == 200) {
-						document.getElementById("logon").innerHTML = xhttp.responseText;
-					}
-				};
-				xhttp.open("GET", "assets/form-parts/signup.html", true);
-				xhttp.send();
-			}
-		</script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
+		
+		<!-- Javascript for Ajax call -->
+		<script src="<?php echo base_url('assets/js/custom.js');?>"></script>
 
 		
   </body>

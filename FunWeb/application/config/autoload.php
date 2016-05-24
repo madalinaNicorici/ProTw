@@ -91,6 +91,8 @@ $autoload['drivers'] = array();
 */
 $autoload['helper'] = array();
 
+$autoload['helper'] = array('url');
+
 /*
 | -------------------------------------------------------------------
 |  Auto-load Config files
@@ -133,3 +135,5 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array();
+
+
