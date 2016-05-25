@@ -36,8 +36,10 @@ function submitLogin()
 			}
 		}
 	}
-	var parameters = "username=Lacota_Mckenzie"
-	parameters += "&user_password=AIf96GEm0PP"
+	var username = document.getElementById("inputUsername").value;
+	var pass = document.getElementById("inputPassword").value;
+	var parameters = "username="+username;
+	parameters += "&user_password="+pass;
 	mypostrequest.open("POST", "users/user", true)
 	mypostrequest.setRequestHeader("X-API-Key", "123456")
 	mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
@@ -51,9 +53,11 @@ function openLogin()
 	{
 		if (xhttp.readyState == 4 && xhttp.status == 200) 
 		{
+			//document - json intern al browser-ului
 			document.getElementById("logon").innerHTML = xhttp.responseText;
 		}
 	};
+	
 	xhttp.open("GET", "assets/form-parts/login.html", true);
 	xhttp.send();
 }
