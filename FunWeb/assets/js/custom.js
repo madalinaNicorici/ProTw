@@ -21,14 +21,17 @@ function ajaxRequest()
 
 function submitLogin()
 {
-	var mypostrequest=new ajaxRequest()
+	var mypostrequest = new ajaxRequest()
+	
 	mypostrequest.onreadystatechange=function()
 	{
+		
 		if (mypostrequest.readyState==4)
 		{
 			if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1)
 			{
-				document.getElementById("logon").innerHTML=mypostrequest.responseText
+				var json = JSON.parse(mypostrequest.responseText)
+				document.getElementById("logon").innerHTML = json.message + '<br><a href="assets/form-parts/user_logged.html">Go to next page</a>'
 			}
 			else
 			{
@@ -36,6 +39,7 @@ function submitLogin()
 			}
 		}
 	}
+
 	var username = document.getElementById("inputUsername").value;
 	var pass = document.getElementById("inputPassword").value;
 	var parameters = "username="+username;
@@ -44,6 +48,7 @@ function submitLogin()
 	mypostrequest.setRequestHeader("X-API-Key", "123456")
 	mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 	mypostrequest.send(parameters)
+	
 }
 
 function openLogin() 
@@ -51,6 +56,7 @@ function openLogin()
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() 
 	{
+		
 		if (xhttp.readyState == 4 && xhttp.status == 200) 
 		{
 			//document - json intern al browser-ului
@@ -60,6 +66,7 @@ function openLogin()
 	
 	xhttp.open("GET", "assets/form-parts/login.html", true);
 	xhttp.send();
+	
 }
 
 function openSignup() 
