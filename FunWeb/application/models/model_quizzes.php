@@ -10,6 +10,22 @@ class Model_quizzes extends MY_Model{
 	//protected $before_create=array('prep_data');
 	//protected $before_update=array('update_timestamp');
 	
+	public function get_quiz_id($user)
+	{	
+		if (!($res = $this->_database->query("SELECT return_quiz_id($user)"))) 
+		{
+			//echo "Fetch failed: (" . $this->_database->errno . ") " . $this->_database->error;
+			return null;
+		}
+		$row = $res->result();
+		return $row;		
+	}
+	
+	public function add_result($user, $quiz, $result)
+	{
+		$this->_database->query("CALL add_answer($user, $quiz, $result)");
+	}
+	
 	protected function remove_sensitive_data($user){
 		unset($user['user_password']);
 		unset($user['ip_address']);
