@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `response_code` smallint(3) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table funweb.logs: ~3 rows (approximately)
+-- Dumping data for table funweb.logs: ~98 rows (approximately)
 /*!40000 ALTER TABLE `logs` DISABLE KEYS */;
 INSERT INTO `logs` (`id`, `uri`, `method`, `params`, `api_key`, `ip_address`, `time`, `rtime`, `authorized`, `response_code`) VALUES
 	(0, 'quizzes/quiz/1', 'get', 'a:11:{i:0;N;s:4:"Host";s:9:"localhost";s:10:"Connection";s:10:"keep-alive";s:13:"Cache-Control";s:8:"no-cache";s:10:"User-Agent";s:109:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36";s:9:"X-API-Key";s:6:"123456";s:13:"Postman-Token";s:36:"1074df3a-3e54-bf3f-ff75-705b0ddfbc64";s:6:"Accept";s:3:"*/*";s:15:"Accept-Encoding";s:19:"gzip, deflate, sdch";s:15:"Accept-Language";s:44:"ro-RO,ro;q=0.8,en-US;q=0.6,en;q=0.4,fr;q=0.2";i:1;N;}', '123456', '::1', 1464263192, 0.562032, '1', 200),
@@ -469,7 +469,7 @@ CREATE TABLE IF NOT EXISTS `users_quiz_status` (
   CONSTRAINT `fk_users` FOREIGN KEY (`user_id`) REFERENCES `users_profile` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table funweb.users_quiz_status: ~0 rows (approximately)
+-- Dumping data for table funweb.users_quiz_status: ~1 rows (approximately)
 /*!40000 ALTER TABLE `users_quiz_status` DISABLE KEYS */;
 INSERT INTO `users_quiz_status` (`user_id`, `quiz_id`, `result`) VALUES
 	(1, 1, 300);
@@ -672,13 +672,6 @@ BEGIN
 DELIMITER ;
 
 
--- Dumping structure for procedure funweb.return_quiz_id
-DROP PROCEDURE IF EXISTS `return_quiz_id`;
-DELIMITER //
-//
-DELIMITER ;
-
-
 -- Dumping structure for procedure funweb.show_question
 DROP PROCEDURE IF EXISTS `show_question`;
 DELIMITER //
@@ -821,6 +814,22 @@ BEGIN
           
 	       END IF;
 	END//
+DELIMITER ;
+
+
+-- Dumping structure for function funweb.return_quiz_id
+DROP FUNCTION IF EXISTS `return_quiz_id`;
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` FUNCTION `return_quiz_id`(p_user_id INT) RETURNS int(11)
+    DETERMINISTIC
+BEGIN 
+    	DECLARE v_level_id, v_start, v_end, v_quiz_id INT;
+      select level_id into v_level_id from users_status where user_id = p_user_id;
+      select quiz_id into v_start from quizzes where level_id  = v_level_id order by quiz_id limit 1;
+      select quiz_id into v_end from quizzes where level_id  = v_level_id order by quiz_id DESC limit 1;
+      select (floor(rand()*(v_end)) + v_start) into v_quiz_id from dual;
+		return v_quiz_id;
+    END//
 DELIMITER ;
 
 
