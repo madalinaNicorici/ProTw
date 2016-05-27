@@ -8,13 +8,13 @@
     <title>Fun @ Web - Place for fun learning</title>
 
     <!-- Bootstrap -->
-	<link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+		
+		<!-- Custom css -->
+		<link href="../../assets/css/custom.css" rel="stylesheet">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-	<!-- Font Awesome -->
-	<script src="https://use.fontawesome.com/13382298cc.js"></script>
+		<!-- Font Awesome -->
+		<script src="https://use.fontawesome.com/13382298cc.js"></script>
 
 	</head>
   <body>
@@ -28,12 +28,12 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href=".">Fun@Web</a>
+					<a class="navbar-brand" href="../../index.php">Fun@Web</a>
 				</div>
 				
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href=".">Home</a>
+						<li class="active"><a href="../../index.php">Home</a>
 						<li><a href="#">About</a>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Play game<b class="caret"></b></a>
@@ -54,9 +54,11 @@
 		<div class="container">
 			<div class="jumbotron text-center" >
 				<h2>Have fun learning Web Technologies</h2>
+				
 				<div id="playsingle">
 					<button type="button" class="btn btn-success" onclick="openPlaySingle()">Start Game</button>
-				</div>			
+				</div>		
+				
 				<div class="row">
 					<div class="col-sm-4">
 						<h3>Fact of the Day</h3>
@@ -93,14 +95,15 @@
 		</div>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="../../assets/js/jquery-1.12.4.min.js"></script>
 		
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="../../assets/js/bootstrap.min.js"></script>
 		
 		<!-- Javascript for Ajax call --><!-- Javascript for Ajax call -->
 		<script src="../../assets/js/custom.js"></script>
-
+		
+		<script src="../../assets/js/singlePlayer.js"></script>
 		
   </body>
 </html>

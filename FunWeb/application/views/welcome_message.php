@@ -8,12 +8,13 @@
     <title>Fun @ Web - Place for fun learning</title>
 
     <!-- Bootstrap -->
-	<link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
+		<link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
+		
+		<!-- Custom css -->
+		<link href="<?php echo base_url('assets/css/custom.css');?>" rel="stylesheet">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-	<!-- Font Awesome -->
-	<script src="https://use.fontawesome.com/13382298cc.js"></script>
+		<!-- Font Awesome -->
+		<script src="https://use.fontawesome.com/13382298cc.js"></script>
 
 	</head>
   <body>
@@ -95,13 +96,16 @@
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="<?php echo base_url('assets/js/jquery-1.12.4.min.js');?>"></script>
-		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-		
+				
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
 		
 		<!-- Javascript for Ajax call -->
 		<script src="<?php echo base_url('assets/js/custom.js');?>"></script>
+		<script src="<?php echo base_url('assets/js/openLogin.js');?>"></script>
+		<script src="<?php echo base_url('assets/js/openSignup.js');?>"></script>
+		<script src="<?php echo base_url('assets/js/singlePlayer.js');?>"></script>
+		
 
 		
   </body>
