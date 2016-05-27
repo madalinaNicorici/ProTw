@@ -3,7 +3,29 @@
 	text-decoration: none;
 }
 
+.jumbotron {
+	background: transparent;
+}
+
 body {
 	padding-top: 70px;
 	padding-bottom: 100px;
+	/*background-image: url("../images/welcome.jpg");*/
+	backgound-color: #eee;
 } 
+
+#jumboContainer {
+	
+}
+
+h2 {
+	padding-top:50px;
+}
+
+#logon {
+	padding-top: 50px;
+}
+
+.row {
+	padding-top:50px;
+}
