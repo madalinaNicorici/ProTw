@@ -12,9 +12,15 @@ class Quizzes extends REST_Controller {
 	function quiz_get(){
 		$user_id = $this->uri->segment(3);
 		$this->load->model('Model_quizzes');
-		$quiz['quiz_id']=$this->Model_quizzes->get_quiz_id($user);
+		$quiz['quiz_id']=$this->Model_quizzes->get_quiz_id($user_id);
 		if (isset($quiz['quiz_id'])){
-			$this->response(array('status'=>'success','message'=>$quiz["quiz_id"][0]));
+			$questions=$this->Model_quizzes->get_by(array('quiz_id'=>$quiz['quiz_id'][0]->quiz_id));
+			if(isset($questions['quiz_id'])){
+				$this->response(array('status'=>'success','message'=>$questions));
+			}
+			else{
+				$this->response(array('status'=>'failure','message'=>'The specified quiz could not be found'),REST_Controller::HTTP_NOT_FOUND);
+			}
 		}
 		else{
 			$this->response(array('status'=>'failure','message'=>'The specified quiz could not be found'),REST_Controller::HTTP_NOT_FOUND);

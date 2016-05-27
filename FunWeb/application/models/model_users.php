@@ -17,7 +17,7 @@ class Model_users extends MY_Model{
 	}
 	
 	protected function prep_data($user){
-		$user['user_password']= md5($user['user_password']);
+		if(isset($user['user_password']))$user['user_password']= md5($user['user_password']);
 		//$user['ip_address']=$this->input->ip_address();
 		//$user['created_timestamp']=date('Y-m-d H:i:s');
 		return $user;

@@ -12,7 +12,7 @@ class Model_quizzes extends MY_Model{
 	
 	public function get_quiz_id($user)
 	{	
-		if (!($res = $this->_database->query("SELECT return_quiz_id($user)"))) 
+		if (!($res = $this->_database->query("SELECT return_quiz_id($user) as quiz_id"))) 
 		{
 			//echo "Fetch failed: (" . $this->_database->errno . ") " . $this->_database->error;
 			return null;
