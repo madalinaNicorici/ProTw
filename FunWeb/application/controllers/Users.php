@@ -92,7 +92,7 @@ class Users extends REST_Controller {
 					//daca parolele coincid, avem succes
 					//TO DO TIRMITE ID_USER
 						if($user['user_password']==md5($userlog['user_password'])){
-							$this->response(array('status'=>'success','message'=>'Logged in'));
+							$this->response(array('status'=>'success','message'=>$user['user_id']));
 						}
 						else {
 						$this->response(array('status'=>'failure','message'=>'The password is incorrect.'),REST_Controller::HTTP_CONFLICT);

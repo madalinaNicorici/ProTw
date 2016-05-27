@@ -18,7 +18,7 @@ function ajaxRequest()
 	else
 		return false
 }
-
+//var id_user;
 function submitLogin()
 {
 	var mypostrequest = new ajaxRequest()
@@ -31,7 +31,9 @@ function submitLogin()
 			if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1)
 			{
 				var json = JSON.parse(mypostrequest.responseText)
-				document.getElementById("logon").innerHTML = json.message + '<br><a href="assets/form-parts/user_logged.html">Go to next page</a>'
+				//id_user=json.message
+				localStorage.user_id = json.message;
+				document.getElementById("logon").innerHTML = "Log in successful!" + '<br><a href="assets/form-parts/user_logged.html">Go to next page</a>'
 			}
 			else
 			{
@@ -117,6 +119,12 @@ function openSignup()
 	xhttp.send();
 }
 
+function gotoSingle(){
+	document.getElementById("Single").onclick = function () {
+        location.href = "http://localhost/ProTw/FunWeb/assets/form-parts/single_player.html";
+    };	
+}
+
 var questions = [];
 //afiseaza prima intrebare dupa ce ai dat play game
 function openPlaySingle() 
@@ -157,9 +165,10 @@ function openPlaySingle()
 			}
 		}
 	}
+localStorage.getItem("id_user");
 // TO DO schimbat in cale relativa
 //am pus cale absoluta, pentru ca altfel ma duce in assets
-	getquiz.open("GET", "http://localhost/ProTw/FunWeb/quizzes/quiz/1", true)
+	getquiz.open("GET", "http://localhost/ProTw/FunWeb/quizzes/quiz/"+localStorage.user_id, true)
 	getquiz.setRequestHeader("X-API-Key", "123456")
 	getquiz.send()
 }
