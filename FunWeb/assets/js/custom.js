@@ -35,7 +35,7 @@ function submitLogin()
 			}
 			else
 			{
-				alert("An error has occured making the request")
+				return confirm("USERNAME or PASSWORD are invalid!")
 			}
 		}
 	}
@@ -44,6 +44,40 @@ function submitLogin()
 	var pass = document.getElementById("inputPassword").value;
 	var parameters = "username="+username;
 	parameters += "&user_password="+pass;
+	mypostrequest.open("POST", "users/user", true)
+	mypostrequest.setRequestHeader("X-API-Key", "123456")
+	mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+	mypostrequest.send(parameters)
+	
+}
+
+function registerUser()
+{
+	var mypostrequest = new ajaxRequest()
+	mypostrequest.onreadystatechange=function()
+	{
+		if (mypostrequest.readyState==4)
+		{
+			if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1)
+			{
+				var json = JSON.parse(mypostrequest.responseText)
+				document.getElementById("logon").innerHTML = json.message + '<br><a href="assets/form-parts/user_logged.html">Go to next page</a>'
+			}
+			else
+			{
+				alert("Cannot create user")
+			}
+		}
+	}
+
+	var name = document.getElementById("inputName").value;
+	var surname = document.getElementById("inputSurname").value;
+	var username = document.getElementById("inputUsername").value;
+	var email = document.getElementById("inputEmail").value;
+	var pass = document.getElementById("inputPassword").value;
+	var repass = document.getElementById("inputRetypePassword").value;
+	var parameters = "email="+email+"&user_password="+pass+"&name="+name+"&surname="+surname+"&username="+username;
+	
 	mypostrequest.open("POST", "users/user", true)
 	mypostrequest.setRequestHeader("X-API-Key", "123456")
 	mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
@@ -82,3 +116,4 @@ function openSignup()
 	xhttp.open("GET", "assets/form-parts/signup.html", true);
 	xhttp.send();
 }
+

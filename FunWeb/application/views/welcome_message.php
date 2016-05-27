@@ -12,7 +12,6 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
 	<!-- Font Awesome -->
 	<script src="https://use.fontawesome.com/13382298cc.js"></script>
 
@@ -39,8 +38,8 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Play game<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">Game</li>
-								<li><a hre="#">Single player</a></li>
-								<li><a hre="#">Multplayer</a></li>
+								<li><a href="#">Single player</a></li>
+								<li><a href="#">Multplayer</a></li>
 							</ul>
 						</li>
 						<li><a href="#">Learning</a>
@@ -95,7 +94,8 @@
 		</div>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="<?php echo base_url('assets/js/jquery-1.12.4.min.js');?>"></script>
+		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 		
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>

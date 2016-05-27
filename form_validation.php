@@ -9,7 +9,7 @@ $config=array(
 		array('field'=>'surname','label'=>'surname','rules'=>'trim|required|max_length[50]'),
 		array('field'=>'username','label'=>'username','rules'=>'trim|required|max_length[50]'),
 		),
-		'user_post'=>array(
+	'user_post'=>array(
 		array('field'=>'email','label'=>'email','rules'=>'trim|valid_email'),
 		array('field'=>'name','label'=>'name','rules'=>'trim|max_length[50]'),
 		array('field'=>'surname','label'=>'surname','rules'=>'trim|max_length[50]'),
