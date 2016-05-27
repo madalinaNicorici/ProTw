@@ -159,7 +159,7 @@ function openPlaySingle()
 	}
 // TO DO schimbat in cale relativa
 //am pus cale absoluta, pentru ca altfel ma duce in assets
-	getquiz.open("GET", "http://localhost/ProTw/FunWeb/quizzes/quiz/1", true)
+	getquiz.open("GET", "../../quizzes/quiz/1", true)
 	getquiz.setRequestHeader("X-API-Key", "123456")
 	getquiz.send()
 }
@@ -194,7 +194,7 @@ function getQuestion(){
 	}
 // TO DO schimbat in cale relativa
 //am pus cale absoluta, pentru ca altfel ma duce in assets
-	mygetrequest.open("GET", "http://localhost/ProTw/FunWeb/questions/question/"+questions[i], true)
+	mygetrequest.open("GET", "../../questions/question/"+questions[i], true)
 	mygetrequest.setRequestHeader("X-API-Key", "123456")
 	mygetrequest.send()
 	}
