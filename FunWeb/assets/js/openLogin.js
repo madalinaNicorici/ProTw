@@ -30,7 +30,11 @@ function submitLogin()
 				var json = JSON.parse(mypostrequest.responseText)
 				//id_user=json.message
 				localStorage.user_id = json.message;
-				document.getElementById("logon").innerHTML = "Log in successful!" + '<br><a href="assets/form-parts/user_logged.html">Go to next page</a>'
+				document.getElementById("logon").innerHTML = '<h2>Login successful!</h2>' + '<br><a href="assets/form-parts/user_logged.html">Go to next page</a>'
+				setTimeout(function() { 
+						window.location.href = "assets/form-parts/user_logged.html";
+				 }, 2000);
+
 			}
 			else
 			{

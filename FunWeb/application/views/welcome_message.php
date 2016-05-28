@@ -44,7 +44,7 @@
 							</ul>
 						</li>
 						<li><a href="#">Learning</a>
-						<li><a href="#">Contact</a>
+						<li><a href="#contact" data-toggle="modal">Contact</a>
 					</ul>
 				</div>
 			</div>
@@ -52,7 +52,7 @@
 		
 		<!-- Jumbotron -->
 		<div class="container">
-			<div class="jumbotron text-center" >
+			<div class="jumbotron text-center">
 				<h2>Have fun learning Web Technologies</h2>
 				<div id="logon">
 					<button type="button" class="btn btn-success" onclick="openLogin()">Log In</button>
@@ -77,7 +77,6 @@
 					</div>
 				</div>	
 			</div>
-			
 		</div>
 		
 		<!-- Fixed footer -->
@@ -93,8 +92,45 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="modal fade" id="contact" role = "dialog">
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    			<form class="form-horizontal" role="form" method="post" action="assets/form-parts/send_form_email.php">
+	    			<div class="modal-header">
+	    				<h4>Contact</h4>
+	    			</div>
+	    			<div class="modal-body">
+	    				<div class="form-group">
+	    					<label for="contact-name" class="col-sm-2 control-label">Name</label>
+	    					<div class="col-sm-10">
+	    						<input type="text" class="form-control" name="contact-name" placeholder="Introduce your name">
+	    					</div>
+	    				</div>
+	    				<div class="form-group">
+	    					<label for="contact-email" class="col-sm-2 control-label">Email</label>
+	    					<div class="col-sm-10">
+	    						<input type="email" class="form-control" name="contact-email" placeholder="example@domain.com">
+	    					</div>
+	    				</div>
+	    				<div class="form-group">
+	    					<label for="contact-message" class="col-sm-2 control-label">Message</label>
+	    					<div class="col-sm-10">
+	    						<textarea class="form-control" rows="4" name="contact-message"></textarea>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="modal-footer">
+	    				<a class="btn btn-default" data-dismiss="modal">Close</a>
+	    				<input type="submit" name="submit" value="Submit" class="btn btn-primary">
+	    			</div>
+	    		</form>
+    		</div>
+    	</div>
+    </div>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="<?php echo base_url('assets/js/jquery-1.12.4.min.js');?>"></script>
 				
 		<!-- Latest compiled and minified JavaScript -->
@@ -105,8 +141,7 @@
 		<script src="<?php echo base_url('assets/js/openLogin.js');?>"></script>
 		<script src="<?php echo base_url('assets/js/openSignup.js');?>"></script>
 		<script src="<?php echo base_url('assets/js/singlePlayer.js');?>"></script>
-		
-
-		
+		<script src="<?php echo base_url('assets/js/openContact.js');?>"></script>
+			
   </body>
 </html>
