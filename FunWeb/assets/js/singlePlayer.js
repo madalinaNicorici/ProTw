@@ -3,6 +3,7 @@ function gotoSingle(){
 }
 
 var questions = [];
+var quiz_id;
 //afiseaza prima intrebare dupa ce ai dat play game
 function openPlaySingle() 
 {
@@ -34,6 +35,7 @@ function openPlaySingle()
 			{
 				var jsonresp = JSON.parse(getquiz.responseText)
 				questions = jsonresp.message.questions_list.split(",");
+				quiz_id=jsonresp.message.quiz_id;
 				getQuestion();
 			}
 			else
@@ -42,50 +44,112 @@ function openPlaySingle()
 			}
 		}
 	}
-	localStorage.getItem("id_user");
 	
 	getquiz.open("GET", "../../quizzes/quiz/"+localStorage.user_id, true)
 	getquiz.setRequestHeader("X-API-Key", "123456")
 	getquiz.send()
 }
-
+var score=0;
 var i=0;
+var rightAns;
+var questionHint;
 //pune celelalte intrebari
 function getQuestion(){
+	if(i>0){
+		if(rightAns==1)
+			if (document.getElementById('r1').checked) {
+				score=score+1;
+				document.getElementById("previous").innerHTML = "You answered your last question right!";
+			}
+			else{
+				document.getElementById("previous").innerHTML = "You answered your last question wrong!";
+			}
+		if(rightAns==2)
+			if (document.getElementById('r2').checked) {
+				score=score+1;
+				document.getElementById("previous").innerHTML = "You answered your last question right!";
+			}
+			else{
+				document.getElementById("previous").innerHTML = "You answered your last question wrong!";
+			}
+		if(rightAns==3)
+			if (document.getElementById('r3').checked) {
+				score=score+1;
+				document.getElementById("previous").innerHTML = "You answered your last question right!";
+			}
+			else{
+				document.getElementById("previous").innerHTML = "You answered your last question wrong!";
+			}
+		if(rightAns==4)
+			if (document.getElementById('r4').checked) {
+				score=score+1;
+				document.getElementById("previous").innerHTML = "You answered your last question right!";
+			}
+			else{
+				document.getElementById("previous").innerHTML = "You answered your last question wrong!";
+			}
+		localStorage.playerScore = score;
+	}
 	if(i<10)
 	{
-	var mygetrequest = new ajaxRequest()
-	
-	mygetrequest.onreadystatechange=function()
-	{
+		document.getElementById("hintSpace").innerHTML = '<button type="button" class="btn btn-success" onclick="showHint()">Hint</button>';
+		var mygetrequest = new ajaxRequest()
 		
-		if (mygetrequest.readyState==4)
+		mygetrequest.onreadystatechange=function()
 		{
-			if (mygetrequest.status==200 || window.location.href.indexOf("http")==-1)
+			
+			if (mygetrequest.readyState==4)
 			{
-				var json = JSON.parse(mygetrequest.responseText)
-				document.getElementById("question").innerHTML = escapeHtml(json.message.q_body);
-				document.getElementById("q1").innerHTML = '<form><input type="radio" name="ans" value="1">'+escapeHtml(json.message.answer_r);
-				document.getElementById("q2").innerHTML = '<input type="radio" name="ans" value="2">'+escapeHtml(json.message.answer_w1);
-				document.getElementById("q3").innerHTML = '<input type="radio" name="ans" value="3">'+escapeHtml(json.message.answer_w2);
-				document.getElementById("q4").innerHTML = '<input type="radio" name="ans" value="4">'+escapeHtml(json.message.answer_w3)+'</form>';
-				i++;
-			}
-			else
-			{
-				alert("An error has occured making the request")
+				if (mygetrequest.status==200 || window.location.href.indexOf("http")==-1)
+				{
+					var json = JSON.parse(mygetrequest.responseText)
+					questionHint=json.message.hint;
+					document.getElementById("source").innerHTML = '<a href="'+json.message.source+'">Click here!</a>';
+					rightAns = Math.floor((Math.random() * 4) + 1);
+					document.getElementById("question").innerHTML = escapeHtml(json.message.q_body);
+					if(rightAns==1){
+						document.getElementById("q1").innerHTML = '<form><input type="radio" name="ans" id="r1"  value="1">'+escapeHtml(json.message.answer_r);
+						document.getElementById("q2").innerHTML = '<input type="radio" name="ans" id="r2"  value="2">'+escapeHtml(json.message.answer_w1);
+						document.getElementById("q3").innerHTML = '<input type="radio" name="ans" id="r3"  value="3">'+escapeHtml(json.message.answer_w2);
+						document.getElementById("q4").innerHTML = '<input type="radio" name="ans" id="r4"  value="4">'+escapeHtml(json.message.answer_w3)+'</form>';
+					}
+					if(rightAns==2){
+						document.getElementById("q1").innerHTML = '<form><input type="radio" name="ans" id="r1"  value="1">'+escapeHtml(json.message.answer_w1);
+						document.getElementById("q2").innerHTML = '<input type="radio" name="ans" id="r2"  value="2">'+escapeHtml(json.message.answer_r);
+						document.getElementById("q3").innerHTML = '<input type="radio" name="ans" id="r3"  value="3">'+escapeHtml(json.message.answer_w2);
+						document.getElementById("q4").innerHTML = '<input type="radio" name="ans" id="r4"  value="4">'+escapeHtml(json.message.answer_w3)+'</form>';
+					}
+					if(rightAns==3){
+						document.getElementById("q1").innerHTML = '<form><input type="radio" name="ans" id="r1"  value="1">'+escapeHtml(json.message.answer_w2);
+						document.getElementById("q2").innerHTML = '<input type="radio" name="ans" id="r2"  value="2">'+escapeHtml(json.message.answer_w1);
+						document.getElementById("q3").innerHTML = '<input type="radio" name="ans" id="r3"  value="3">'+escapeHtml(json.message.answer_r);
+						document.getElementById("q4").innerHTML = '<input type="radio" name="ans" id="r4"  value="4">'+escapeHtml(json.message.answer_w3)+'</form>';
+					}
+					if(rightAns==4){
+						document.getElementById("q1").innerHTML = '<form><input type="radio" name="ans" id="r1"  value="1">'+escapeHtml(json.message.answer_w3);
+						document.getElementById("q2").innerHTML = '<input type="radio" name="ans" id="r2"  value="2">'+escapeHtml(json.message.answer_w1);
+						document.getElementById("q3").innerHTML = '<input type="radio" name="ans" id="r3"  value="3">'+escapeHtml(json.message.answer_w2);
+						document.getElementById("q4").innerHTML = '<input type="radio" name="ans" id="r4"  value="4">'+escapeHtml(json.message.answer_r)+'</form>';
+					}
+					i++;
+				}
+				else
+				{
+					alert("An error has occured making the request")
+				}
 			}
 		}
-	}
-
-	mygetrequest.open("GET", "../../questions/question/"+questions[i], true)
-	mygetrequest.setRequestHeader("X-API-Key", "123456")
-	mygetrequest.send()
+		mygetrequest.open("GET", "../../questions/question/"+questions[i], true)
+		mygetrequest.setRequestHeader("X-API-Key", "123456")
+		mygetrequest.send()
 	}
 	else
 	{
 		endGame()
 	}
+}
+function showHint(){
+	document.getElementById("hintSpace").innerHTML = escapeHtml(questionHint);
 }
 // un fel de htmlspecialchars din php
 //caracterele html nu vor fi afisate fara functia asta
@@ -113,4 +177,34 @@ function endGame()
 	};
 	xhttp.open("GET", "../../assets/form-parts/end_game.html", true);
 	xhttp.send();
+}
+
+function getScore(){
+	var mypostrequest = new ajaxRequest()
+	
+	mypostrequest.onreadystatechange=function()
+	{
+		
+		if (mypostrequest.readyState==4)
+		{
+			if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1)
+			{
+				document.getElementById("finalScore").innerHTML = "You answered correctly "+localStorage.playerScore+" questions.";
+			}
+			else
+			{
+				return confirm("Error adding score!")
+			}
+		}
+	}
+
+	var parameters = "user_id="+localStorage.user_id;
+	parameters += "&quiz_id="+quiz_id;
+	parameters += "&result="+localStorage.playerScore;
+	mypostrequest.open("POST", "../../scores/score/", true)
+	mypostrequest.setRequestHeader("X-API-Key", "123456")
+	mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+	mypostrequest.send(parameters)
+	
+	document.getElementById("hintSpace").innerHTML = '';
 }

@@ -15,7 +15,9 @@ function openLogin()
 	xhttp.send();
 	
 }
-
+function gotoSingle(){
+	location.href = "../../assets/form-parts/single_player.html";
+}
 function submitLogin()
 {
 	var mypostrequest = new ajaxRequest()
@@ -28,13 +30,12 @@ function submitLogin()
 			if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1)
 			{
 				var json = JSON.parse(mypostrequest.responseText)
-				//id_user=json.message
-				localStorage.user_id = json.message;
 				document.getElementById("logon").innerHTML = '<h2>Login successful!</h2>' + '<br><a href="assets/form-parts/user_logged.html">Go to next page</a>'
 				setTimeout(function() { 
 						window.location.href = "assets/form-parts/user_logged.html";
 				 }, 2000);
-
+				localStorage.user_id = json.message;
+				location.href = "assets/form-parts/user_logged.html";
 			}
 			else
 			{

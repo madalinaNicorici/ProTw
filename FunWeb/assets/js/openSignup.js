@@ -22,7 +22,8 @@ function registerUser()
 			if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1)
 			{
 				var json = JSON.parse(mypostrequest.responseText)
-				document.getElementById("logon").innerHTML = json.message + '<br><a href="assets/form-parts/user_logged.html">Go to next page</a>'
+				localStorage.user_id = json.message;
+				location.href = "assets/form-parts/user_logged.html";
 			}
 			else
 			{

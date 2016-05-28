@@ -90,7 +90,7 @@ class Users extends REST_Controller {
 					//incarcam modelul
 					$this->load->model('Model_users');
 					//daca parolele coincid, avem succes
-					//TO DO TIRMITE ID_USER
+					//DONE TIRMITE ID_USER
 						if($user['user_password']==md5($userlog['user_password'])){
 							$this->response(array('status'=>'success','message'=>$user['user_id']));
 						}
@@ -135,7 +135,7 @@ class Users extends REST_Controller {
 				}
 				//altfel ii returnam succes
 				else{
-					$this->response(array('status'=>'success','message'=>'User created'));
+					$this->response(array('status'=>'success','message'=>$user_id));
 				}
 			}
 			// daca datele nu trec de validare

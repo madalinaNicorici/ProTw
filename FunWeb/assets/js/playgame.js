@@ -18,38 +18,6 @@ function ajaxRequest()
 	else
 		return false
 }
-/*
-function submitLogin()
-{
-	var mypostrequest = new ajaxRequest()
-	
-	mypostrequest.onreadystatechange=function()
-	{
-		
-		if (mypostrequest.readyState==4)
-		{
-			if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1)
-			{
-				var json = JSON.parse(mypostrequest.responseText)
-				document.getElementById("logon").innerHTML = json.message + '<br><a href="assets/form-parts/user_logged.html">Go to next page</a>'
-			}
-			else
-			{
-				alert("An error has occured making the request")
-			}
-		}
-	}
-
-	var username = document.getElementById("inputUsername").value;
-	var pass = document.getElementById("inputPassword").value;
-	var parameters = "username="+username;
-	parameters += "&user_password="+pass;
-	mypostrequest.open("POST", "users/user", true)
-	mypostrequest.setRequestHeader("X-API-Key", "123456")
-	mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-	mypostrequest.send(parameters)
-	
-}*/
 
 function openPlaySingle() 
 {

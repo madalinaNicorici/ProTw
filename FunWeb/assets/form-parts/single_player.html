@@ -61,18 +61,18 @@
 				
 				<div class="row">
 					<div class="col-sm-4">
-						<h3>Fact of the Day</h3>
-						<p>Today is a sunny day</p>
+						<h3>Previous Question</h3>
+						<p id="previous">No previous question</p>
 						
 					</div>
 					<div class="col-sm-4">
-						<h3>Important</h3>
-						<p>You need to pass the TW.</p>
-						
+						<h3>Need help?</h3>
+						<div id="hintSpace">
+						</div>
 					</div>
 					<div class="col-sm-4">
-						<h3>Good to know</h3>
-						<p>If you won't study hard you'll not pass.</p>
+						<h3>Question source</h3>
+						<p id="source">Unknown source</p>
 						
 					</div>
 				</div>	
@@ -93,8 +93,7 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="modal fade" id="contact" role = "dialog">
+			<div class="modal fade" id="contact" role = "dialog">
     	<div class="modal-dialog">
     		<div class="modal-content">
     			<form class="form-horizontal" role="form" method="post" action="send_form_email.php">
@@ -129,7 +128,6 @@
     		</div>
     	</div>
     </div>
-
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="../../assets/js/jquery-1.12.4.min.js"></script>
 		
@@ -140,7 +138,6 @@
 		<script src="../../assets/js/custom.js"></script>
 		
 		<script src="../../assets/js/singlePlayer.js"></script>
-		<script src="../../assets/js/openContact.js"></script>
 		
   </body>
 </html>
