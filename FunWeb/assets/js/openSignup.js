@@ -23,7 +23,10 @@ function registerUser()
 			{
 				var json = JSON.parse(mypostrequest.responseText)
 				localStorage.user_id = json.message;
-				location.href = "assets/form-parts/user_logged.html";
+				setTimeout(function() { 
+						window.location.href = "assets/form-parts/user_logged.html";
+				 }, 1000);
+				//location.href = "assets/form-parts/user_logged.html";
 			}
 			else
 			{
