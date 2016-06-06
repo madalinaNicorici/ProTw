@@ -65,7 +65,7 @@ body {
 
 .navbar-default .navbar-nav .open .dropdown-menu>li>a
 {
-	color: #FFFFFF;
+	color: #18BC9C;
 }
 
 .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
@@ -74,10 +74,10 @@ body {
 	color: #18BC9C;
 	background-color: transparent;	
 }
-.navbar-nav .open .dropdown-menu .dropdown-header, .navbar-nav .open .dropdown-menu>li>a{
+/*.navbar-nav .open .dropdown-menu .dropdown-header, .navbar-nav .open .dropdown-menu>li>a{
 	color: #FFFFFF;
 	
-}
+}*/
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus{
