@@ -17,8 +17,8 @@
 		<script src="https://use.fontawesome.com/13382298cc.js"></script>
 
 	</head>
-  <body>
-  <!-- Fixed top navbar -->  
+  <body onload="startClient()">
+		<!-- Fixed top navbar -->  
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -49,14 +49,14 @@
 				</div>
 			</div>
 		</div>  
-	<!-- Jumbotron -->
+		<!-- Jumbotron -->
 		<div class="container">
 			<div class="jumbotron text-center" >
 				<h2>Have fun learning Web Technologies</h2>
 				
 				<div id="playsingle">
 					<ul id="messages"></ul>
-					<button id="start">Start game</button>
+					<button class="btn btn-success" id="start">Start game</button>
 					<!--<button type="button" class="btn btn-success" onclick="openPlayMulti()">Start Game</button>-->
 				</div>		
 				
@@ -80,7 +80,7 @@
 			</div>
 			
 		</div>
-	<!-- END OF jumbotron --><!-- Fixed footer -->
+		<!-- END OF jumbotron --><!-- Fixed footer -->
 		<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
 			<div class="container">
 				<div class="navbar-text pull-left">
@@ -140,29 +140,11 @@
 		
 		<script src="http://localhost/Protw/FunWeb/assets/js/multiPlayer.js"></script>
 		
-	<script src="/socket.io/socket.io.js"></script>
-	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-	<script>
-	
-	  var socket = io();
-	  $('#start').click(function(){
-		socket.emit('chat message', $('').val());
-		$('').val('');
-		return false;
-	  });
-		var i=0;
-	  socket.on('chat message', function(msg){
-		if(i==0){
-	  $('#messages').empty();
-			$('#messages').append($('<h4>'+msg+'</h4>'));
-			i++;
-		}
-		else{
-		$('#messages').append($('<input type="radio" name="greetings" value="' + i + '">'+msg+'</input><br>'));
-		i++;
-		if(i==5)i=0;
-		}
-	  });
-	</script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		
+		<!-- JavaScript for socket -->
+		<script src="http://localhost/ProTw/FunWeb/assets/js/startClient.js"></script>
+		
   </body>
 </html>
