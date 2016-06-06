@@ -16,6 +16,7 @@
 		<!-- Font Awesome -->
 		<script src="https://use.fontawesome.com/13382298cc.js"></script>
 
+		<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 	</head>
   <body>
   	<!-- Fixed top navbar -->  
@@ -54,15 +55,18 @@
 		<div class="container">
 			<div class="jumbotron text-center">
 				<h2>Have fun learning Web Technologies</h2>
+				<br>
 				<div id="logon">
 					<button type="button" class="btn btn-success" onclick="openLogin()">Log In</button>
 					<button type="button" class="btn btn-primary" onclick="openSignup()">Sign Up</button>
 				</div>
-					
-				<div class="row">
+			</div>		
+			<div class="row">
 					<div class="col-sm-4">
 						<h3>Fact of the Day</h3>
-						<p>Today is a sunny day</p>
+						<p>	Google indexed it’s 1 trillionth unique URL on July 25, 2008. That is thought to be about 20% of all the pages on the Internet but a high percentage of the World Wide Web.
+						One Google search produces about 0.2g of CO2. But since you hardly get an answer from one search, a typical search session produces about the same amount of CO2 as does boiling a tea kettle.
+						</p>
 						
 					</div>
 					<div class="col-sm-4">
@@ -72,12 +76,14 @@
 					</div>
 					<div class="col-sm-4">
 						<h3>Good to know</h3>
-						<p>If you won't study hard you'll not pass.</p>
+						<p>A backend language is a language that runs on the server typically in the cloud and it contains logic that you don’t want to expose to your user, like authentification.
+						A front end language is passed from the server but it is executed on the user’s browser and is typically based on Javascript
+						</p>
 						
 					</div>
-				</div>	
-			</div>
+			</div>	
 		</div>
+		
 		
 		<!-- Fixed footer -->
 		<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">

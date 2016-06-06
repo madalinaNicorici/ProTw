@@ -6,8 +6,14 @@
 body {
 	padding-top: 70px;
 	padding-bottom: 100px;
+	font-family: 'Lato', sans-serif;
 } 
 
+.jumbotron{
+	background: url("../images/network.jpg") no-repeat center center;
+	background-size: cover;
+	
+}
 #login {
 	 width: 300px;
 }
@@ -18,4 +24,98 @@ body {
 
 #endGame {
 	width: 600px;
+}
+
+.navbar-default {
+	background-color: #2C3E50;
+	border-color: #FFFFFF;
+	color: #FFFFFF; 
+}
+
+.navbar-default .navbar-brand {
+	
+	color: #FFFFFF;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {	
+	color: #18BC9C;
+	background-color: transparent;
+}
+
+
+.navbar-default .navbar-nav > li> a {
+	
+	color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover{
+	color: #FFFFFF;
+	background-color: #1A242F;	
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus{
+	color: #18BC9C;
+	background-color: transparent;	
+}
+
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a
+{
+	color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus
+{
+	color: #18BC9C;
+	background-color: transparent;	
+}
+.navbar-nav .open .dropdown-menu .dropdown-header, .navbar-nav .open .dropdown-menu>li>a{
+	color: #FFFFFF;
+	
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus{
+	color: #FFFFFF;
+	background-color: #1A242F;	
+}
+
+.btn-primary{
+	background-color: #2C3E50;
+	border-color: #2C3E50;
+	color: #FFFFFF;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary
+{
+	color: #FFFFFF;
+	background-color: #1E2A36;
+	border-color: #161F29;
+}
+
+
+.btn-success{
+	background-color: #18BC9C;
+	border-color: #18BC9C;
+	color: #FFFFFF;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+.btn-success.active,
+.open .dropdown-toggle.btn-success
+{
+	color: #FFFFFF;
+	background-color: #13987E;
+	border-color: #13987E;
 }
