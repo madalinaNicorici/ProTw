@@ -26,6 +26,16 @@ body {
 	width: 600px;
 }
 
+.questionContent {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: left;
+}
+
+#btnNextQ {
+	text-align: right;
+}
+
 .navbar-default {
 	background-color: #2C3E50;
 	border-color: #FFFFFF;

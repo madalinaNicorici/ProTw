@@ -1,13 +1,20 @@
 <div class="container">
-	<div class="questionContent">
-		<p id="question"></p>
-		<form>
+	<div class="well well-sm">
+		<div class="questionContent">
+			<p id="question"></p>
+			<form>
+				<input type="radio" name="ans" id="r1" value="1">
 				<label id="q1"></label><br>
+				<input type="radio" name="ans" id="r2" value="2">
 				<label id="q2"></label><br>
+				<input type="radio" name="ans" id="r3" value="3">
 				<label id="q3"></label><br>
+				<input type="radio" name="ans" id="r4" value="4">
 				<label id="q4"></label>
-		</form>
-		
-		<button class="btn btn-lg btn-primary" type="button" onclick="getQuestion()">Next Question</button>
-	</div>	
+			</form>
+		</div>	
+	</div>
+	<div id="btnNextQ">
+		<button class="btn btn-lg btn-primary" type="button" onclick="getQuestion();document.getElementById('r1').checked=false;document.getElementById('r2').checked=false;document.getElementById('r3').checked=false;document.getElementById('r4').checked=false">Next Question</button>
+	</div>
 </div>

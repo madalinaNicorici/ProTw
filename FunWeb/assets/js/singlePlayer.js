@@ -108,28 +108,28 @@ function getQuestion(){
 					rightAns = Math.floor((Math.random() * 4) + 1);
 					document.getElementById("question").innerHTML = escapeHtml(json.message.q_body);
 					if(rightAns==1){
-						document.getElementById("q1").innerHTML = '<form><input type="radio" name="ans" id="r1"  value="1">'+escapeHtml(json.message.answer_r);
-						document.getElementById("q2").innerHTML = '<input type="radio" name="ans" id="r2"  value="2">'+escapeHtml(json.message.answer_w1);
-						document.getElementById("q3").innerHTML = '<input type="radio" name="ans" id="r3"  value="3">'+escapeHtml(json.message.answer_w2);
-						document.getElementById("q4").innerHTML = '<input type="radio" name="ans" id="r4"  value="4">'+escapeHtml(json.message.answer_w3)+'</form>';
+						document.getElementById("q1").innerHTML = escapeHtml(json.message.answer_r);
+						document.getElementById("q2").innerHTML = escapeHtml(json.message.answer_w1);
+						document.getElementById("q3").innerHTML = escapeHtml(json.message.answer_w2);
+						document.getElementById("q4").innerHTML = escapeHtml(json.message.answer_w3);
 					}
 					if(rightAns==2){
-						document.getElementById("q1").innerHTML = '<form><input type="radio" name="ans" id="r1"  value="1">'+escapeHtml(json.message.answer_w1);
-						document.getElementById("q2").innerHTML = '<input type="radio" name="ans" id="r2"  value="2">'+escapeHtml(json.message.answer_r);
-						document.getElementById("q3").innerHTML = '<input type="radio" name="ans" id="r3"  value="3">'+escapeHtml(json.message.answer_w2);
-						document.getElementById("q4").innerHTML = '<input type="radio" name="ans" id="r4"  value="4">'+escapeHtml(json.message.answer_w3)+'</form>';
+						document.getElementById("q1").innerHTML = escapeHtml(json.message.answer_w1);
+						document.getElementById("q2").innerHTML = escapeHtml(json.message.answer_r);
+						document.getElementById("q3").innerHTML = escapeHtml(json.message.answer_w2);
+						document.getElementById("q4").innerHTML = escapeHtml(json.message.answer_w3);
 					}
 					if(rightAns==3){
-						document.getElementById("q1").innerHTML = '<form><input type="radio" name="ans" id="r1"  value="1">'+escapeHtml(json.message.answer_w2);
-						document.getElementById("q2").innerHTML = '<input type="radio" name="ans" id="r2"  value="2">'+escapeHtml(json.message.answer_w1);
-						document.getElementById("q3").innerHTML = '<input type="radio" name="ans" id="r3"  value="3">'+escapeHtml(json.message.answer_r);
-						document.getElementById("q4").innerHTML = '<input type="radio" name="ans" id="r4"  value="4">'+escapeHtml(json.message.answer_w3)+'</form>';
+						document.getElementById("q1").innerHTML = escapeHtml(json.message.answer_w2);
+						document.getElementById("q2").innerHTML = escapeHtml(json.message.answer_w1);
+						document.getElementById("q3").innerHTML = escapeHtml(json.message.answer_r);
+						document.getElementById("q4").innerHTML = escapeHtml(json.message.answer_w3);
 					}
 					if(rightAns==4){
-						document.getElementById("q1").innerHTML = '<form><input type="radio" name="ans" id="r1"  value="1">'+escapeHtml(json.message.answer_w3);
-						document.getElementById("q2").innerHTML = '<input type="radio" name="ans" id="r2"  value="2">'+escapeHtml(json.message.answer_w1);
-						document.getElementById("q3").innerHTML = '<input type="radio" name="ans" id="r3"  value="3">'+escapeHtml(json.message.answer_w2);
-						document.getElementById("q4").innerHTML = '<input type="radio" name="ans" id="r4"  value="4">'+escapeHtml(json.message.answer_r)+'</form>';
+						document.getElementById("q1").innerHTML = escapeHtml(json.message.answer_w3);
+						document.getElementById("q2").innerHTML = escapeHtml(json.message.answer_w1);
+						document.getElementById("q3").innerHTML = escapeHtml(json.message.answer_w2);
+						document.getElementById("q4").innerHTML = escapeHtml(json.message.answer_r);
 					}
 					i++;
 				}
