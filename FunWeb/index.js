@@ -5,6 +5,7 @@ var io = require('socket.io')(http);
 var Client = require('node-rest-client').Client;
 var client = new Client();
 var newdata;
+var scores=[];
 	
 var x = Math.floor((Math.random() * 160) + 1);
 client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data, response) {
@@ -16,6 +17,7 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
+	scores=[];
   socket.on('chat message', function(msg){
     io.emit('chat message', escapeHtml(newdata.message.q_body));
     io.emit('chat message', escapeHtml(newdata.message.answer_r));
@@ -23,10 +25,14 @@ io.on('connection', function(socket){
     io.emit('chat message', escapeHtml(newdata.message.answer_w2));
     io.emit('chat message', escapeHtml(newdata.message.answer_w3));
 	var x = Math.floor((Math.random() * 160) + 1);
-client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data, response) {
-	newdata=data;
-});
+	client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data, response) {
+		newdata=data;
+	});
   });
+	socket.on('return score',function(msg){
+		scores.push(msg);
+		io.sockets.emit('getWinner',scores.toString());
+	});
 });
 
 http.listen(3000, function(){
