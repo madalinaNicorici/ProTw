@@ -35,7 +35,7 @@
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="active"><a href=".">Home</a>
-						<li><a href="#">About</a>
+						<li><a href="#about" data-toggle="modal">About</a>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Play game<b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -134,6 +134,37 @@
     		</div>
     	</div>
     </div>
+	
+	<div class="modal fade" id="about" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+			    <h4>About</h4>
+			</div>
+			<div class="modal-body">
+				<p>Fun@web nu este doar un joc, este o modalitate de a te relaxa si de a invata in acelasi timp.</p>
+				<p>Ce inveti? <br>
+				Inveti despre cele mai importante concepte legate de tehnologiile web: protocoplul HTTP, cookie-uri, sesiuni Web, mecanismul de functionare a unui server de aplicatii Web, dezvoltarea si invocarea de servicii Web pe baza de REST, transferul asincron de date prin Ajax, realizarea de mash-up-uri, aspecte esentiale privind securitatea Web si altele.</p>
+				<p>Cine poate juca?<br>
+				Persoanelor care s-au saturat de metodele clasice de a invata, cele care doresc sa iti reimprospateze cunostintele sau cele care pur si simplu vor sa se joace.</p>
+				<p>Ce cunostinte trebuie sa ai?<br>
+				Nu conteaza!!!</p>
+				Daca esti complet nefamiliar cu acestea iti oferim posibilitatea de a te familiariza accesand optiunea "Learning". 
+	            Cand consideri ca e suficient intri in joc, varianta SINGLE PLAYER.<br>
+				Astfel te familiarizezi cu jocul acumuland in acelasi timp si puncte. Fiecare 500 de puncte acumulate te ajuta sa treci la un nou nivel.<br>
+				Un joc este formata din 10 intrebari. Fiecarea intrebare are 4 variante de raspuns din care doar una corecta. Daca gresesti vei primi raspunsul corect precum si explicatia necesara.</p>
+				<p>Daca ai incredere in cunostintele tale si nu iti place sa joci singur atunci alege varianta MULTI PLAYER. 
+				Acum incepe competitia!!!<br>
+				Jocul contine tot 10 intrebari doar ca fiecare intrebare trebuie rezolvata intr-un anumit timp.<br>
+				Daca vei parasi jocul inainte de incheierea acestuia, nu vei influenta cu nimic experinta celorlalti jucatori, ci vei primi 0 puncte pentru fiecare intrebare.</p>
+				<p>In concluzie, joaca!!! Ai doar de castigat!!!</p>
+			</div>
+			<div class="modal-footer">
+				<a class=""btn btn-default" data-dismiss="modal">Close</a>
+			</div>
+		</div>
+	</div>
+</div>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
