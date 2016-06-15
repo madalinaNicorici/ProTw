@@ -6,28 +6,30 @@ function startClient()
 		socket.emit('chat message', $('').val());
 		return false;
 	});
+	
 	var i=0;
 	var j=0;
 	socket.on('chat message', function(msg)
 	{
 		if(j<10)
-		{
-			//alert(msg.q_body);
-			document.getElementById("question").innerHTML = escapeHtml(msg.q_body);
+		{	
+			document.getElementById('start').innerHTML='Next Question';
+			document.getElementById("start").disabled = true;
+			document.getElementById('questionContainer').style.display='';
+			getResult();
+			document.getElementById("question").innerHTML = j+". "+escapeHtml(msg.q_body);
 			document.getElementById("q1").innerHTML = escapeHtml(msg.answer_r);
 			document.getElementById("q2").innerHTML = escapeHtml(msg.answer_w1);
 			document.getElementById("q3").innerHTML = escapeHtml(msg.answer_w2);
 			document.getElementById("q4").innerHTML = escapeHtml(msg.answer_w3);
-			
 			j++;
-			setTimeout(function()
-			{
-				socket.emit('chat message', $('').val());
-				return false;
+			
+			setTimeout(function(){document.getElementById("start").disabled = false;		return false;
 			},3000);
 		}
 		else
 		{
+			getResult();
 			var ans="Utilizatorul "+localStorage.user_id+" are scorul "+score;
 			socket.emit('return score',ans);
 		}
@@ -35,7 +37,7 @@ function startClient()
 	
 	socket.on('getWinner',function(msg)
 	{
-		document.getElementById("messages").innerHTML = msg;
+		document.getElementById("playsingle").innerHTML = msg;
 	});
 }
 
@@ -68,11 +70,11 @@ function getResult()
 		if (document.getElementById('r1').checked) 
 		{
 			score=score+1;
-			document.getElementById("previous").innerHTML = "You answered your last question right!";
+			document.getElementById("oponent").innerHTML = "You answered your last question right!";
 		}
 		else
 		{
-			document.getElementById("previous").innerHTML = "You answered your last question wrong!";
+			document.getElementById("oponent").innerHTML = "You answered your last question wrong!";
 		}
 	}
 }

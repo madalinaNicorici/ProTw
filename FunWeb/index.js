@@ -21,16 +21,19 @@ io.on('connection', function(socket)
 	scores=[];
   socket.on('chat message', function(msg)
 	{
-    io.emit('chat message', newdata.message);
-    //io.emit('chat message', escapeHtml(newdata.message.answer_r));
-    //io.emit('chat message', escapeHtml(newdata.message.answer_w1));
-    //io.emit('chat message', escapeHtml(newdata.message.answer_w2));
-    //io.emit('chat message', escapeHtml(newdata.message.answer_w3));
+		io.emit('chat message', newdata.message);
 		var x = Math.floor((Math.random() * 160) + 1);
 		client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data, response) 
 		{
 			newdata=data;
 		});
+		setTimeout(function(){io.emit('chat message', newdata.message);
+			var x = Math.floor((Math.random() * 160) + 1);
+			client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data, response) 
+			{
+				newdata=data;
+			});		return false;
+		},6000);
 	});
 	socket.on('return score',function(msg)
 	{
