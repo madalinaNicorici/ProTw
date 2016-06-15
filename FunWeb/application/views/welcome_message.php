@@ -125,6 +125,11 @@
 	    						<textarea class="form-control" rows="4" name="contact-message" required></textarea>
 	    					</div>
 	    				</div>
+							<div class="form-group">
+								<div class="col-sm-10 col-sm-offset-2">
+									<?php if(isset($nickname)) echo $result; ?>	
+								</div>
+							</div>
 	    			</div>
 	    			<div class="modal-footer">
 	    				<a class="btn btn-default" data-dismiss="modal">Close</a>
