@@ -16,20 +16,24 @@ app.get('/', function(req, res){
   res.sendfile('index.html');
 });
 
-io.on('connection', function(socket){
+io.on('connection', function(socket)
+{
 	scores=[];
-  socket.on('chat message', function(msg){
-    io.emit('chat message', escapeHtml(newdata.message.q_body));
-    io.emit('chat message', escapeHtml(newdata.message.answer_r));
-    io.emit('chat message', escapeHtml(newdata.message.answer_w1));
-    io.emit('chat message', escapeHtml(newdata.message.answer_w2));
-    io.emit('chat message', escapeHtml(newdata.message.answer_w3));
-	var x = Math.floor((Math.random() * 160) + 1);
-	client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data, response) {
-		newdata=data;
+  socket.on('chat message', function(msg)
+	{
+    io.emit('chat message', newdata.message);
+    //io.emit('chat message', escapeHtml(newdata.message.answer_r));
+    //io.emit('chat message', escapeHtml(newdata.message.answer_w1));
+    //io.emit('chat message', escapeHtml(newdata.message.answer_w2));
+    //io.emit('chat message', escapeHtml(newdata.message.answer_w3));
+		var x = Math.floor((Math.random() * 160) + 1);
+		client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data, response) 
+		{
+			newdata=data;
+		});
 	});
-  });
-	socket.on('return score',function(msg){
+	socket.on('return score',function(msg)
+	{
 		scores.push(msg);
 		io.sockets.emit('getWinner',scores.toString());
 	});

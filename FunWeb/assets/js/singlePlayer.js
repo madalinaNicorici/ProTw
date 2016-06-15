@@ -1,5 +1,5 @@
 function gotoSingle(){
-	location.href = "../../assets/form-parts/single_player.html";
+	location.href = "http://localhost/ProTw/FunWeb/assets/form-parts/single_player.html";
 }
 
 var questions = [];
@@ -19,7 +19,7 @@ function openPlaySingle()
 		}
 	};
 	
-	xhttp.open("GET", "../../assets/form-parts/inside_game.html", true);
+	xhttp.open("GET", "http://localhost/ProTw/FunWeb/assets/form-parts/inside_game.html", true);
 	xhttp.send();
 	
 	// TO DO folosit variabile globale,sesiuni
@@ -45,7 +45,7 @@ function openPlaySingle()
 		}
 	}
 	
-	getquiz.open("GET", "../../quizzes/quiz/"+localStorage.user_id, true)
+	getquiz.open("GET", "http://localhost/ProTw/FunWeb/quizzes/quiz/"+localStorage.user_id, true)
 	getquiz.setRequestHeader("X-API-Key", "123456")
 	getquiz.send()
 }
@@ -139,7 +139,7 @@ function getQuestion(){
 				}
 			}
 		}
-		mygetrequest.open("GET", "../../questions/question/"+questions[i], true)
+		mygetrequest.open("GET", "http://localhost/ProTw/FunWeb/questions/question/"+questions[i], true)
 		mygetrequest.setRequestHeader("X-API-Key", "123456")
 		mygetrequest.send()
 	}
@@ -175,7 +175,7 @@ function endGame()
 			document.getElementById("playsingle").innerHTML = xhttp.responseText;
 		}
 	};
-	xhttp.open("GET", "../../assets/form-parts/end_game.html", true);
+	xhttp.open("GET", "http://localhost/ProTw/FunWeb/assets/form-parts/end_game.html", true);
 	xhttp.send();
 }
 
@@ -201,7 +201,7 @@ function getScore(){
 	var parameters = "user_id="+localStorage.user_id;
 	parameters += "&quiz_id="+quiz_id;
 	parameters += "&result="+localStorage.playerScore;
-	mypostrequest.open("POST", "../../scores/score/", true)
+	mypostrequest.open("POST", "http://localhost/ProTw/FunWeb/scores/score/", true)
 	mypostrequest.setRequestHeader("X-API-Key", "123456")
 	mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 	mypostrequest.send(parameters)
