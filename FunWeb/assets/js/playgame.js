@@ -36,17 +36,3 @@ function openPlaySingle()
 	xhttp.send();
 	
 }
-
-function openSignup() 
-{
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() 
-	{
-		if (xhttp.readyState == 4 && xhttp.status == 200) 
-		{
-			document.getElementById("logon").innerHTML = xhttp.responseText;
-		}
-	};
-	xhttp.open("GET", "assets/form-parts/signup.html", true);
-	xhttp.send();
-}

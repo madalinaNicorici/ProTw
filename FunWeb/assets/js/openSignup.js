@@ -6,6 +6,7 @@ function openSignup()
 		if (xhttp.readyState == 4 && xhttp.status == 200) 
 		{
 			document.getElementById("logon").innerHTML = xhttp.responseText;
+			document.getElementById("rows").innerHTML = '';
 		}
 	};
 	xhttp.open("GET", "assets/form-parts/signup.html", true);

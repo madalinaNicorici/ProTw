@@ -8,6 +8,7 @@ function openLogin()
 		{
 			//document - json intern al browser-ului
 			document.getElementById("logon").innerHTML = xhttp.responseText;
+			document.getElementById("rows").innerHTML = '';
 		}
 	};
 	

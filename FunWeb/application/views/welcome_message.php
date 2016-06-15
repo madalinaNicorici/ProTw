@@ -40,8 +40,8 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Play game<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">Game</li>
-								<li><a href="#">Single player</a></li>
-								<li><a href="#">Multplayer</a></li>
+								<li><a href="javascript:gotoSingle()">Single player</a></li>
+								<li><a href="http://localhost:3000">Multiplayer</a></li>
 							</ul>
 						</li>
 						<li><a href="#">Learning</a>
@@ -61,8 +61,8 @@
 					<button type="button" class="btn btn-primary" onclick="openSignup()">Sign Up</button>
 				</div>
 			</div>		
-			<div class="row">
-					<div class="col-sm-4">
+			<div class="row" id="rows">
+					<div class="col-sm-4" >
 						<h3>Fact of the Day</h3>
 						<p>	Google indexed it’s 1 trillionth unique URL on July 25, 2008. That is thought to be about 20% of all the pages on the Internet but a high percentage of the World Wide Web.
 						One Google search produces about 0.2g of CO2. But since you hardly get an answer from one search, a typical search session produces about the same amount of CO2 as does boiling a tea kettle.
@@ -141,7 +141,7 @@
     </div>
 	
 	<div class="modal fade" id="about" role="dialog">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 			    <h4>About</h4>
