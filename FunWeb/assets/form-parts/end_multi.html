@@ -54,49 +54,24 @@
 			<div class="jumbotron text-center" >
 				<h2>Have fun learning Web Technologies</h2>
 				
-				<div id="playmulti">
-				<!--//pune butonul inauntru-->
-					<div id="playsingle">
-						<div class="container" id="questionContainer" style="display:none">
-							<div class="well well-sm">
-								<div class="questionContent">
-									<p id="question">Some question</p>
-									<form>
-										<div class="funkyradio">
-											<div class="funkyradio-primary">
-												<input type="radio" name="radio" id="r1" value="1">
-												<label for="r1" id="q1"></label><br>
-											</div>
-											<div class="funkyradio-primary">
-												<input type="radio" name="radio" id="r2" value="2">
-												<label for="r2" id="q2"></label><br>
-											</div>
-											<div class="funkyradio-primary">
-												<input type="radio" name="radio" id="r3" value="3">
-												<label for="r3" id="q3"></label><br>
-											</div>
-											<div class="funkyradio-primary">
-												<input type="radio" name="radio" id="r4" value="4">
-												<label for="r4" id="q4"></label>
-											</div>
-										</div>
-									</form>
-								</div>	
-							</div>
-						</div>
-						<button class="btn btn-success" id="start">Start game</button>
-					</div>
-				</div>		
+				<div class="container" id="endGame">
+					<img src="http://www.veryicon.com/icon/png/System/Blue%20Bits/thumbs%20up.png" onload="getScore()" width="100" height="132">
+					<p id="question">Congratulations!</p>
+					<p id="par">You have finished the quiz!</p>
+					<p id="finalScore">Your score can't be displayed at the moment. <br>
+					This might take a moment...<br>
+					We are sorry!</p>
+				</div>	
 				
 				<div class="row">
 					<div class="col-sm-4">
-						<h3>Your opponent</h3>
-						<p id="oponent"></p>
+						<h3>Previous Question</h3>
+						<p id="previous">No previous question</p>
 						
 					</div>
 					<div class="col-sm-4">
-						<h3>Time Left</h3>
-						<div id="timer">
+						<h3>Need help?</h3>
+						<div id="hintSpace">
 						</div>
 					</div>
 					<div class="col-sm-4">
@@ -159,13 +134,12 @@
 		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="http://localhost/Protw/FunWeb/assets/js/jquery-1.12.4.min.js"></script>
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="http://localhost/Protw/FunWeb/assets/js/bootstrap.min.js"></script>
 		
 		<!-- Javascript for Ajax call --><!-- Javascript for Ajax call -->
 		<script src="http://localhost/Protw/FunWeb/assets/js/custom.js"></script>
-		<script src="http://localhost/Protw/FunWeb/assets/js/singlePlayer.js"></script>
 		
 		<script src="http://localhost/Protw/FunWeb/assets/js/multiPlayer.js"></script>
 		

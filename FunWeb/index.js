@@ -27,18 +27,13 @@ io.on('connection', function(socket)
 		{
 			newdata=data;
 		});
-		setTimeout(function(){io.emit('chat message', newdata.message);
-			var x = Math.floor((Math.random() * 160) + 1);
-			client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data, response) 
-			{
-				newdata=data;
-			});		return false;
+		setTimeout(function(){io.emit('emit again',"");return false;
 		},6000);
 	});
 	socket.on('return score',function(msg)
 	{
 		scores.push(msg);
-		io.sockets.emit('getWinner',scores.toString());
+		io.emit('getWinner',scores.toString());
 	});
 });
 

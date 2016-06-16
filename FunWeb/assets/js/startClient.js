@@ -1,8 +1,10 @@
+var ok=0;
 function startClient() 
 {
 	var socket = io();
 	$('#start').click(function()
 	{
+		ok=1;
 		socket.emit('chat message', $('').val());
 		return false;
 	});
@@ -17,7 +19,7 @@ function startClient()
 			document.getElementById("start").disabled = true;
 			document.getElementById('questionContainer').style.display='';
 			getResult();
-			document.getElementById("question").innerHTML = j+". "+escapeHtml(msg.q_body);
+			document.getElementById("question").innerHTML = (j+1)+". "+escapeHtml(msg.q_body);
 			document.getElementById("q1").innerHTML = escapeHtml(msg.answer_r);
 			document.getElementById("q2").innerHTML = escapeHtml(msg.answer_w1);
 			document.getElementById("q3").innerHTML = escapeHtml(msg.answer_w2);
@@ -26,6 +28,7 @@ function startClient()
 			
 			setTimeout(function(){document.getElementById("start").disabled = false;		return false;
 			},3000);
+			
 		}
 		else
 		{
@@ -34,7 +37,9 @@ function startClient()
 			socket.emit('return score',ans);
 		}
 	});
-	
+	socket.on('emit again',function(msg){
+		if(ok==1)socket.emit('chat message',"");
+	});
 	socket.on('getWinner',function(msg)
 	{
 		document.getElementById("playsingle").innerHTML = msg;
