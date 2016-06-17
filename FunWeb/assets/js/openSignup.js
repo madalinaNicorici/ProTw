@@ -39,6 +39,7 @@ function registerUser()
 	var name = document.getElementById("inputName").value;
 	var surname = document.getElementById("inputSurname").value;
 	var username = document.getElementById("inputUsername").value;
+	localStorage.username=username;
 	var email = document.getElementById("inputEmail").value;
 	var pass = document.getElementById("inputPassword").value;
 	var repass = document.getElementById("inputRetypePassword").value;

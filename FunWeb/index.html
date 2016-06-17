@@ -17,6 +17,27 @@
 		<script src="https://use.fontawesome.com/13382298cc.js"></script>
 
 	</head>
+	<style>
+#timer {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-color: #ddd;
+}
+
+#myBar {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background-color: #4CAF50;
+}
+
+#timeLeft {
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+</style>
   <body onload="startClient()">
 		<!-- Fixed top navbar -->  
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -53,8 +74,95 @@
 		<div class="container">
 			<div class="jumbotron text-center" >
 				<h2>Have fun learning Web Technologies</h2>
+				<!-- Create Rooms -->
+				<div class="row">
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Create Room</button>
+
+				  <!-- Modal -->
+				  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+					 aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">
+									   <span aria-hidden="true">&times;</span>
+									   <span class="sr-only">Close</span>
+								</button>
+								<h4 class="modal-title" id="myModalLabel">
+									Create Your Own Room
+								</h4>
+							</div>
+							
+							<!-- Modal Body -->
+							<div class="modal-body">
+								
+								<form id="newRoom" class="form-horizontal" role="form">
+								  <div class="form-group">
+									<label  class="col-sm-2 control-label" id="roomName">Room Name</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" 
+										id="roomName" placeholder="Room Name"/>
+									</div>
+								  </div>
+								  <div class="form-group">
+									<label class="col-sm-2 control-label" id="password" >Password</label>
+									<div class="col-sm-10">
+										<input type="password" class="form-control"
+											id="password" placeholder="Password"/>
+									</div>
+								  </div>
+								  <div class="form-group">
+									<div id="newRoomButton" class="col-sm-offset-2 col-sm-10">
+									  <button type="button" class="btn btn-primary">Create Room</button>
+									</div>
+								  </div>
+								</form>
+							</div>
+							
+							<!-- Modal Footer -->
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary"
+										data-dismiss="modal">
+											Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				</div>
+				<div class="row" id="rooms" >
+					<div id="logon1" class="col-sm-4" style="display:none">
+						<div>
+							<div class="list-group">
+								<a href="#" class="list-group-item list-group-item-info" id="room-name">First item</a>
+								<a href="#" id="player1" class="list-group-item">Second item</a>
+								<a href="#" id="player2" class="list-group-item">Third item</a>
+							 </div>
+						</div>
+					</div>
+					<div class="col-sm-4" style="display:none">
+						<div id="logon">
+							<div class="list-group">
+								<a href="#" class="list-group-item list-group-item-info">First item</a>
+								<a href="#" class="list-group-item">Second item</a>
+								<a href="#" class="list-group-item">Third item</a>
+							 </div>
+						</div>
+					</div>
+					<div class="col-sm-4" style="display:none">
+						<div id="logon">
+							<div class="list-group">
+								<a href="#" class="list-group-item list-group-item-info">First item</a>
+								<a href="#" class="list-group-item">Second item</a>
+								<a href="#" class="list-group-item">Third item</a>
+							 </div>
+						</div>
+					</div>
+				</div>	
 				
-				<div id="playmulti">
+				<div id="playmulti"style="display:none">
 				<!--//pune butonul inauntru-->
 					<div id="playsingle">
 						<div class="container" id="questionContainer" style="display:none">
@@ -97,6 +205,8 @@
 					<div class="col-sm-4">
 						<h3>Time Left</h3>
 						<div id="timer">
+						  <div id="myBar"></div>
+							<div id="timeLeft">10 seconds</div>
 						</div>
 					</div>
 					<div class="col-sm-4">
