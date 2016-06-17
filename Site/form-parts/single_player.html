@@ -8,21 +8,17 @@
     <title>Fun @ Web - Place for fun learning</title>
 
     <!-- Bootstrap -->
-		<link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="http://localhost/ProTw/Site/css/bootstrap.min.css" rel="stylesheet">
 		
 		<!-- Custom css -->
-		<link href="../../assets/css/custom.css" rel="stylesheet">
+		<link href="http://localhost/ProTw/Site/css/custom.css" rel="stylesheet">
 
 		<!-- Font Awesome -->
 		<script src="https://use.fontawesome.com/13382298cc.js"></script>
-		
-		<!-- Javascript for Ajax call -->
-		<script src="../../assets/js/custom.js"></script>
-		
+
 	</head>
   <body>
-
-		<!-- Fixed top navbar -->  
+  	<!-- Fixed top navbar -->  
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -32,12 +28,12 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="../../index.php">Fun@Web</a>
+					<a class="navbar-brand" href="http://localhost/ProTw/Site/welcome_message.php">Fun@Web</a>
 				</div>
 				
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="../../index.php">Home</a>
+						<li class="active"><a href="http://localhost/ProTw/Site/welcome_message.php">Home</a>
 						<li><a href="#about" data-toggle="modal">About</a>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Play game<b class="caret"></b></a>
@@ -54,16 +50,35 @@
 				</div>
 			</div>
 		</div>
-	
+		
+		<!-- Jumbotron -->
 		<div class="container">
 			<div class="jumbotron text-center" >
 				<h2>Have fun learning Web Technologies</h2>
-				<div id="logon">
-					<button id="btnSinglePlayer" type="button" class="btn btn-success" onclick="gotoSingle()">Play Single Player</button>
-					<button id="btnMultiPlayer" type="button" class="btn btn-primary" onclick=location.href="http://localhost:3000">Play Multi Player</button>
-				</div>
 				
-			</div>	
+				<div id="playsingle">
+					<button type="button" class="btn btn-success" onclick="openPlaySingle()">Start Game</button>
+				</div>		
+				
+				<div class="row" id="rows">
+					<div class="col-sm-4">
+						<h3>Previous Question</h3>
+						<p id="previous">No previous question</p>
+						
+					</div>
+					<div class="col-sm-4">
+						<h3>Need help?</h3>
+						<div id="hintSpace">
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<h3>Question source</h3>
+						<p id="source">Unknown source</p>
+						
+					</div>
+				</div>	
+			</div>
+			
 		</div>
 		
 		<!-- Fixed footer -->
@@ -114,7 +129,7 @@
 					</form>
 				</div>
 			</div>
-	    </div>
+		</div>
 		
 	<div class="modal fade" id="about" role="dialog">
 		<div class="modal-dialog modal-lg">
@@ -141,7 +156,7 @@
 					<p>In concluzie, joaca!!! Ai doar de castigat!!!</p>
 				</div>
 				<div class="modal-footer">
-					<a class="btn btn-default" data-dismiss="modal">Close</a>
+					<a class=""btn btn-default" data-dismiss="modal">Close</a>
 				</div>
 			</div>
 		</div>
@@ -189,19 +204,20 @@
     	</div>
    	</div>
 	</div>
-
-
+		
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="../../assets/js/jquery-1.12.4.min.js"></script>
+		<script src="http://localhost/ProTw/Site/js/jquery-1.12.4.min.js"></script>
 		
 		<!-- Latest compiled and minified JavaScript -->
-		<script src="../../assets/js/bootstrap.min.js"></script>
-			
-		<script src="../../assets/js/singlePlayer.js"></script>
-		<script src="../../assets/js/multiPlayer.js"></script>
-		<script src="../../assets/js/openContact.js"></script>
-		<script src="../../assets/js/userProfile.js"></script>
-
-		</body>
+		<script src="http://localhost/ProTw/Site/js/bootstrap.min.js"></script>
+		
+		<!-- Javascript for Ajax call --><!-- Javascript for Ajax call -->
+		<script src="http://localhost/Protw/Site/js/custom.js"></script>
+		<script src="http://localhost/Protw/Site/js/openLogin.js"></script>
+		<script src="http://localhost/Protw/Site/js/openSignup.js"></script>
+		<script src="http://localhost/Protw/Site/js/singlePlayer.js"></script>
+		<script src="http://localhost/Protw/Site/js/openContact.js"></script>
+		<script src="http://localhost/Protw/Site/js/userProfile.js"></script>
+		
+  </body>
 </html>

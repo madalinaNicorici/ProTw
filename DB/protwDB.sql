@@ -1,5 +1,6 @@
 drop table `logs`;
 drop table `keys`;
+drop table rooms;
 drop table users_quiz_status;
 drop table quizzes;
 drop table questions;
@@ -70,6 +71,17 @@ create table users_quiz_status
   CONSTRAINT fk_quizz FOREIGN KEY(quiz_id) REFERENCES quizzes(quiz_id)
 );
 
+create table rooms 
+(
+	room_id INT PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(30),
+	room_password VARCHAR(30),
+	player1 INT NOT NULL,
+	player2 INT,
+	player3 INT,
+	player4 INT
+);
+
 
 CREATE TABLE `logs` (
   `id` int(11) NOT NULL,
@@ -122,6 +134,7 @@ FOR EACH ROW
  
 CREATE INDEX fast_score ON users_status (points, level_id);
 CREATE INDEX fast_user ON users_profile (username, user_password);
+  
  
 INSERT INTO users_profile VALUES
 	(1, 'Chaney', 'Moran', 'Lacota_Mckenzie', 'nec.mauris.blandit@Proin.net', 'AIf96GEm0PP', 'active', 0, 0),
@@ -166,7 +179,7 @@ INSERT INTO users_profile VALUES
 	(40, 'Odysseus', 'Tyson', 'Brianna_Kinney', 'urna.convallis@tellusSuspendissesed.ca', 'FPr18GUx5GA', 'active', 0, 0);
 	
 	
-INSERT  INTO questions VALUES( 1, 'What does HTML stand for?', 'Hyper Text Markup Language', 'Hyperlinks and Text Markup Language', 'Home Tool Markup Language','Heading Text Markup Language', 1, 'HTML is a markup language for describing web documents.', 'http://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML', 10);
+    INSERT  INTO questions VALUES( 1, 'What does HTML stand for?', 'Hyper Text Markup Language', 'Hyperlinks and Text Markup Language', 'Home Tool Markup Language','Heading Text Markup Language', 1, 'HTML is a markup language for describing web documents.', 'http://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML', 10);
     INSERT  INTO questions VALUES( 2, 'Choose the correct HTML element for the largest heading:', '<h1>', '<heading>', '<head>', '<h6>', 1, 'HTML headings are defined with the <h1> to <h6> tags', 'http://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML', 10);
     INSERT  INTO questions VALUES( 3, 'What is the correct HTML element for inserting a line break?', '<br>', '<break>', '<lb>', '<ol>', 1, 'Use <br> if you want a line break (a new line) without starting a new paragraph', 'http://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML', 10);
     INSERT  INTO questions VALUES( 4, 'What is the correct HTML for adding a background color?', '<body style="background-color:yellow;">', '<background>yellow</background>', '<body bg="yellow">', '<body background="yellow">', 1, 'The background-color property defines the background color for an HTML element.', 'http://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML', 10);
@@ -244,16 +257,16 @@ INSERT  INTO questions VALUES( 1, 'What does HTML stand for?', 'Hyper Text Marku
     INSERT  INTO questions VALUES( 71, 'All variables in PHP start with which symbol?', '$', '!', '&', '*', 2, 'A variable starts with the $ sign, followed by the name of the variable. A variable name must start with a letter or the underscore character.','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
     INSERT  INTO questions VALUES( 72, 'What is the correct way to end a PHP statement?', ';', '</php>', 'New line', '.', 2, 'PHP statements end with a semicolon (;).','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
     INSERT  INTO questions VALUES( 73, 'The PHP syntax is most similar to:', 'Perl and C', 'JavaScript', 'VBScript', 'C', 2, 'C and ...','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
-    INSERT  INTO questions VALUES( 74, 'How do you get information from a form that is submitted using the "get" method?', '$_GET[];', 'Request.QueryString;', 'Request.Form;', '/%%_GET[];', 2, '','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
-    INSERT  INTO questions VALUES( 75, 'What is the correct way to include the file "time.inc" ?', '<?php include "time.inc"; ?>', '<?php include:"time.inc"; ?>', '<?php include file="time.inc"; ?>', '<!-- include file="time.inc" -->', 2, '','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
-    INSERT  INTO questions VALUES( 76, 'What is the correct way to create a function in PHP?', 'function myFunction()', 'new_function myFunction()', 'create myFunction()', 'create function myFunction()', 2, '','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
-    INSERT  INTO questions VALUES( 77, 'What is the correct way to open the file "time.txt" as readable?', 'fopen("time.txt","r");', 'open("time.txt","read");', 'fopen("time.txt","r+");', 'open("time.txt");', 2, '','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
-    INSERT  INTO questions VALUES( 78, 'Which superglobal variable holds information about headers, paths, and script locations?', '$_SERVER', '$_SESSION', '$_GLOBALS', '%_GET', 2, '','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
-    INSERT  INTO questions VALUES( 79, 'What is the correct way to add 1 to the $count variable?', '$count++;', '$count =+1', '++count', 'count++;', 2, '','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
-    INSERT  INTO questions VALUES( 80, 'What is a correct way to add a comment in PHP?', '/*...*/', '*\...\*', '<!--...-->', '<comment>...</comment>', 2, '','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
-    INSERT  INTO questions VALUES( 81, 'Which one of these variables has an illegal name?', '$my-Var', '$myVar', '$my_Var', '$my_var', 2, '','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
-    INSERT  INTO questions VALUES( 82, 'How do you create an array in PHP?', '$cars = array("Volvo", "BMW", "Toyota");', '$cars = "Volvo", "BMW", "Toyota";', '$cars = array["Volvo", "BMW", "Toyota"];', '$cars = ("Volvo", "BMW", "Toyota");', 2, '','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
-    INSERT  INTO questions VALUES( 83, 'Which operator is used to check if two values are equal and of same data type?', '===', '!=', '=', '==', 2, '','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
+    INSERT  INTO questions VALUES( 74, 'How do you get information from a form that is submitted using the "get" method?', '$_GET[];', 'Request.QueryString;', 'Request.Form;', '/%%_GET[];', 2, 'Not with Request...','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
+    INSERT  INTO questions VALUES( 75, 'What is the correct way to include the file "time.inc" ?', '<?php include "time.inc"; ?>', '<?php include:"time.inc"; ?>', '<?php include file="time.inc"; ?>', '<!-- include file="time.inc" -->', 2, '<?php include...','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
+    INSERT  INTO questions VALUES( 76, 'What is the correct way to create a function in PHP?', 'function myFunction()', 'new_function myFunction()', 'create myFunction()', 'create function myFunction()', 2, 'Not with create','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
+    INSERT  INTO questions VALUES( 77, 'What is the correct way to open the file "time.txt" as readable?', 'fopen("time.txt","r");', 'open("time.txt","read");', 'fopen("time.txt","r+");', 'open("time.txt");', 2, 'fopen(....)','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
+    INSERT  INTO questions VALUES( 78, 'Which superglobal variable holds information about headers, paths, and script locations?', '$_SERVER', '$_SESSION', '$_GLOBALS', '%_GET', 2, '$_S....','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
+    INSERT  INTO questions VALUES( 79, 'What is the correct way to add 1 to the $count variable?', '$count++;', '$count =+1', '++count', 'count++;', 2, '$count...','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
+    INSERT  INTO questions VALUES( 80, 'What is a correct way to add a comment in PHP?', '/*...*/', '*\...\*', '<!--...-->', '<comment>...</comment>', 2, 'Not with <! or *\\','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
+    INSERT  INTO questions VALUES( 81, 'Which one of these variables has an illegal name?', '$my-Var', '$myVar', '$my_Var', '$my_var', 2, 'myVar is corect','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
+    INSERT  INTO questions VALUES( 82, 'How do you create an array in PHP?', '$cars = array("Volvo", "BMW", "Toyota");', '$cars = "Volvo", "BMW", "Toyota";', '$cars = array["Volvo", "BMW", "Toyota"];', '$cars = ("Volvo", "BMW", "Toyota");', 2, '$cars = array...','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
+    INSERT  INTO questions VALUES( 83, 'Which operator is used to check if two values are equal and of same data type?', '===', '!=', '=', '==', 2, '===','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
     /*--Intrebari JavaScript*/
     INSERT  INTO questions VALUES( 84, 'Inside which HTML element do we put the JavaScript?', '<script>', '<javascript>', '<scripting>', '<js>', 2, '','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
     INSERT  INTO questions VALUES( 85, 'What is the correct JavaScript syntax to change the content of the HTML element below?', 'document.getElementById("demo").innerHTML = "Hello World!";', 'document.getElement("p").innerHTML = "Hello World!";', 'document.getElementByName("p").innerHTML = "Hello World!";', '#demo.innerHTML = "Hello World!";', 2, '','http://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP', 20);
@@ -340,67 +353,10 @@ INSERT  INTO questions VALUES( 1, 'What does HTML stand for?', 'Hyper Text Marku
     INSERT  INTO questions VALUES( 158, 'A user is able to pass malicious input that invokes control codes in your Web application. Which vulnerability is most likely to occur in your Web application?', 'Injection', 'Insufficient transport layer protection', 'Insecure direct object references', 'Failure to restrict URL access', 5, '', 'https://websecurity.firebaseapp.com/', 50);
     INSERT  INTO questions VALUES( 159, 'Which of the following is the best way to reevaluate your environment and address new threats?', 'Add or remove network segments.', 'Use the white-list validation of allowed input technique.', 'Use your browser to forge unauthorized requests.', 'Use custom cryptographic algorithms.', 5, '', 'https://websecurity.firebaseapp.com/', 50);
     INSERT  INTO questions VALUES( 160, 'Which of the following is most likely to result from unvalidated redirects and forwards?', 'Bypassed authorization checks', 'Brute force attack', 'Network sniffing', 'Man-in-the-middle attack', 5, '', 'https://websecurity.firebaseapp.com/', 50);
+
 	
+   INSERT INTO rooms(name,room_password,player1,player2) VALUES('Room1','',1,41);
 
-DROP PROCEDURE IF EXISTS show_user_info;
-
-DELIMITER //
-
-CREATE OR REPLACE PROCEDURE show_user_info(IN p_user_id INT,
-       OUT p_name VARCHAR(30),OUT p_surname VARCHAR(30),OUT p_username VARCHAR(30),
-      OUT p_email VARCHAR(100),OUT p_points INT,OUT p_level INT) 
-    BEGIN
-      SELECT up.name, up.surname, up.username, up.email, us.points, us.level_id INTO p_name, p_surname, p_username, p_email, p_points, p_level
-      FROM users_profile up JOIN users_status us ON us.user_id = up.user_id
-        WHERE up.user_id = p_user_id;  
-    END //
- 
-DELIMITER ;
-
-DROP PROCEDURE IF EXISTS delete_user;
-
-DELIMITER //
-
-CREATE PROCEDURE delete_user ( IN p_user_id INT) 
-    BEGIN
-      DECLARE v_count INT;
-      SELECT COUNT(user_id) INTO v_count FROM users_profile WHERE user_id=p_user_id;
-      IF v_count=0 THEN 
-          SIGNAL SQLSTATE '20107'
-             SET MESSAGE_TEXT='Invalid user_id! Try again!';
-      ELSE
-            DELETE FROM users_status WHERE user_id=p_user_id ;
-            DELETE FROM users_profile WHERE user_id=p_user_id ;
-      END IF;
-    END //
- 
-    
-DELIMITER ;
- 
-DROP PROCEDURE IF EXISTS log_in;
-
-DELIMITER //
-
-	CREATE PROCEDURE log_in ( IN p_username VARCHAR(30), IN p_password VARCHAR(100), OUT p_user_id INT ) 
-    BEGIN
-       DECLARE v_count INT;
-       DECLARE v_countp INT;
-       SELECT COUNT(username)INTO v_count FROM users_profile WHERE username=p_username;
-       SELECT COUNT(user_password)INTO v_countp FROM users_profile WHERE user_password=p_password AND username=p_username;
-       IF v_count=0 THEN
-          SIGNAL SQLSTATE '20105'
-             SET MESSAGE_TEXT='Invalid username! Try again!';
-       ELSE
-			   IF v_countp=0 THEN
-	          SIGNAL SQLSTATE '20106'
-	             SET MESSAGE_TEXT='Invalid user_password! Try again!';
-	         ELSE
-	          SELECT user_id INTO p_user_id FROM users_profile WHERE username=p_username AND user_password=p_password;
-	         END IF;
-       END IF;
-    END//  
-	 
-DELIMITER //
 
    CREATE OR REPLACE PROCEDURE update_user( IN p_user_id INT, IN p_name VARCHAR(30), IN p_surname VARCHAR(30), IN p_username VARCHAR(30), IN p_email VARCHAR(100), IN p_user_password VARCHAR(100) )
 	BEGIN
@@ -457,63 +413,7 @@ DELIMITER //
           
 	       END IF;
 	END //
-	
-	DELIMITER //
-
-CREATE OR REPLACE PROCEDURE sign_in(IN p_name VARCHAR(30), IN p_surname VARCHAR(30), IN p_username VARCHAR(30), IN p_email VARCHAR(100),IN  p_user_password VARCHAR(100))
-    BEGIN
-      DECLARE v_count_username INT ;
-      DECLARE v_count_profile INT ;
-      DECLARE v_last_id INT;
-      DECLARE v_user_id INT;
-      
-      SET v_count_username = 0;
-      SET v_count_profile = 0;
-      SELECT user_id INTO v_last_id FROM users_profile ORDER BY  user_id DESC  LIMIT 1; 
-      SET v_user_id = v_last_id + 1;
-      
-      SELECT count(*) INTO v_count_username FROM users_profile where username = p_username;
-      SELECT count(*) INTO v_count_profile FROM users_profile WHERE name=p_name AND surname = p_surname AND username = p_username AND email=p_email AND user_password=p_user_password;
-		
-		IF(v_count_profile > 0) then
-        SIGNAL SQLSTATE '20106'
-			 SET MESSAGE_TEXT='Profile already exists! Try to login.';
-      ELSE 
-		 IF (v_count_username > 0) then
-			 SIGNAL SQLSTATE '20105'
-				SET MESSAGE_TEXT='Username already exists!';
-		 ELSE
-		  IF not p_name regexp '^[a-zA-Z-]+$' then
-			  SIGNAL SQLSTATE '20100'
-				SET MESSAGE_TEXT='Invalid characters in name! It should contain only letters and -.';
-		
-		  ELSE
-			IF not p_surname regexp '^[a-zA-Z-]+$' then
-				     SIGNAL SQLSTATE '20101'
-					       SET MESSAGE_TEXT='Invalid characters in surname! It should contain only letters and -.';
-		   ELSE 
-			  IF instr(p_username,';') > 0 OR length(p_username) > 30 OR length(p_username) < 4  THEN 
-		             SIGNAL SQLSTATE '20102'
-					       SET MESSAGE_TEXT='Invalid username! It should not contain ; and it shoult be between 4-30 characters.';
-		     ELSE
-				IF not p_email regexp '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$' then
-		           SIGNAL SQLSTATE '20103'
-					       SET MESSAGE_TEXT='Invalid email!';
-		      ELSE 
-				 IF length(p_user_password) < 6 OR instr(p_user_password,';') > 0 THEN
-		         SIGNAL SQLSTATE '20104'
-					       SET MESSAGE_TEXT='Invalid password! It should not contain ; and it shoult not be shorter then 6 characters.';
-		       ELSE
-		        INSERT INTO users_profile VALUES(v_user_id, p_name, p_surname, p_username, p_email, p_user_password);
-		      END IF;
-		     END IF;
-		    END IF;
-		   END IF;
-		  END IF;
-	   END IF;
-	  END IF;
-    END //
-    
+	    
 DELIMITER //
 CREATE OR REPLACE PROCEDURE add_answer(IN p_user_id INT, IN p_quiz_id INT, IN p_result INT)
 BEGIN
@@ -575,15 +475,6 @@ CREATE OR REPLACE FUNCTION return_quiz_id(p_user_id INT) returns INT DETERMINIST
     END //
 
     
-DELIMITER //
-
-CREATE OR REPLACE PROCEDURE show_question(IN p_question_id INT, OUT p_body VARCHAR(500), OUT p_answer_r VARCHAR(200), OUT p_answer_w1 VARCHAR(200), 
-		OUT p_answer_w2 VARCHAR(200),OUT p_answer_w3 VARCHAR(200)) 
-    BEGIN
-      select q_body, answer_r, answer_w1, answer_w2, answer_w3 into p_body, p_answer_r, p_answer_w1, p_answer_w2, p_answer_w3 from questions where question_id = p_question_id;
-    END //
-
-DELIMITER ;
     
 DROP PROCEDURE IF EXISTS populate_quiz;
 

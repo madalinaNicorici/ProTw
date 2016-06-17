@@ -8,10 +8,10 @@
     <title>Fun @ Web - Place for fun learning</title>
 
     <!-- Bootstrap -->
-		<link href="<?php echo base_url('assets/css/bootstrap.min.css');?>" rel="stylesheet">
+		<link href="http://localhost/ProTW/Site/css/bootstrap.min.css" rel="stylesheet">
 		
 		<!-- Custom css -->
-		<link href="<?php echo base_url('assets/css/custom.css');?>" rel="stylesheet">
+		<link href="http://localhost/ProTW/Site/css/custom.css" rel="stylesheet">
 
 		<!-- Font Awesome -->
 		<script src="https://use.fontawesome.com/13382298cc.js"></script>
@@ -29,12 +29,12 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href=".">Fun@Web</a>
+					<a class="navbar-brand" href="./welcome_message.php">Fun@Web</a>
 				</div>
 				
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href=".">Home</a>
+						<li class="active"><a href="./welcome_message.php">Home</a>
 						<li><a href="#about" data-toggle="modal">About</a>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Play game<b class="caret"></b></a>
@@ -44,7 +44,7 @@
 								<li><a href="http://localhost:3000">Multiplayer</a></li>
 							</ul>
 						</li>
-						<li><a href="http://profs.info.uaic.ro/~busaco/teach/courses/web/web-film.html" target="_blank"">Learning</a>
+						<li><a href="http://profs.info.uaic.ro/~busaco/teach/courses/web/web-film.html" target="_blank">Learning</a>
 						<li><a href="#contact" data-toggle="modal">Contact</a>
 						<li><a href="#" data-toggle="modal" style="display:none">Profile</a>
 					</ul>
@@ -103,7 +103,7 @@
 		<div class="modal fade" id="contact" role = "dialog">
     	<div class="modal-dialog">
     		<div class="modal-content">
-    			<form class="form-horizontal" role="form" method="post" action="assets/form-parts/send_form_email.php">
+    			<form class="form-horizontal" role="form" method="post" action="form-parts/send_form_email.php">
 	    			<div class="modal-header">
 	    				<h4>Contact</h4>
 	    			</div>
@@ -145,25 +145,49 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-			    <h4>About</h4>
+			    <h4 class="intro-text text-center">About <strong>FunWeb</strong></h4>
 			</div>
 			<div class="modal-body">
+				<div class="row extra">
+				<div class="col-md-12">
 				<p>Fun@web nu este doar un joc, este o modalitate de a te relaxa si de a invata in acelasi timp.</p>
-				<p>Ce inveti? <br>
-				Inveti despre cele mai importante concepte legate de tehnologiile web: protocoplul HTTP, cookie-uri, sesiuni Web, mecanismul de functionare a unui server de aplicatii Web, dezvoltarea si invocarea de servicii Web pe baza de REST, transferul asincron de date prin Ajax, realizarea de mash-up-uri, aspecte esentiale privind securitatea Web si altele.</p>
-				<p>Cine poate juca?<br>
-				Persoanelor care s-au saturat de metodele clasice de a invata, cele care doresc sa iti reimprospateze cunostintele sau cele care pur si simplu vor sa se joace.</p>
-				<p>Ce cunostinte trebuie sa ai?<br>
-				Nu conteaza!!!</p>
-				Daca esti complet nefamiliar cu acestea iti oferim posibilitatea de a te familiariza accesand optiunea "Learning". 
-	            Cand consideri ca e suficient intri in joc, varianta SINGLE PLAYER.<br>
-				Astfel te familiarizezi cu jocul acumuland in acelasi timp si puncte. Fiecare 500 de puncte acumulate te ajuta sa treci la un nou nivel.<br>
-				Un joc este formata din 10 intrebari. Fiecarea intrebare are 4 variante de raspuns din care doar una corecta. Daca gresesti vei primi raspunsul corect precum si explicatia necesara.</p>
-				<p>Daca ai incredere in cunostintele tale si nu iti place sa joci singur atunci alege varianta MULTI PLAYER. 
-				Acum incepe competitia!!!<br>
-				Jocul contine tot 10 intrebari doar ca fiecare intrebare trebuie rezolvata intr-un anumit timp.<br>
-				Daca vei parasi jocul inainte de incheierea acestuia, nu vei influenta cu nimic experinta celorlalti jucatori, ci vei primi 0 puncte pentru fiecare intrebare.</p>
-				<p>In concluzie, joaca!!! Ai doar de castigat!!!</p>
+				</div>
+				</div>
+				<div class="row extra" id="a">
+					<div class="col-md-5">
+						<img class="img-responsive img-border-left " src="images/stack-of-books-1.jpg" alt="" >
+					</div>
+					<div class="col-md-7">
+					<p>Ce inveti? <br>
+					Inveti despre cele mai importante concepte legate de tehnologiile web: protocoplul HTTP, cookie-uri, sesiuni Web, mecanismul de functionare a unui server de aplicatii Web, dezvoltarea si invocarea de servicii Web pe baza de REST, transferul asincron de date prin Ajax, realizarea de mash-up-uri, aspecte esentiale privind securitatea Web si altele.</p>
+					<p>Cine poate juca?</p>
+					<p>Persoanelor care s-au saturat de metodele clasice de a invata, cele care doresc sa iti reimprospateze cunostintele sau cele care pur si simplu vor sa se joace.</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="row extra" id="a">
+					<div class="col-md-7">
+					
+					<p>Ce cunostinte trebuie sa ai?</p>
+					<p>Nu conteaza!!!</p>
+					<p> Daca esti complet nefamiliar cu acestea iti oferim posibilitatea de a te familiariza accesand optiunea "Learning". 
+					Cand consideri ca e suficient intri in joc, varianta SINGLE PLAYER.
+					Astfel te familiarizezi cu jocul acumuland in acelasi timp si puncte. Fiecare 500 de puncte acumulate te ajuta sa treci la un nou nivel.
+					Un joc este formata din 10 intrebari. Fiecarea intrebare are 4 variante de raspuns din care doar una corecta.</p>
+					</div>
+					<div class="col-md-5">
+						<img class="img-responsive img-border-left" src="images/freedom.png" alt="">
+					</div>
+				</div>
+				<div class="row extra" id="a">
+					<div class="col-md-12">
+						<p>Daca ai incredere in cunostintele tale si nu iti place sa joci singur atunci alege varianta MULTI PLAYER. 
+						Acum incepe competitia!!!
+						Jocul contine tot 10 intrebari doar ca fiecare intrebare trebuie rezolvata intr-un anumit timp.
+						Daca vei parasi jocul inainte de incheierea acestuia, nu vei influenta cu nimic experinta celorlalti jucatori, ci vei primi 0 puncte pentru fiecare intrebare.</p>
+						<p>In concluzie, joaca!!! Ai doar de castigat!!!</p>
+					</div>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<a class="btn btn-default" data-dismiss="modal">Close</a>
@@ -173,18 +197,18 @@
 </div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="<?php echo base_url('assets/js/jquery-1.12.4.min.js');?>"></script>
+		<script src="http://localhost/Protw/Site/js/jquery-1.12.4.min.js"></script>
 				
 		<!-- Latest compiled and minified JavaScript -->
-		<script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
+		<script src="http://localhost/Protw/Site/js/bootstrap.min.js"></script>
 		
 		<!-- Javascript for Ajax call -->
-		<script src="<?php echo base_url('assets/js/custom.js');?>"></script>
-		<script src="<?php echo base_url('assets/js/openLogin.js');?>"></script>
-		<script src="<?php echo base_url('assets/js/openSignup.js');?>"></script>
-		<script src="<?php echo base_url('assets/js/singlePlayer.js');?>"></script>
-		<script src="<?php echo base_url('assets/js/openContact.js');?>"></script>
-		<script src="<?php echo base_url('assets/js/userProfile.js');?>"></script>
+		<script src="http://localhost/Protw/Site/js/custom.js"></script>
+		<script src="http://localhost/Protw/Site/js/openLogin.js"></script>
+		<script src="http://localhost/Protw/Site/js/openSignup.js"></script>
+		<script src="http://localhost/Protw/Site/js/singlePlayer.js"></script>
+		<script src="http://localhost/Protw/Site/js/openContact.js"></script>
+		<script src="http://localhost/Protw/Site/js/userProfile.js"></script>
 			
   </body>
 </html>
