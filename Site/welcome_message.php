@@ -155,7 +155,7 @@
 				</div>
 				<div class="row extra" id="a">
 					<div class="col-md-5">
-						<img class="img-responsive img-border-left " src="images/stack-of-books-1.jpg" alt="" >
+						<img class="img-responsive img-border-left " src="http://localhost/ProTw/Site/images/stack-of-books-1.jpg" alt="" >
 					</div>
 					<div class="col-md-7">
 					<p>Ce inveti? <br>
@@ -176,7 +176,7 @@
 					Un joc este formata din 10 intrebari. Fiecarea intrebare are 4 variante de raspuns din care doar una corecta.</p>
 					</div>
 					<div class="col-md-5">
-						<img class="img-responsive img-border-left" src="images/freedom.png" alt="">
+						<img class="img-responsive img-border-left" src="http://localhost/ProTw/Site/images/freedom.png" alt="">
 					</div>
 				</div>
 				<div class="row extra" id="a">

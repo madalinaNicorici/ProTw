@@ -356,63 +356,6 @@ INSERT INTO users_profile VALUES
 
 	
    INSERT INTO rooms(name,room_password,player1,player2) VALUES('Room1','',1,41);
-
-
-   CREATE OR REPLACE PROCEDURE update_user( IN p_user_id INT, IN p_name VARCHAR(30), IN p_surname VARCHAR(30), IN p_username VARCHAR(30), IN p_email VARCHAR(100), IN p_user_password VARCHAR(100) )
-	BEGIN
-	       DECLARE v_count INT;
-	       SELECT COUNT(user_id) INTO v_count FROM users_profile WHERE user_id=p_user_id;
-	       IF (v_count = 0) THEN 
-          		SIGNAL SQLSTATE '20108'
-	             		SET MESSAGE_TEXT='Invalid user_id! Try again!';
-	       ELSE
-	            IF (p_name IS NOT NULL ) THEN
-			            IF not p_name regexp '^[a-zA-Z-]+$' then
-			                   SIGNAL SQLSTATE '20109'
-				                    SET MESSAGE_TEXT='Invalid characters in name! It should contain only letters and -.';
-			            ELSE
-			                   UPDATE users_profile SET name = p_name WHERE user_id=p_user_id;
-			            END IF;
-               END IF;
-               
-              IF (p_surname IS NOT NULL ) THEN
-		              IF not p_surname regexp '^[a-zA-Z-]+$' then
-		                  SIGNAL SQLSTATE '20110'
-			                    SET MESSAGE_TEXT='Invalid characters in surname! It should contain only letters and -.';
-		              ELSE
-		                  UPDATE users_profile SET surname = p_surname WHERE user_id=p_user_id;
-		              END IF;
-             END IF;
-             
-             IF (p_username IS NOT NULL) THEN
-		              IF instr(p_username,';') > 0 OR length(p_username) > 30 OR length(p_username) < 4  THEN 
-		                   SIGNAL SQLSTATE '20111'
-			                    SET MESSAGE_TEXT='Invalid username! It should not contain ; and it shoult be between 4-30 characters.';
-		              ELSE
-		                   UPDATE users_profile SET username = p_username WHERE user_id=p_user_id;
-		              END IF;
-            END IF;
-            
-            IF (p_email IS NOT NULL) THEN
-		             IF not p_email regexp '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$' then
-		                   SIGNAL SQLSTATE '20112'
-			                   SET MESSAGE_TEXT='Invalid email!';
-		             ELSE
-		               UPDATE users_profile SET email = p_email WHERE user_id=p_user_id;
-		             END IF;
-            END IF;
-            
-            IF (p_user_password IS NOT NULL) THEN
-		            IF length(p_user_password) < 6 OR instr(p_user_password,';') > 0 THEN
-		                  SIGNAL SQLSTATE '20113'
-			                   SET MESSAGE_TEXT='Invalid password! It should not contain ; and it shoult not be shorter then 6 characters.';
-		            ELSE
-		              UPDATE users_profile SET user_password = p_user_password WHERE user_id=p_user_id;
-		            END IF;
-            END IF;
-          
-	       END IF;
-	END //
 	    
 DELIMITER //
 CREATE OR REPLACE PROCEDURE add_answer(IN p_user_id INT, IN p_quiz_id INT, IN p_result INT)
@@ -544,4 +487,3 @@ BEGIN
   		
   END//
 call populate_quiz;
-select * from questions where hint = '';
