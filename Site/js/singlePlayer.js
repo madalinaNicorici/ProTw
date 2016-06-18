@@ -1,3 +1,8 @@
+function goBack()
+{
+	location.href = "http://localhost/ProTw/Site/form-parts/user_logged.html";
+	
+}
 function gotoSingle(){
 	location.href = "http://localhost/ProTw/Site/form-parts/single_player.html";
 }

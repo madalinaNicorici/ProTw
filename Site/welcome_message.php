@@ -34,8 +34,8 @@
 				
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="./welcome_message.php">Home</a>
-						<li><a href="#about" data-toggle="modal">About</a>
+						<li class="active"><a href="./welcome_message.php">Home</a></li>
+						<li><a href="#about" data-toggle="modal">About</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Play game<b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -44,9 +44,9 @@
 								<li><a href="http://localhost:3000">Multiplayer</a></li>
 							</ul>
 						</li>
-						<li><a href="http://profs.info.uaic.ro/~busaco/teach/courses/web/web-film.html" target="_blank">Learning</a>
-						<li><a href="#contact" data-toggle="modal">Contact</a>
-						<li><a href="#" data-toggle="modal" style="display:none">Profile</a>
+						<li><a href="http://profs.info.uaic.ro/~busaco/teach/courses/web/web-film.html" target="_blank">Learning</a></li>
+						<li><a href="#contact" data-toggle="modal">Contact</a></li>
+						<li><a href="#" data-toggle="modal" style="display:none">Profile</a></li>
 					</ul>
 				</div>
 			</div>
