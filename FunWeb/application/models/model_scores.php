@@ -12,7 +12,7 @@ class Model_scores extends MY_Model{
 	
 	public function add_result($user_id, $quiz_id, $result)
 	{	
-		 $this->_database->query("CALL add_answer($user_id,$quiz_id,$result)");
+		 $this->_database->query("CALL add_answer($user_id,".mysql_real_escape_string($quiz_id).",".mysql_real_escape_string($result).")");
 			
 	}
 	

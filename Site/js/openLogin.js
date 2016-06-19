@@ -41,7 +41,7 @@ function submitLogin()
 			}
 			else
 			{
-				return confirm("USERNAME or PASSWORD are invalid!")
+				return confirm("USERNAME or PASSWORD are invalid!");
 			}
 		}
 	}

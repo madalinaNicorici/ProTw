@@ -83,18 +83,20 @@
 
 				Unele dintre cele mai importante segmente (module) noi adăugate acestui standard pentru formatarea elementelor HTML aduc un plus considerabil in dezvoltarea activități webdesign.
 			</p>
-			<h3>Java</h3>
+			<h3>PHP</h3>
 			<p>
-				Pentru partea de back-end a aplicatiei se va recurge la un limbaj de programare precum Java. Java este un limbaj de programare orientat-obiect, puternic tipizat, conceput de către James Gosling la Sun Microsystems la începutul anilor ʼ90. Cele mai multe aplicații distribuite sunt scrise în Java, iar noile evoluții tehnologice permit utilizarea sa și pe dispozitive mobile.
+				Pentru partea de back-end a aplicatiei se va recurge la un limbaj de programare precum PHP. PHP este simplu de utilizat, fiind un limbaj de programare structurat, ca și C-ul, Perl-ul sau începând de la versiunea 5 chiar Java, sintaxa limbajului fiind o combinație a celor trei.  Probabil una din cele mai importante facilități ale limbajului este conlucrarea cu majoritatea bazelor de date relaționale, de la MySQL și până la Oracle, trecând prin MS Sql Server, PostgreSQL, sau DB2. PHP poate rula pe majoritatea sistemelor de operare, de la UNIX, Windows, sau Mac OS X și poate interacționa cu majoritatea serverelor web.
 			</p>
-			<h3>Oracle Database</h3>
+			<h3>MySQL Database</h3>
 			<p>
-				O baza de date Oracle este o colectie de date care sint tratate ca o unitate. Scopul general al bazei de date este memorarea si regasirea informatiilor.
-				Baza de date are o structura logica si o structura fizica. 
-				Serverul Oracle este un sistem de gestiune a bazelor de date relationale care furnizeaza o cale de gestionare deschisa, cuprinzatoare si integrata a informatiilor. 
-				SQL este limbajul de programare care defineste si manipuleaza bazele de date. Bazele
-				de date SQL sint baze de date relationale; datele sint memorate intr-un set de relatii simple. In plus fata de comenzile SQL, serverul Oracle are un limbaj procedual numit PL/SQL.
-				PL/SQL permite programatorilor sa programeze comenzi SQL. 
+				MySQL este un sistem de gestiune a bazelor de date relaționale, produs de compania suedeza MySQL AB și distribuit sub Licența Publică Generală GNU. Este cel mai popular SGBD open-source la ora actuală[6], fiind o componentă cheie a stivei LAMP (Linux, Apache, MySQL, PHP).
+				Deși este folosit foarte des împreună cu limbajul de programare PHP, cu MySQL se pot construi aplicații în orice limbaj major. Există multe scheme API disponibile pentru MySQL ce permit scrierea aplicațiilor în numeroase limbaje de programare pentru accesarea bazelor de date MySQL	
+			</p>
+			<h3> Ajax </h3>
+			<p>
+				Ajax (sau AJAX), prescurtare pentru Asynchronous JavaScript and XML, este o tehnică de programare pentru crearea de aplicații web interactive. Intenția este să facă paginile web să devină mai rapide și deci mai acceptate, prin schimbul în fundal al unor cantități mici de date cu serverul, astfel încât să nu fie nevoie ca pagina să fie reîncărcată la fiecare acțiune a utilizatorului. Aceasta are ca scop creșterea interactivității, vitezei și ușurinței în utilizare a aplicațiilor web.
+				A fost folosit pentru deschiderea paginilor de login si de sign-up si la quiz-ul de la singleplayer si de la multiplayer.
+				
 			</p>
 		</section>
 		<section typeof="sa:Results" id="continut">
@@ -138,15 +140,24 @@
 			</figure>
 			<h3>Baza de date:</h3>
 			<figure typeof="sa:Image">
-				<img src="user_loginn.png" alt="cap tabela login">	
+				<img src="user_profilee.png" alt="cap tabela profil">	
 				<br>
 				<br>
-				<img src="USER_LOGIN.png" alt="tabela login">
+				<img src="USER_PROFILE.png" alt="tabela profile">
 				<figcaption >
-					Tabela cu useri logati cu cont nou.
+					Tabela cu profilul userilor.
 				</figcaption>
 			</figure>
 			<figure typeof="sa:Image">
+				<img src="user_statuss.png" alt="cap tabela status">	
+				<br>
+				<br>
+				<img src="USER_STATUS.png" alt="tabela status">
+				<figcaption >
+					Tabela cu statusul userilor.
+				</figcaption>
+			</figure>
+			<!--<figure typeof="sa:Image">
 				<img src="fb_loginn.png" alt="cap  tabela facebook login">
 				<br>
 				<br>
@@ -154,80 +165,70 @@
 				<figcaption>
 					Tabela cu useri logati cu contul de Facebook.
 				</figcaption>
-			</figure>
+			</figure>-->
 			<figure typeof="sa:Image">
 				<img src="gr_play.png" alt="cap tabela group play">
 				<br>
 				<br>
 				<img src="GROUP_PLAYERS.png" alt="tabela group play">
 				<figcaption>
-					Tabela cu grupurile existente in joc.
+					Tabela cu camerele din joc.
 				</figcaption>
 			</figure>
 			<figure typeof="sa:Image">
 				<img src="Q&A.png" alt="cap tabela question">
 				<br>
 				<br>
-				<img src="QUESTION_WITH_ANSWERS.png" alt="tabela question">
+				<img src="QUESTIONS.png" alt="tabela question">
 				<figcaption>
 					Tabela cu intrebari.
+				</figcaption>
+			</figure>
+			<figure typeof="sa:Image">
+				<img src="level.png" alt="cap tabela question">
+				<br>
+				<br>
+				<img src="levels.png" alt="tabela question">
+				<figcaption>
+					Tabela cu levele.
 				</figcaption>
 			</figure>
 			<h3>Use Case-uri:</h3>
 			<h4>I. Log In</h4>
 			<ol>
 				<li>Utilizatorul acceseaza situl.</li>
-				<li>Pentru a avea acces la jocuri, utilizatorul trebuie sa se autentifice. Daca nu este autentificat, ii va aparea o pagina pe care va avea posibilitatea sa faca ”Login”, ”Sign Up” sau ”Connect with Facebook”.</li>
-				<li>Utilizatorul da click pe butonul ”Login” de pe pagina principala si va fi directionat pe pagina de login.</li>
+				<li>Pentru a avea acces la jocuri, utilizatorul trebuie sa se autentifice. Daca nu este autentificat, ii va aparea o pagina pe care va avea posibilitatea sa faca ”Login”, ”Sign Up”.</li>
+				<li>Utilizatorul da click pe butonul ”Log In” de pe pagina principala si va fi directionat pe pagina de login.</li>
 				<li>
-				Aici va trebui sa introduca un nume de utilizator existent si parola corespunzatoare, apoi sa apese butonul ”Login”. Daca nu va reusi sa se autentifice, si de pe aceasta pagina are posibilitatea sa se inregistreze sau sa se conecteze cu Facebook.</li>
+				Aici va trebui sa introduca un nume de utilizator existent si parola corespunzatoare, apoi sa apese butonul ”Sign In”. Daca nu va reusi sa se autentifice, si de pe aceasta pagina are posibilitatea sa se inregistreze.</li>
 				<li>Dupa ce a efectuat acest pas, ii va aparea pagina de pe care va putea sa opteze sa joace jocul in versiunea single player si multi player.</li>
 			</ol>
 			<h4>II. Sign Up</h4>
 			<ol>
 				<li>Utilizatorul acceseaza situl.</li>
-				<li>Pentru a avea acces la jocuri, utilizatorul trebuie sa se autentifice. Daca nu este autentificat, ii va aparea o pagina pe care va avea posibilitatea sa faca ”Login”, ”Sign Up” sau ”Connect with Facebook”.</li>
+				<li>Pentru a avea acces la jocuri, utilizatorul trebuie sa se autentifice. Daca nu este autentificat, ii va aparea o pagina pe care va avea posibilitatea sa faca ”Login”, ”Sign Up”.</li>
 				<li>Utilizatorul opteaza pentru inregistrare, apasand butonul ”Sign Up”.</li>
 				<li>
-				Utilizatorului ii va aparea un formular unde trebuie sa introduca o adresa de email valida, un nume de utilizator, si o parola. Pe aceasta pagina va exista si un buton de ”Connect with Facebok”.</li>
-				<li>Pe adresa respectiva de mail se va trimite un e-mail de confirmare. In aplicatie, utilizatorul va fi informat depre asta si i se va cere sa acceseze link-ul de confirmare din acest mail.</li>
-				<li>Dupa ce acceseaza link-ul din mail, utilizatorul isi va putea folosi datele de autentificare. Pe pagina la care va ajunge accesand acest link va avea un buton de ”Log In”.</li>
+				Utilizatorului ii va aparea un formular unde trebuie sa introduca nume,prenume, o adresa de email valida, un nume de utilizator, si o parola.</li>
+				<li>Dupa ce a efectuat acest pas, ii va aparea pagina de pe care va putea sa opteze sa joace jocul in versiunea single player si multi player.</li>
 			</ol>
-			<h4>III. Autentificarea cu Facebook</h4>
+			<h4>III. Joc single player</h4>
+			<p>Utilizatorul are posibilitatea de a juca singur jocul, rezolvand teste pentru a acumula punctaj si pentru a se familiariza cu tipul intrebarilor.</p>
 			<ol>
 				<li>Utilizatorul acceseaza situl.</li>
-				<li>Pentru a avea acces la jocuri, utilizatorul trebuie sa se autentifice. Daca nu este autentificat, ii va aparea o pagina pe care va avea posibilitatea sa faca ”Login”, ”Sign Up” sau ”Connect with Facebook”.</li>
-				<li>Utilizatorul apasa butonul ”Connect with Facebook”. </li>
-				<li>
-				Aplicatia ii va cere utilizatorului permisiunea sa se conecteze cu Facebook.</li>
-				<li>Dupa ce va fi conectat, ii va aparea pagina de pe care va putea sa opteze sa joace jocul in versinea single player si multi player.</li>
-			</ol>
-			<h4>IV. Joc single player</h4>
-			<p>Utilizatorul are posibilitatea de a juca singur jocul, rezolvand teste pentru a acumula punctaj si pentru a se familiariza cu tipul intrebarilor. La fiecare 50 de pucte acumulate, el va promova la un nivel superior.</p>
-			<ol>
-				<li>Utilizatorul acceseaza situl.</li>
-				<li>Pentru a avea acces la jocuri, utilizatorul trebuie sa se autentifice. Daca nu este autentificat, ii va aparea o pagina pe care va avea posibilitatea sa faca ”Login”, ”Sign Up” sau ”Connect with Facebook”.</li>
+				<li>Pentru a avea acces la jocuri, utilizatorul trebuie sa se autentifice. Daca nu este autentificat, ii va aparea o pagina pe care va avea posibilitatea sa faca ”Login”, ”Sign Up”.</li>
 				<li>. Dupa autentificare(sau, dupa caz, daca este deja autentificat), utilizatorul poate opta sa joace, dand click pe optiunea ”Play Game”. In meniul aplicatiei ii va aparea si optiunea ”Sign out”.</li>
 				<li>
 				Din pagina care i se afiseaza, utilizatorul selecteaza butonul ”Single Player”.</li>
-				<li>De aici ii va aparea butonul ”Start Game”, pe care il va apasa cand fa fi pregatit sa inceapa jocul.</li>
-				<li>. Utilizatorului ii va aparea o lista cu zece intrebari care vor avea patru variante de raspuns dintre care va putea alege doar una pentru fiecare intrebare. Dupa ce va apasa ”Finish”, ii va fi calculat punctajul, care se va adauga la punctajul lui total.</li>
-				<li>Utilizatorul va primi un feedback despre modul cum a raspuns la intrebari. I se vor afisa punctajul obtinut si intrebarile la care nu a raspus bine, la care va fi indicata varinta corecta, impreuna cu explicatia teoretica aferenta.
-				<ol type="i">
-				<li>Daca in urma acumularii acestui punctaj, utilizatorul a trecut la un nou nivel, aplicatia ii va 
-				afisa un mesaj de informare.
+				<li>De aici ii va aparea butonul ”Start Game”, pe care il va apasa cand va fi pregatit sa inceapa jocul.</li>
+				<li>. Utilizatorului ii va aparea o lista cu zece intrebari care vor avea patru variante de raspuns dintre care va putea alege doar una pentru fiecare intrebare. Dupa ce va trece de ultima intrebare, ii va fi calculat punctajul, care se va adauga la punctajul lui total.</li>
 				</li>
-				<li>
-				Daca utilizatorul a raspuns corect la mai putin de jumatate dinre intrebari, situl ii va afisa un buton ”Learn ”, care il va directiona la acelasi link al optiunii ”Learning” din meniul principal, filmul disciplinei de la materia ”Tehnologii Web”.
-				</li>
-				</ol>
-				</li>
-				<li>Pe aceeasi pagina vor fi afisate butoanele ”Play Again” si ”Play Another Game”.</li>
+				<li>Pe aceeasi pagina vor fi afisate butoanele ”Play Again” si ”Back”.</li>
 			</ol>
-			<h4>V. Joc multi player</h4>
+			<h4>IV. Joc multi player</h4>
 			<ol>
 				<li>Utilizatorul acceseaza situl.</li>
-				<li>Pentru a avea acces la jocuri, utilizatorul trebuie sa se autentifice. Daca nu este autentificat, ii va aparea o pagina pe care va avea posibilitatea sa faca ”Login”, ”Sign Up” sau ”Connect with Facebook”.</li>
+				<li>Pentru a avea acces la jocuri, utilizatorul trebuie sa se autentifice. Daca nu este autentificat, ii va aparea o pagina pe care va avea posibilitatea sa faca ”Login”, ”Sign Up”.</li>
 				<li>Dupa autentificare(sau, dupa caz, daca este deja autentificat), utilizatorul poate opta sa joace, dand click pe optiunea ”Play Game”. In meniul aplicatiei ii va aparea si optiunea ”Sign out”. </li>
 				<li>
 				Din pagina care i se afiseaza, utilizatorul selecteaza butonul ”Multi Player”.</li>
@@ -245,11 +246,6 @@
 				</li>
 				<li>. Dupa 10 intrebari, jocul va lua sfarsit. Punctajele acumulate de fiecare jucator vor fi adunate la punctajul curent al acestora.</li>
 				<li>Fiecarui jucator i se va afisa un clasament cu punctajele si ii vor aparea optiunile ”Play Another Game”, ”Play Single Player”, ”Learn”.
-				<ol type="i">
-				<li>Daca apasa butonul ”Play Another Game”, se revine la pasul 5.</li>
-				<li>Daca apasa butonul ”Play Single Player”, va fi redirectat la pasul VI.5.</li>
-				<li>Daca apasa butonul ”Learn”, acesta il va directiona la acelasi link al optiunii ”Learning” din meniul principal, filmul disciplinei de la materia ”Tehnologii Web”.</li>
-				</ol>
 				</li>
 			</ol>
 			<p>Daca un jucator va parasi jocul inainte de incheierea acestuia, el nu va influenta cu nimic experinta celorlalti jucatori, ci va primi 0 puncte pentru fiecare intrebare.</p>
@@ -273,19 +269,19 @@
 		<section typeof="sa:Acknowledgements" id="arhitectura">
 			<h2>Arhitectura</h2>
 			<p>
-				Modelul arhitectural folosit este MVC(Model View Controller) Acest pattern imparte aplicatia in doua nivele: nivelul prezentare si nivelul modelare. Nivelul prezentare este de asemenea impartit in nivelele view si controller.
+				Modelul arhitectural folosit este MVC(Model View Controller) implementat cu ajutorul framework-ului Codeigniter. Acest pattern imparte aplicatia in doua nivele: nivelul prezentare si nivelul modelare. Nivelul prezentare este de asemenea impartit in nivelele view si controller.
 			</p>
 			<p>
 				1. Model<br>
-				Modelul este o reprezentare a informatiei cu care opereaza aplicatia. Pentru modelarea datelor se foloseste o baza de date Oracle, creata cu ajutorul unui ORM.
+				Modelul este o reprezentare a informatiei cu care opereaza aplicatia. Pentru modelarea datelor se foloseste o baza de date MySQL.
 			</p>
 			<p>
 				2. View<br>
-				View-ul afiseaza datele din model intr-o forma potrivita pentru interactiuni. View-ul va fi realizat intr-un format web, cu ajutorul unor fisiere HTML si CSS.
+				View-ul afiseaza datele din model intr-o forma potrivita pentru interactiuni. View-ul va fi realizat intr-un format web, cu ajutorul unor fisiere HTML,CSS si JavaScript.
 			</p>
 			<p>
 				3. Controller<br>
-				Controller-ul raspunde la evenimentele aparute in urma actiunilor utilizatorului si le proceseaza, putand aduce modificari in model. In aplicatia noastra, acesta va fi asculta pentru cereri HTTP, va extrage datele importante din eveniment si le va procesa. Controller-ul va fi implementat in Java.
+				Controller-ul raspunde la evenimentele aparute in urma actiunilor utilizatorului si le proceseaza, putand aduce modificari in model. In aplicatia noastra, acesta va fi asculta pentru cereri HTTP, va extrage datele importante din eveniment si le va procesa. Controller-ul va fi implementat in PHP.
 
 			</p>
 		</section>

@@ -103,7 +103,7 @@
 		<div class="modal fade" id="contact" role = "dialog">
     	<div class="modal-dialog">
     		<div class="modal-content">
-    			<form class="form-horizontal" role="form" method="post" action="form-parts/send_form_email.php">
+    			<form class="form-horizontal" method="post" action="form-parts/send_form_email.php">
 	    			<div class="modal-header">
 	    				<h4>Contact</h4>
 	    			</div>
@@ -111,26 +111,26 @@
 	    				<div class="form-group">
 	    					<label for="contact-name" class="col-sm-2 control-label">Name</label>
 	    					<div class="col-sm-10">
-	    						<input type="text" class="form-control" name="contact-name" placeholder="Introduce your name" required>
+	    						<input type="text" class="form-control" id="contact-name" placeholder="Introduce your name" required>
 	    					</div>
 	    				</div>
 	    				<div class="form-group">
 	    					<label for="contact-email" class="col-sm-2 control-label">Email</label>
 	    					<div class="col-sm-10">
-	    						<input type="email" class="form-control" name="contact-email" placeholder="example@domain.com" required>
+	    						<input type="email" class="form-control" id="contact-email" placeholder="example@domain.com" required>
 	    					</div>
 	    				</div>
 	    				<div class="form-group">
 	    					<label for="contact-message" class="col-sm-2 control-label">Message</label>
 	    					<div class="col-sm-10">
-	    						<textarea class="form-control" rows="4" name="contact-message" required></textarea>
+	    						<textarea class="form-control" rows="4" id="contact-message" required></textarea>
 	    					</div>
 	    				</div>
-							<div class="form-group">
+							<!--<div class="form-group">
 								<div class="col-sm-10 col-sm-offset-2">
 									<?php if(isset($nickname)) echo $result; ?>	
 								</div>
-							</div>
+							</div>-->
 	    			</div>
 	    			<div class="modal-footer">
 	    				<a class="btn btn-default" data-dismiss="modal">Close</a>
@@ -155,7 +155,7 @@
 				</div>
 				<div class="row extra" id="a">
 					<div class="col-md-5">
-						<img class="img-responsive img-border-left " src="http://localhost/ProTw/Site/images/stack-of-books-1.jpg" alt="" >
+						<img class="img-responsive img-border-left " src="http://localhost/ProTw/Site/images/stack-of-books-1.jpg" alt="">
 					</div>
 					<div class="col-md-7">
 					<p>Ce inveti? <br>
@@ -165,7 +165,7 @@
 					</div>
 					<div class="clearfix"></div>
 				</div>
-				<div class="row extra" id="a">
+				<div class="row extra">
 					<div class="col-md-7">
 					
 					<p>Ce cunostinte trebuie sa ai?</p>
@@ -179,7 +179,7 @@
 						<img class="img-responsive img-border-left" src="http://localhost/ProTw/Site/images/freedom.png" alt="">
 					</div>
 				</div>
-				<div class="row extra" id="a">
+				<div class="row extra">
 					<div class="col-md-12">
 						<p>Daca ai incredere in cunostintele tale si nu iti place sa joci singur atunci alege varianta MULTI PLAYER. 
 						Acum incepe competitia!!!

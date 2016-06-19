@@ -7,9 +7,24 @@ body {
 	padding-top: 70px;
 	padding-bottom: 100px;
 	font-family: 'Lato', sans-serif;
-	background: url("../images/network-1.jpg") no-repeat center center;
+	background: url("../images/network.jpg") no-repeat center center fixed;
 	background-size: cover;
+	
 } 
+
+/*.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+.row-eq-height {
+  flex-wrap: wrap;
+}
+.row-eq-height > [class*="col-"] {
+  width: 100%;
+}*/
+
 
 .row.extra{
 	margin-bottom:20px;
@@ -18,8 +33,10 @@ body {
 	background-color: transparent;	
 }
 .btn{
-	
 	margin-bottom:20px;
+}
+input.btn.btn-primary{
+	margin-bottom:20px !important;
 }
 
 #login {
@@ -64,10 +81,10 @@ body {
     text-indent: 3.25em;
     margin-top: 2em;
     cursor: pointer;
-    -webkit-user-select: none;
+    /*-webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none;*/
 }
 
 .funkyradio input[type="radio"]:empty ~ label:before, .funkyradio input[type="checkbox"]:empty ~ label:before {

@@ -13,7 +13,7 @@ function getUserInfo()
 				var jsonresp = JSON.parse(getInfo.responseText)
 				//document - json intern al browser-ului
 				document.getElementById("uEmail").innerHTML = jsonresp.message.email;
-				document.getElementById("userName").innerHTML = jsonresp.message.username;
+				document.getElementById("userName").innerHTML = escapeHtml(jsonresp.message.username);
 				document.getElementById("uName").innerHTML = jsonresp.message.name;
 				document.getElementById("uSurname").innerHTML = jsonresp.message.surname;
 			}
