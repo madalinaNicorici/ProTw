@@ -64,11 +64,10 @@ function startClient()
 		}
 		else
 		{
-			var x=window.location.href;
-			x=x.split('=')[1];
+			var uid=window.location.href;
+			uid=uid.split('=')[1];
 			getResult();
-			var ans="Utilizatorul "+x+" are scorul "+score;
-			socket.emit('return score',ans);
+			socket.emit('return score',uid,score,room_id_global);
 		}
 	});
 	socket.on('emit again',function(msg){
@@ -76,7 +75,10 @@ function startClient()
 	});
 	socket.on('getWinner',function(msg)
 	{
-		document.getElementById("playsingle").innerHTML = msg;
+		var paragraph="";
+		for(var i=0;i<msg.length; i++)
+			paragraph+=("<p>"+msg[i]+"</p>");
+		document.getElementById("playsingle").innerHTML = paragraph;
 	});
 	
 	$('#newRoomButton').click(function() {

@@ -7,6 +7,10 @@ var Client = require('node-rest-client').Client;
 var client = new Client();
 var newdata;
 var scores=[];
+var users=[];
+var rooms=[];
+var scores_copy=[];
+var info=[];
 	
 var x = Math.floor((Math.random() * 160) + 1);
 client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data, response) {
@@ -19,7 +23,11 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket)
 {
-	scores=[];
+	var info=[];
+    scores=[];
+    users=[];
+    rooms=[];
+    scores_copy=[];
 	first_question=0;
 	//making a room
 	socket.on('create room',function(msg)
@@ -102,10 +110,34 @@ io.on('connection', function(socket)
 				io.sockets.in( room_id ).emit( 'wrong ans',username,user_id);
 			});
 	});
-	socket.on('return score',function(msg)
+	socket.on('return score',function(user_id,score,room)
 	{
-		scores.push(msg);
-		io.emit('getWinner',scores.toString());
+		client.get("http://localhost/ProTw/FunWeb/users/user/"+user_id, function (data, response) 
+		{
+			var username=data.message.username;
+			var results;
+			var x;
+			users.push(username);
+			scores_copy.push(score);
+			scores.push(score);
+			rooms.push(room);
+			scores.sort();
+			var k=0;
+			var arrayLength = scores.length;
+			for (var i = arrayLength-1; i >= 0; i--) {
+				for (var j = arrayLength-1; j >= 0; j--) {
+					if(scores[i]==scores_copy[j]){
+						if(rooms[j]==room){
+							k++;
+							x="Utilizatorul "+users[j]+" este pe locul "+k+".\n";
+							info.push(x);
+						}
+					}
+				}
+			}
+			console.log(users);
+			io.sockets.in( room ).emit('getWinner',info);
+		});
 	});
 });
 

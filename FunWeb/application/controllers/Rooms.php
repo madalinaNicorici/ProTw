@@ -24,21 +24,6 @@ class Rooms extends REST_Controller
 		}	
 	}
 	
-	/*function room_put(){
-		$data = $this->put();
-		$this->load->model('Model_rooms');
-		$room_id = $this->Model_rooms->insert($data);
-		if(!$room_id)
-		{
-			$this->response(array('status'=>'failure','message'=>'An unexpected error occured while trying to create the room'),REST_Controller::HTTP_INTERNAL_SERVER_ERROR);
-		}
-		else{
-			$this->response(array('status'=>'success','message'=>'created'));
-		}
-		
-		
-	}*/
-	
 	function room_post(){
 		$data = $this->post();
 		$this->load->model('Model_rooms');
