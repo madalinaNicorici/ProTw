@@ -3,30 +3,37 @@ var creator=0;
 var sender=0;
 var rightAns;
 var socket = io();
+var user_id_global;
+var room_id_global;
+var player_score_global;
+var times_global;
 function startClient() 
 {	var user_id=window.location.href;
 	user_id=user_id.split('=')[1];
-	localStorage.ui=user_id;
+	user_id_global=user_id;
 	$('#start').click(function()
 	{
 		ok=1;
-		socket.emit('play', localStorage.room);
+		socket.emit('play', room_id_global);
 		return false;
 	});
 	
 	var i=0;
 	var j=0;
 	socket.on('play', function(msg)
-	{	if(j<10)move();
+	{	
+		if(j<10)move();
 		if(j<10)
 		{	
+			getResult();
+			document.getElementById('r1').checked=false;
+			document.getElementById('r2').checked=false;
+			document.getElementById('r3').checked=false;
+			document.getElementById('r4').checked=false;
 			rightAns = Math.floor((Math.random() * 4) + 1);
 			document.getElementById('start').style.display="none";
-			//document.getElementById("start").disabled = true;
 			document.getElementById('questionContainer').style.display='';
-			getResult();
 			document.getElementById('source').innerHTML='<a href="'+msg.source+'">Click here!</a>';
-			getResult();
 			document.getElementById("question").innerHTML = (j+1)+". "+escapeHtml(msg.q_body);
 			if(rightAns==1){
 				document.getElementById("q1").innerHTML = escapeHtml(msg.answer_r);
@@ -53,9 +60,6 @@ function startClient()
 				document.getElementById("q4").innerHTML = escapeHtml(msg.answer_r);
 			}
 			j++;
-			
-			/*setTimeout(function(){document.getElementById("start").disabled = false;		return false;
-			},3000);*/
 			
 		}
 		else
@@ -86,10 +90,19 @@ function startClient()
 			if(i==1)values["room_password"] = $(this).val();
 			i++;
 		});
-		values["player1"]=localStorage.ui;
+		values["player1"]=user_id_global;
 		socket.emit('create room',values);
     });
-		
+	
+
+	socket.on('delete room',function(room_id){
+		if(document.getElementById('room-id1').innerHTML==room_id)
+			document.getElementById('logon1').style.display='none';
+		else if(document.getElementById('room-id2').innerHTML==room_id)
+			document.getElementById('logon2').style.display='none';
+		else if(document.getElementById('room-id3').innerHTML==room_id)
+			document.getElementById('logon3').style.display='none';
+	});
 	socket.on('show room',function(msg,username,room_id)
 	{	
 		if(document.getElementById('logon1').style.display=='none'){
@@ -97,21 +110,30 @@ function startClient()
 			document.getElementById('room-id1').innerHTML=room_id;
 			document.getElementById('room-name1').innerHTML=msg.name;
 			document.getElementById('pass-word1').innerHTML=msg.room_password;
-			if(creator==1)	socket.emit('join',room_id,user_id,'1');
+			if(creator==1){
+				socket.emit('join',room_id,user_id,'1');
+				creator=0;
+			}
 		}
 		else if(document.getElementById('logon2').style.display=='none'){
 			document.getElementById('logon2').style.display='';
 			document.getElementById('room-id2').innerHTML=room_id;
 			document.getElementById('room-name2').innerHTML=msg.name;
 			document.getElementById('pass-word2').innerHTML=msg.room_password;
-			if(creator==1)	socket.emit('join',room_id,user_id,'2');
+			if(creator==1){
+				socket.emit('join',room_id,user_id,'2');
+				creator=0;
+			}
 		}
 		else if(document.getElementById('logon3').style.display=='none'){
 			document.getElementById('logon3').style.display='';
 			document.getElementById('room-id3').innerHTML=room_id;
 			document.getElementById('room-name3').innerHTML=msg.name;
 			document.getElementById('pass-word3').innerHTML=msg.room_password;
-			if(creator==1)	socket.emit('join',room_id,user_id,'3');
+			if(creator==1){
+				socket.emit('join',room_id,user_id,'3');
+				creator=0;
+			}
 		}		
 	});
 	
@@ -173,8 +195,9 @@ function startClient()
 		}
 	});
 	
-	socket.on('ready',function(user)
-	{	
+	socket.on('ready',function(user,room)
+	{
+			room_id_global=room;
 			document.getElementById('actual-game').style.display='';
 			document.getElementById('rooms-create').style.display='none';
 		
@@ -183,8 +206,24 @@ function startClient()
 	socket.on('rejected',function(msg)
 	{	
 		if(sender==1){
-			sender=0;
-			alert("Join failed!");
+			alert("The password you entered is incorrect!");
+		}
+		sender=0;
+	});
+	
+	socket.on('right ans',function(username,user_id){
+		if(user_id!=user_id_global){
+			document.getElementById('opponent-wrong').style.display='none';
+			document.getElementById('opponent-right').style.display='';
+			document.getElementById('opponent-ans').innerHTML=username;
+		}
+	});
+	
+	socket.on('wrong ans',function(username,user_id){
+		if(user_id!=user_id_global){
+			document.getElementById('opponent-right').style.display='none';
+			document.getElementById('opponent-wrong').style.display='';
+			document.getElementById('opponent-ans').innerHTML=username;
 		}
 	});
 }
@@ -206,51 +245,63 @@ function openPlayMulti()
 	xhttp.send();
 }
 
-localStorage.times = 0;
+times_global = 0;
 var score = 0;
 function getResult()
 {
-	if(localStorage.times<1)
-		localStorage.times++;
+	if(times_global<1)
+		times_global++;
 	else
 	{
 		if(rightAns==1)
 			if (document.getElementById('r1').checked) {
 				score=score+1;
-				//document.getElementById("oponent").innerHTML = "You answered your last question right!";
+				document.getElementById('you-wrong').style.display='none';
+				document.getElementById('you-right').style.display='';
+				socket.emit('right ans',user_id_global,room_id_global);
 			}
 			else{
-				//document.getElementById("oponent").innerHTML = "You answered your last question wrong!";
+				document.getElementById('you-right').style.display='none';
+				document.getElementById('you-wrong').style.display='';
+				socket.emit('wrong ans',user_id_global,room_id_global);
 			}
 		if(rightAns==2)
 			if (document.getElementById('r2').checked) {
 				score=score+1;
-				//document.getElementById("oponent").innerHTML = "You answered your last question right!";
+				document.getElementById('you-wrong').style.display='none';
+				document.getElementById('you-right').style.display='';
+				socket.emit('right ans',user_id_global,room_id_global);
 			}
 			else{
-				//document.getElementById("oponent").innerHTML = "You answered your last question wrong!";
+				document.getElementById('you-right').style.display='none';
+				document.getElementById('you-wrong').style.display='';
+				socket.emit('wrong ans',user_id_global,room_id_global);
 			}
 		if(rightAns==3)
 			if (document.getElementById('r3').checked) {
 				score=score+1;
-				//document.getElementById("oponent").innerHTML = "You answered your last question right!";
+				document.getElementById('you-wrong').style.display='none';
+				document.getElementById('you-right').style.display='';
+				socket.emit('right ans',user_id_global,room_id_global);
 			}
 			else{
-				//document.getElementById("oponent").innerHTML = "You answered your last question wrong!";
+				document.getElementById('you-right').style.display='none';
+				document.getElementById('you-wrong').style.display='';
+				socket.emit('wrong ans',user_id_global,room_id_global);
 			}
 		if(rightAns==4)
 			if (document.getElementById('r4').checked) {
 				score=score+1;
-				//document.getElementById("oponent").innerHTML = "You answered your last question right!";
+				document.getElementById('you-wrong').style.display='none';
+				document.getElementById('you-right').style.display='';
+				socket.emit('right ans',user_id_global,room_id_global);
 			}
 			else{
-				//document.getElementById("oponent").innerHTML = "You answered your last question wrong!";
+				document.getElementById('you-right').style.display='none';
+				document.getElementById('you-wrong').style.display='';
+				socket.emit('wrong ans',user_id_global,room_id_global);
 			}
-		document.getElementById('r1').checked=false;
-		document.getElementById('r2').checked=false;
-		document.getElementById('r3').checked=false;
-		document.getElementById('r4').checked=false;
-		localStorage.playerScore = score;
+		player_score_global = score;
 	}
 }
 function getScore()
@@ -271,10 +322,30 @@ function getPassword() {
     var pass = prompt("Please enter the password!", "Type Here");
     
 	var room=document.getElementById('room-id1').innerHTML;
-	localStorage.room=room;
+	room_id_global=room;
 	//tb sa faca join dupa
 	sender=1;
-	socket.emit('authenticate',room,localStorage.ui,pass,'1');
+	socket.emit('authenticate',room,user_id_global,pass,'1');
+}
+
+function getPassword2() {
+    var pass = prompt("Please enter the password!", "Type Here");
+    
+	var room=document.getElementById('room-id2').innerHTML;
+	room_id_global=room;
+	//tb sa faca join dupa
+	sender=1;
+	socket.emit('authenticate',room,user_id_global,pass,'2');
+}
+
+function getPassword3() {
+    var pass = prompt("Please enter the password!", "Type Here");
+    
+	var room=document.getElementById('room-id3').innerHTML;
+	room_id_global=room;
+	//tb sa faca join dupa
+	sender=1;
+	socket.emit('authenticate',room,user_id_global,pass,'3');
 }
 
 function move() {

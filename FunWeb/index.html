@@ -158,7 +158,7 @@
 								<a href="#" class="list-group-item" id="player24" style="display:none">Fourth player</a>
 								<a href="#" class="list-group-item" id="room-id2" style="display:none">Room ID</a>
 								<a href="#" class="list-group-item" id="pass-word2" style="display:none">Password</a>
-								<button" type="button" class="btn btn-primary" id="joinroom2">Join Room</button>
+								<button" type="button" class="btn btn-primary" id="joinroom2"onclick="getPassword2()">Join Room</button>
 							 </div>
 						</div>
 					</div>
@@ -172,7 +172,7 @@
 								<a href="#" class="list-group-item" id="player34" style="display:none">Fourth player</a>
 								<a href="#" class="list-group-item" id="room-id3" style="display:none">Room ID</a>
 								<a href="#" class="list-group-item" id="pass-word3" style="display:none">Password</a>
-								<button" type="button" class="btn btn-primary" id="joinroom3">Join Room</button>
+								<button" type="button" class="btn btn-primary" id="joinroom3" onclick="getPassword3()">Join Room</button>
 							 </div>
 						</div>
 					</div>				
@@ -217,8 +217,13 @@
 					<div class="col-sm-4">
 						<h3>Your opponents</h3>
 						<div id="right-wrong">
-							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50">
-							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50">
+							<p id="your-ans">You</p>
+							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50" id="you-wrong" style="display:none">
+							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50" id="you-right" style="display:none">
+							
+							<p id="opponent-ans">Your opponent</p>
+							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-wrong" style="display:none">
+							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-right" style="display:none">
 						</div>
 					</div>	
 					<div class="col-sm-4">

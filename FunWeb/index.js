@@ -20,7 +20,7 @@ app.get('/', function(req, res){
 io.on('connection', function(socket)
 {
 	scores=[];
-	
+	first_question=0;
 	//making a room
 	socket.on('create room',function(msg)
 	{	
@@ -28,15 +28,12 @@ io.on('connection', function(socket)
 		var un;
 		request.post('http://localhost/ProTw/FunWeb/rooms/room/', {form:{name:msg["name"],room_password:msg["room_password"],player1:msg["player1"]}}, function(err,httpResponse,body){
 			body=JSON.parse(body);
-			//console.log(body["message"]);
 			room=body.message; 
-			//socket.join(room);
 			client.get("http://localhost/ProTw/FunWeb/users/user/"+msg["player1"], function (data, response) 
 			{
 				un=data;
 				var username=un["message"]["username"];
 				msg["id_room"]=room;
-				console.log(username);
 				io.emit('show room',msg,username,room);
 			});
 		});
@@ -50,9 +47,8 @@ io.on('connection', function(socket)
 		client.get("http://localhost/ProTw/FunWeb/users/user/"+user, function (data, response) 
 			{
 				var username=data.message.username;
-				//console.log(data);
 				io.emit('joined',username,rn);
-				io.sockets.in( room ).emit( 'ready');
+				io.sockets.in( room ).emit( 'ready',room);
 			});
     });
  
@@ -61,16 +57,13 @@ io.on('connection', function(socket)
 		client.get("http://localhost/ProTw/FunWeb/users/user/"+user, function (data, response) 
 			{
 				var username=data.message.username;
-				//console.log(data);
 				client.get("http://localhost/ProTw/FunWeb/rooms/room/"+room, function (date, response) 
 				{
 					var userpass=date.message.room_password;
-					console.log(userpass);
-					console.log(pass);
 					if(pass==userpass){
 						socket.join( room );
 						io.emit('joined',username,rn);
-						io.sockets.in( room ).emit( 'ready');
+						io.sockets.in( room ).emit( 'ready',user,room);
 					}
 					else io.emit('rejected',"");
 				});
@@ -78,22 +71,36 @@ io.on('connection', function(socket)
     });
    
    //playing the game
-	socket.on('play', function(msg)
+	socket.on('play', function(room)
 	{
-		client.delete("http://localhost/ProTw/FunWeb/rooms/room/"+msg, function (date, response) 
+		io.emit('delete room',room);
+		client.delete("http://localhost/ProTw/FunWeb/rooms/room/"+room, function (date, response) 
 		{
-			var x=date;
-			if(x.status=="success")
-			console.log(x);
-			io.sockets.in( msg ).emit('play', newdata.message);
 			var x = Math.floor((Math.random() * 160) + 1);
 			client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data, response) 
 			{
 				newdata=data;
+				io.sockets.in( room ).emit('play', newdata.message);
+				setTimeout(function(){io.sockets.in( room ).emit('emit again',room);return false;
+				},10000);
 			});
-			setTimeout(function(){io.sockets.in( msg ).emit('emit again',msg);return false;
-			},10000);
 		});
+	});
+	
+	socket.on('right ans', function(user_id,room_id){
+		client.get("http://localhost/ProTw/FunWeb/users/user/"+user_id, function (data, response) 
+			{
+				var username=data.message.username;
+				io.sockets.in( room_id ).emit( 'right ans',username,user_id);
+			});
+	});
+	
+	socket.on('wrong ans', function(user_id,room_id){
+		client.get("http://localhost/ProTw/FunWeb/users/user/"+user_id, function (data, response) 
+			{
+				var username=data.message.username;
+				io.sockets.in( room_id ).emit( 'wrong ans',username,user_id);
+			});
 	});
 	socket.on('return score',function(msg)
 	{
