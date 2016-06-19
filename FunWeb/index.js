@@ -24,45 +24,76 @@ io.on('connection', function(socket)
 	//making a room
 	socket.on('create room',function(msg)
 	{	
-		console.log(msg);
+		var room; 
+		var un;
 		request.post('http://localhost/ProTw/FunWeb/rooms/room/', {form:{name:msg["name"],room_password:msg["room_password"],player1:msg["player1"]}}, function(err,httpResponse,body){
-			console.log(body);
-			newdata=body.message; });
-		//id-ul camerei
-		msg.id_room=newdata;
-		io.emit('show room',msg);
-		io.emit('new room',newdata);
+			body=JSON.parse(body);
+			//console.log(body["message"]);
+			room=body.message; 
+			//socket.join(room);
+			client.get("http://localhost/ProTw/FunWeb/users/user/"+msg["player1"], function (data, response) 
+			{
+				un=data;
+				var username=un["message"]["username"];
+				msg["id_room"]=room;
+				console.log(username);
+				io.emit('show room',msg,username,room);
+			});
+		});
 	});
 	
 	//joining a room
-	var _room, _id, _player;
  
-	socket.on( 'cjoin', function ( msg ) {
-		_room= msg;
-		// Join the room.
-        socket.join( _room );
-		//ai intrat in camera
-	});
-	socket.on( 'join', function ( msg ) {
-		_room= msg;
+	socket.on( 'join', function ( room,user,rn ) {
         // Join the room.
-        socket.join( _room );
-		//ai intrat in camera
-		if(data.message.player2)
-		io.sockets.in( _room ).emit( 'ready' );
+        socket.join( room );
+		client.get("http://localhost/ProTw/FunWeb/users/user/"+user, function (data, response) 
+			{
+				var username=data.message.username;
+				//console.log(data);
+				io.emit('joined',username,rn);
+				io.sockets.in( room ).emit( 'ready');
+			});
+    });
+ 
+	socket.on( 'authenticate', function ( room,user,pass,rn ) {
+        // Join the room.
+		client.get("http://localhost/ProTw/FunWeb/users/user/"+user, function (data, response) 
+			{
+				var username=data.message.username;
+				//console.log(data);
+				client.get("http://localhost/ProTw/FunWeb/rooms/room/"+room, function (date, response) 
+				{
+					var userpass=date.message.room_password;
+					console.log(userpass);
+					console.log(pass);
+					if(pass==userpass){
+						socket.join( room );
+						io.emit('joined',username,rn);
+						io.sockets.in( room ).emit( 'ready');
+					}
+					else io.emit('rejected',"");
+				});
+			});
     });
    
    //playing the game
 	socket.on('play', function(msg)
 	{
-		io.emit('play', newdata.message);
-		var x = Math.floor((Math.random() * 160) + 1);
-		client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data, response) 
+		client.delete("http://localhost/ProTw/FunWeb/rooms/room/"+msg, function (date, response) 
 		{
-			newdata=data;
+			var x=date;
+			if(x.status=="success")
+			console.log(x);
+			io.sockets.in( msg ).emit('play', newdata.message);
+			var x = Math.floor((Math.random() * 160) + 1);
+			client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data, response) 
+			{
+				newdata=data;
+			});
+			setTimeout(function(){io.sockets.in( msg ).emit('emit again',msg);return false;
+			},10000);
 		});
-		setTimeout(function(){io.emit('emit again',"");return false;
-		},10000);
 	});
 	socket.on('return score',function(msg)
 	{

@@ -75,6 +75,7 @@
 			<div class="jumbotron text-center" >
 				<h2>Have fun learning Web Technologies</h2>
 				<!-- Create Rooms -->
+				<div id="rooms-create">
 				<div class="row">
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Create Room</button>
 
@@ -114,7 +115,7 @@
 								  </div>
 								  <div class="form-group">
 									<div id="newRoomButton" class="col-sm-offset-2 col-sm-10">
-									  <button type="button" class="btn btn-primary">Create Room</button>
+									  <button type="button" class="btn btn-primary"data-dismiss="modal">Create Room</button>
 									</div>
 								  </div>
 								</form>
@@ -136,33 +137,49 @@
 					<div id="logon1" class="col-sm-4" style="display:none">
 						<div>
 							<div class="list-group">
-								<a href="#" class="list-group-item list-group-item-info" id="room-name">First item</a>
-								<a href="#" id="player1" class="list-group-item">Second item</a>
-								<a href="#" id="player2" class="list-group-item">Third item</a>
+								<a href="#" class="list-group-item list-group-item-info" id="room-name1">Room name</a>
+								<a href="#" class="list-group-item" id="player11"style="display:none">First player</a>
+								<a href="#" class="list-group-item" id="player12" style="display:none">Second player</a>
+								<a href="#" class="list-group-item" id="player13" style="display:none">Third player</a>
+								<a href="#" class="list-group-item" id="player14" style="display:none">Fourth player</a>
+								<a href="#" class="list-group-item" id="room-id1" style="display:none">Room ID</a>
+								<a href="#" class="list-group-item" id="pass-word1" style="display:none">Password</a>
+								<button" type="button" class="btn btn-primary" id="joinroom1" onclick="getPassword()">Join Room</button>
 							 </div>
 						</div>
 					</div>
-					<div class="col-sm-4" style="display:none">
-						<div id="logon">
+					<div id="logon2" class="col-sm-4" style="display:none">
+						<div>
 							<div class="list-group">
-								<a href="#" class="list-group-item list-group-item-info">First item</a>
-								<a href="#" class="list-group-item">Second item</a>
-								<a href="#" class="list-group-item">Third item</a>
+								<a href="#" class="list-group-item list-group-item-info" id="room-name2">Room name</a>
+								<a href="#" class="list-group-item" id="player21"style="display:none">First player</a>
+								<a href="#" class="list-group-item" id="player22" style="display:none">Second player</a>
+								<a href="#" class="list-group-item" id="player23" style="display:none">Third player</a>
+								<a href="#" class="list-group-item" id="player24" style="display:none">Fourth player</a>
+								<a href="#" class="list-group-item" id="room-id2" style="display:none">Room ID</a>
+								<a href="#" class="list-group-item" id="pass-word2" style="display:none">Password</a>
+								<button" type="button" class="btn btn-primary" id="joinroom2">Join Room</button>
 							 </div>
 						</div>
 					</div>
-					<div class="col-sm-4" style="display:none">
-						<div id="logon">
+					<div id="logon3" class="col-sm-4" style="display:none">
+						<div>
 							<div class="list-group">
-								<a href="#" class="list-group-item list-group-item-info">First item</a>
-								<a href="#" class="list-group-item">Second item</a>
-								<a href="#" class="list-group-item">Third item</a>
+								<a href="#" class="list-group-item list-group-item-info" id="room-name3">Room name</a>
+								<a href="#" class="list-group-item" id="player31"style="display:none">First player</a>
+								<a href="#" class="list-group-item" id="player32" style="display:none">Second player</a>
+								<a href="#" class="list-group-item" id="player33" style="display:none">Third player</a>
+								<a href="#" class="list-group-item" id="player34" style="display:none">Fourth player</a>
+								<a href="#" class="list-group-item" id="room-id3" style="display:none">Room ID</a>
+								<a href="#" class="list-group-item" id="pass-word3" style="display:none">Password</a>
+								<button" type="button" class="btn btn-primary" id="joinroom3">Join Room</button>
 							 </div>
 						</div>
-					</div>
+					</div>				
 				</div>	
-				
-				<div id="playmulti"style="display:none">
+			</div>	
+			<div id="actual-game" style="display:none">
+				<div id="playmulti">
 				<!--//pune butonul inauntru-->
 					<div id="playsingle">
 						<div class="container" id="questionContainer" style="display:none">
@@ -198,10 +215,12 @@
 				
 				<div class="row">
 					<div class="col-sm-4">
-						<h3>Your opponent</h3>
-						<p id="oponent"></p>
-						
-					</div>
+						<h3>Your opponents</h3>
+						<div id="right-wrong">
+							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50">
+							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50">
+						</div>
+					</div>	
 					<div class="col-sm-4">
 						<h3>Time Left</h3>
 						<div id="timer">
@@ -215,6 +234,7 @@
 						
 					</div>
 				</div>	
+			</div>
 			</div>
 			
 		</div>
