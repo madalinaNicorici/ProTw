@@ -36,3 +36,9 @@ function openPlaySingle()
 	xhttp.send();
 	
 }
+
+function openPlayMulti() 
+{
+	var param = "?user_id="+localStorage.user_id;
+	location.href = "http://localhost:3000"+param;
+}
