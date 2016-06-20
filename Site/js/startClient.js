@@ -14,6 +14,28 @@ function startClient()
 	user_id=user_id.split('=')[1];
 	user_id_global=user_id;
 	
+	//when connecting
+	/*socket.on('show initial rooms',function(room_id,name,room_password,player1,player2,player3,player4){
+		if(document.getElementById('logon1').style.display=='none'){
+			document.getElementById('logon1').style.display='';
+			document.getElementById('room-id1').innerHTML=room_id;
+			document.getElementById('room-name1').innerHTML=name;
+			document.getElementById('pass-word1').innerHTML=room_password;
+		}
+		else if(document.getElementById('logon2').style.display=='none'){
+			document.getElementById('logon2').style.display='';
+			document.getElementById('room-id2').innerHTML=room_id;
+			document.getElementById('room-name2').innerHTML=name;
+			document.getElementById('pass-word2').innerHTML=room_password;
+		}
+		else if(document.getElementById('logon3').style.display=='none'){
+			document.getElementById('logon3').style.display='';
+			document.getElementById('room-id3').innerHTML=room_id;
+			document.getElementById('room-name3').innerHTML=name;
+			document.getElementById('pass-word3').innerHTML=room_password;
+		}
+	});*/
+	
 	//create room
 	
 	$('#newRoomButton').click(function() {
