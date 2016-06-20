@@ -78,24 +78,24 @@
 							<!-- Modal Body -->
 							<div class="modal-body">
 								
-								<form id="newRoom" class="form-horizontal" role="form">
+								<form id="newRoom" class="form-horizontal">
 								  <div class="form-group">
 									<label  class="col-sm-2 control-label" id="roomName">Room Name</label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" 
-										id="roomName" placeholder="Room Name"/>
+										id="room-name" placeholder="Room Name"/>
 									</div>
 								  </div>
 								  <div class="form-group">
 									<label class="col-sm-2 control-label" id="password" >Password</label>
 									<div class="col-sm-10">
 										<input type="password" class="form-control"
-											id="password" placeholder="Password"/>
+											id="pass-word" placeholder="Password"/>
 									</div>
 								  </div>
 								  <div class="form-group">
 									<div id="newRoomButton" class="col-sm-offset-2 col-sm-10">
-									  <button type="button" class="btn btn-primary"data-dismiss="modal">Create Room</button>
+									  <button type="button" class="btn btn-primary" data-dismiss="modal">Create Room</button>
 									</div>
 								  </div>
 								</form>
@@ -118,13 +118,13 @@
 						<div>
 							<div class="list-group">
 								<a href="#" class="list-group-item list-group-item-info" id="room-name1">Room name</a>
-								<a href="#" class="list-group-item" id="player11"style="display:none">First player</a>
+								<a href="#" class="list-group-item" id="player11"   style="display:none">First player</a>
 								<a href="#" class="list-group-item" id="player12" style="display:none">Second player</a>
 								<a href="#" class="list-group-item" id="player13" style="display:none">Third player</a>
 								<a href="#" class="list-group-item" id="player14" style="display:none">Fourth player</a>
 								<a href="#" class="list-group-item" id="room-id1" style="display:none">Room ID</a>
 								<a href="#" class="list-group-item" id="pass-word1" style="display:none">Password</a>
-								<button" type="button" class="btn btn-primary" id="joinroom1" onclick="getPassword()">Join Room</button>
+								<button type="button" class="btn btn-primary" id="joinroom1" onclick="getPassword()">Join Room</button>
 							 </div>
 						</div>
 					</div>
@@ -132,13 +132,13 @@
 						<div>
 							<div class="list-group">
 								<a href="#" class="list-group-item list-group-item-info" id="room-name2">Room name</a>
-								<a href="#" class="list-group-item" id="player21"style="display:none">First player</a>
+								<a href="#" class="list-group-item" id="player21"   style="display:none">First player</a>
 								<a href="#" class="list-group-item" id="player22" style="display:none">Second player</a>
 								<a href="#" class="list-group-item" id="player23" style="display:none">Third player</a>
 								<a href="#" class="list-group-item" id="player24" style="display:none">Fourth player</a>
 								<a href="#" class="list-group-item" id="room-id2" style="display:none">Room ID</a>
 								<a href="#" class="list-group-item" id="pass-word2" style="display:none">Password</a>
-								<button" type="button" class="btn btn-primary" id="joinroom2"onclick="getPassword2()">Join Room</button>
+								<button type="button" class="btn btn-primary" id="joinroom2" onclick="getPassword2()">Join Room</button>
 							 </div>
 						</div>
 					</div>
@@ -146,13 +146,13 @@
 						<div>
 							<div class="list-group">
 								<a href="#" class="list-group-item list-group-item-info" id="room-name3">Room name</a>
-								<a href="#" class="list-group-item" id="player31"style="display:none">First player</a>
+								<a href="#" class="list-group-item" id="player31" style="display:none">First player</a>
 								<a href="#" class="list-group-item" id="player32" style="display:none">Second player</a>
 								<a href="#" class="list-group-item" id="player33" style="display:none">Third player</a>
 								<a href="#" class="list-group-item" id="player34" style="display:none">Fourth player</a>
 								<a href="#" class="list-group-item" id="room-id3" style="display:none">Room ID</a>
 								<a href="#" class="list-group-item" id="pass-word3" style="display:none">Password</a>
-								<button" type="button" class="btn btn-primary" id="joinroom3" onclick="getPassword3()">Join Room</button>
+								<button type="button" class="btn btn-primary" id="joinroom3" onclick="getPassword3()">Join Room</button>
 							 </div>
 						</div>
 					</div>				
@@ -190,20 +190,34 @@
 							</div>
 						</div>
 						<button class="btn btn-success" id="start">Start game</button>
+						<div class="row" id="joined-game">
+						<h1>Users in room:</h1>
+						<p id="par1"></p>
+						<p id="par2"></p>
+						<p id="par3"></p>
+						</div>
 					</div>
 				</div>		
 				
 				<div class="row">
 					<div class="col-sm-4">
-						<h3>Your opponents</h3>
+						<h3>Previous Question</h3>
 						<div id="right-wrong">
 							<p id="your-ans">You</p>
 							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50" id="you-wrong" style="display:none">
 							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50" id="you-right" style="display:none">
 							
-							<p id="opponent-ans">Your opponent</p>
-							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-wrong" style="display:none">
-							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-right" style="display:none">
+							<p id="opponent-ans1"></p>
+							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-wrong1" style="display:none">
+							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-right1" style="display:none">
+							
+							<p id="opponent-ans2"></p>
+							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-wrong2" style="display:none">
+							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-right2" style="display:none">
+							
+							<p id="opponent-ans3"></p>
+							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-wrong3" style="display:none">
+							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-right3" style="display:none">
 						</div>
 					</div>	
 					<div class="col-sm-4">

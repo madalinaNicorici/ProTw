@@ -27,7 +27,6 @@ function openPlaySingle()
 	xhttp.open("GET", "http://localhost/ProTw/Site/form-parts/inside_game.html", true);
 	xhttp.send();
 	
-	// TO DO folosit variabile globale,sesiuni
 	//cere intrebarile pentru quiz
 	var getquiz = new ajaxRequest()
 	

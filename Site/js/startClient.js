@@ -7,83 +7,17 @@ var user_id_global;
 var room_id_global;
 var player_score_global;
 var times_global;
+var paragraph_joined=0;
+var opponent_count;
 function startClient() 
 {	var user_id=window.location.href;
 	user_id=user_id.split('=')[1];
 	user_id_global=user_id;
-	$('#start').click(function()
-	{
-		ok=1;
-		socket.emit('play', room_id_global);
-		return false;
-	});
 	
-	var i=0;
-	var j=0;
-	socket.on('play', function(msg)
-	{	
-		if(j<10)move();
-		if(j<10)
-		{	
-			getResult();
-			document.getElementById('r1').checked=false;
-			document.getElementById('r2').checked=false;
-			document.getElementById('r3').checked=false;
-			document.getElementById('r4').checked=false;
-			rightAns = Math.floor((Math.random() * 4) + 1);
-			document.getElementById('start').style.display="none";
-			document.getElementById('questionContainer').style.display='';
-			document.getElementById('source').innerHTML='<a href="'+msg.source+'">Click here!</a>';
-			document.getElementById("question").innerHTML = (j+1)+". "+escapeHtml(msg.q_body);
-			if(rightAns==1){
-				document.getElementById("q1").innerHTML = escapeHtml(msg.answer_r);
-				document.getElementById("q2").innerHTML = escapeHtml(msg.answer_w1);
-				document.getElementById("q3").innerHTML = escapeHtml(msg.answer_w2);
-				document.getElementById("q4").innerHTML = escapeHtml(msg.answer_w3);
-			}
-			if(rightAns==2){
-				document.getElementById("q1").innerHTML = escapeHtml(msg.answer_w1);
-				document.getElementById("q2").innerHTML = escapeHtml(msg.answer_r);
-				document.getElementById("q3").innerHTML = escapeHtml(msg.answer_w2);
-				document.getElementById("q4").innerHTML = escapeHtml(msg.answer_w3);
-			}
-			if(rightAns==3){
-				document.getElementById("q1").innerHTML = escapeHtml(msg.answer_w2);
-				document.getElementById("q2").innerHTML = escapeHtml(msg.answer_w1);
-				document.getElementById("q3").innerHTML = escapeHtml(msg.answer_r);
-				document.getElementById("q4").innerHTML = escapeHtml(msg.answer_w3);
-			}
-			if(rightAns==4){
-				document.getElementById("q1").innerHTML = escapeHtml(msg.answer_w3);
-				document.getElementById("q2").innerHTML = escapeHtml(msg.answer_w1);
-				document.getElementById("q3").innerHTML = escapeHtml(msg.answer_w2);
-				document.getElementById("q4").innerHTML = escapeHtml(msg.answer_r);
-			}
-			j++;
-			
-		}
-		else
-		{
-			var uid=window.location.href;
-			uid=uid.split('=')[1];
-			getResult();
-			socket.emit('return score',uid,score,room_id_global);
-		}
-	});
-	socket.on('emit again',function(msg){
-		if(ok==1)socket.emit('play',msg);
-	});
-	socket.on('getWinner',function(msg)
-	{
-		var paragraph="";
-		for(var i=0;i<msg.length; i++)
-			paragraph+=("<p>"+msg[i]+"</p>");
-		document.getElementById("playsingle").innerHTML = paragraph;
-	});
+	//create room
 	
 	$('#newRoomButton').click(function() {
 		creator=1;
-		// get all the inputs into an array.
 		var $inputs = $('#newRoom :input');
 		var values = {};
 		var i=0;
@@ -96,15 +30,8 @@ function startClient()
 		socket.emit('create room',values);
     });
 	
+	//show room to other users
 
-	socket.on('delete room',function(room_id){
-		if(document.getElementById('room-id1').innerHTML==room_id)
-			document.getElementById('logon1').style.display='none';
-		else if(document.getElementById('room-id2').innerHTML==room_id)
-			document.getElementById('logon2').style.display='none';
-		else if(document.getElementById('room-id3').innerHTML==room_id)
-			document.getElementById('logon3').style.display='none';
-	});
 	socket.on('show room',function(msg,username,room_id)
 	{	
 		if(document.getElementById('logon1').style.display=='none'){
@@ -138,6 +65,19 @@ function startClient()
 			}
 		}		
 	});
+	
+	//delete room for other users when starting game
+	
+	socket.on('delete room',function(room_id){
+		if(document.getElementById('room-id1').innerHTML==room_id)
+			document.getElementById('logon1').style.display='none';
+		else if(document.getElementById('room-id2').innerHTML==room_id)
+			document.getElementById('logon2').style.display='none';
+		else if(document.getElementById('room-id3').innerHTML==room_id)
+			document.getElementById('logon3').style.display='none';
+	});
+	
+	// joined a room as other users see it
 	
 	socket.on('joined',function(user,rn)
 	{	
@@ -197,13 +137,19 @@ function startClient()
 		}
 	});
 	
+	//joined a room and is ready to play
+	
 	socket.on('ready',function(user,room)
 	{
 			room_id_global=room;
 			document.getElementById('actual-game').style.display='';
+			paragraph_joined++;
+			document.getElementById('par'+paragraph_joined).innerHTML=user;
 			document.getElementById('rooms-create').style.display='none';
 		
 	});
+	
+	//can't join room
 	
 	socket.on('rejected',function(msg)
 	{	
@@ -213,20 +159,103 @@ function startClient()
 		sender=0;
 	});
 	
+	//play game
+	
+	$('#start').click(function()
+	{
+		ok=1;
+		socket.emit('play', room_id_global);
+		return false;
+	});
+	
+	var i=0;
+	var j=0;
+	socket.on('play', function(msg)
+	{	
+		if(j<10)move();
+		if(j<10)
+		{	
+			getResult();
+			document.getElementById('r1').checked=false;
+			document.getElementById('r2').checked=false;
+			document.getElementById('r3').checked=false;
+			document.getElementById('r4').checked=false;
+			rightAns = Math.floor((Math.random() * 4) + 1);
+			document.getElementById('start').style.display="none";
+			document.getElementById('joined-game').style.display="none";
+			document.getElementById('questionContainer').style.display='';
+			document.getElementById('source').innerHTML='<a href="'+msg.source+'">Click here!</a>';
+			document.getElementById("question").innerHTML = (j+1)+". "+escapeHtml(msg.q_body);
+			if(rightAns==1){
+				document.getElementById("q1").innerHTML = escapeHtml(msg.answer_r);
+				document.getElementById("q2").innerHTML = escapeHtml(msg.answer_w1);
+				document.getElementById("q3").innerHTML = escapeHtml(msg.answer_w2);
+				document.getElementById("q4").innerHTML = escapeHtml(msg.answer_w3);
+			}
+			if(rightAns==2){
+				document.getElementById("q1").innerHTML = escapeHtml(msg.answer_w1);
+				document.getElementById("q2").innerHTML = escapeHtml(msg.answer_r);
+				document.getElementById("q3").innerHTML = escapeHtml(msg.answer_w2);
+				document.getElementById("q4").innerHTML = escapeHtml(msg.answer_w3);
+			}
+			if(rightAns==3){
+				document.getElementById("q1").innerHTML = escapeHtml(msg.answer_w2);
+				document.getElementById("q2").innerHTML = escapeHtml(msg.answer_w1);
+				document.getElementById("q3").innerHTML = escapeHtml(msg.answer_r);
+				document.getElementById("q4").innerHTML = escapeHtml(msg.answer_w3);
+			}
+			if(rightAns==4){
+				document.getElementById("q1").innerHTML = escapeHtml(msg.answer_w3);
+				document.getElementById("q2").innerHTML = escapeHtml(msg.answer_w1);
+				document.getElementById("q3").innerHTML = escapeHtml(msg.answer_w2);
+				document.getElementById("q4").innerHTML = escapeHtml(msg.answer_r);
+			}
+			j++;
+			opponent_count=0;
+			
+		}
+		else
+		{
+			var uid=window.location.href;
+			uid=uid.split('=')[1];
+			getResult();
+			socket.emit('return score',uid,score,room_id_global);
+		}
+	});
+	socket.on('emit again',function(msg){
+		if(ok==1)socket.emit('play',msg);
+	});
+	
+	//right answer
+
 	socket.on('right ans',function(username,user_id){
 		if(user_id!=user_id_global){
-			document.getElementById('opponent-wrong').style.display='none';
-			document.getElementById('opponent-right').style.display='';
-			document.getElementById('opponent-ans').innerHTML=username;
+			opponent_count++;
+			document.getElementById('opponent-wrong'+opponent_coun).style.display='none';
+			document.getElementById('opponent-right'+opponent_coun).style.display='';
+			document.getElementById('opponent-ans'+opponent_count).innerHTML=username;
 		}
 	});
 	
+	//wrong answer
+	
 	socket.on('wrong ans',function(username,user_id){
 		if(user_id!=user_id_global){
-			document.getElementById('opponent-right').style.display='none';
-			document.getElementById('opponent-wrong').style.display='';
-			document.getElementById('opponent-ans').innerHTML=username;
+			opponent_count++;
+			document.getElementById('opponent-right'+opponent_count).style.display='none';
+			document.getElementById('opponent-wrong'+opponent_count).style.display='';
+			document.getElementById('opponent-ans'+opponent_count).innerHTML=username;
 		}
+	});
+	
+	//get winner
+	
+	socket.on('getWinner',function(msg)
+	{
+		var paragraph="";
+		for(var i=0;i<msg.length; i++)
+			paragraph+=("<p>"+msg[i]+"</p>");
+		document.getElementById("playsingle").innerHTML = paragraph;
 	});
 }
 

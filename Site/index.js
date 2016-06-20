@@ -56,12 +56,12 @@ io.on('connection', function(socket)
 			{
 				var username=data.message.username;
 				io.emit('joined',username,rn);
-				io.sockets.in( room ).emit( 'ready',room);
+				io.sockets.in( room ).emit( 'ready',username,room);
 			});
     });
  
+	//check password
 	socket.on( 'authenticate', function ( room,user,pass,rn ) {
-        // Join the room.
 		client.get("http://localhost/ProTw/FunWeb/users/user/"+user, function (data, response) 
 			{
 				var username=data.message.username;
@@ -71,7 +71,7 @@ io.on('connection', function(socket)
 					if(pass==userpass){
 						socket.join( room );
 						io.emit('joined',username,rn);
-						io.sockets.in( room ).emit( 'ready',user,room);
+						io.sockets.in( room ).emit( 'ready',username,room);
 					}
 					else io.emit('rejected',"");
 				});
@@ -95,6 +95,7 @@ io.on('connection', function(socket)
 		});
 	});
 	
+	//right answer event
 	socket.on('right ans', function(user_id,room_id){
 		client.get("http://localhost/ProTw/FunWeb/users/user/"+user_id, function (data, response) 
 			{
@@ -103,6 +104,7 @@ io.on('connection', function(socket)
 			});
 	});
 	
+	//wrong answer event
 	socket.on('wrong ans', function(user_id,room_id){
 		client.get("http://localhost/ProTw/FunWeb/users/user/"+user_id, function (data, response) 
 			{
@@ -110,27 +112,34 @@ io.on('connection', function(socket)
 				io.sockets.in( room_id ).emit( 'wrong ans',username,user_id);
 			});
 	});
+	
+	//return the order of the users
 	socket.on('return score',function(user_id,score,room)
 	{
 		client.get("http://localhost/ProTw/FunWeb/users/user/"+user_id, function (data, response) 
 		{
+			var aux;
 			var username=data.message.username;
 			var results;
 			var x;
 			users.push(username);
 			scores_copy.push(score);
-			scores.push(score);
+			if (scores.indexOf(score)==-1)
+				scores.push(score);
 			rooms.push(room);
 			scores.sort();
 			var k=0;
 			var arrayLength = scores.length;
+			var copyLength=scores_copy.length;
 			for (var i = arrayLength-1; i >= 0; i--) {
-				for (var j = arrayLength-1; j >= 0; j--) {
+				for (var j = copyLength-1; j >= 0; j--) {
 					if(scores[i]==scores_copy[j]){
 						if(rooms[j]==room){
+							if(aux!=scores_copy[j])
 							k++;
 							x="Utilizatorul "+users[j]+" este pe locul "+k+".\n";
 							info.push(x);
+							aux=scores_copy[j];
 						}
 					}
 				}
@@ -144,12 +153,3 @@ io.on('connection', function(socket)
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });
-
-function escapeHtml(text) {
-  return text
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-}
