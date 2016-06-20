@@ -30,7 +30,6 @@ function submitLogin()
 			if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1)
 			{
 				var json = JSON.parse(mypostrequest.responseText)
-				//localStorage.user_id=json.message;
 				var param = "?user_id="+json.message;
 				window.location.href = "http://localhost/ProTw/Site/form-parts/user_logged.html"+param;
 			}

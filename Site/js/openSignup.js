@@ -23,11 +23,9 @@ function registerUser()
 			if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1)
 			{
 				var json = JSON.parse(mypostrequest.responseText)
-				localStorage.user_id = json.message;
-				setTimeout(function() { 
-						window.location.href = "http://localhost/ProTw/Site/form-parts/user_logged.html";
-				 }, 1000);
-				//location.href = "assets/form-parts/user_logged.html";
+				var param = "?user_id="+json.message;
+				location.href = "http://localhost/ProTw/Site/form-parts/user_logged.html"+param;
+				
 			}
 			else
 			{
