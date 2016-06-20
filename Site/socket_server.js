@@ -31,6 +31,8 @@ io.on('connection', function(socket)
 	first_question=0;
 	
 	//showing the existing rooms when user is connecting
+	//MAKE PROCEDURE
+	/*
 	var rooms_in_db=1;
 	client.get("http://localhost/ProTw/FunWeb/rooms/room/"+rooms_in_db, function (date, response)
 	{
@@ -46,7 +48,7 @@ io.on('connection', function(socket)
 				}
 			});
 		}
-	});
+	});*/
 	
 	//making a room
 	
