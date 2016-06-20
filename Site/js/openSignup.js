@@ -31,7 +31,8 @@ function registerUser()
 			}
 			else
 			{
-				alert("Cannot create user " + mypostrequest.responseText);
+				var json = JSON.parse(mypostrequest.responseText)
+				alert("Cannot create user. " + json.message);
 			}
 		}
 	}
