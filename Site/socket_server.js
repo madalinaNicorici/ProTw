@@ -18,7 +18,7 @@ client.get("http://localhost/ProTw/FunWeb/questions/question/"+x, function (data
 });
 
 app.get('/', function(req, res){
-  res.sendfile('index.html');
+  res.sendfile('socket_client.html');
 });
 
 io.on('connection', function(socket)
@@ -114,9 +114,9 @@ io.on('connection', function(socket)
 	});
 	
 	//return the order of the users
-	socket.on('return score',function(user_id,score,room)
+	socket.on('return score',function(uid,score,room)
 	{
-		client.get("http://localhost/ProTw/FunWeb/users/user/"+user_id, function (data, response) 
+		client.get("http://localhost/ProTw/FunWeb/users/user/"+uid, function (data, response) 
 		{
 			var aux;
 			var username=data.message.username;
@@ -129,17 +129,21 @@ io.on('connection', function(socket)
 			rooms.push(room);
 			scores.sort();
 			var k=0;
+			var scoremax=20;
 			var arrayLength = scores.length;
 			var copyLength=scores_copy.length;
 			for (var i = arrayLength-1; i >= 0; i--) {
 				for (var j = copyLength-1; j >= 0; j--) {
 					if(scores[i]==scores_copy[j]){
 						if(rooms[j]==room){
-							if(aux!=scores_copy[j])
-							k++;
-							x="Utilizatorul "+users[j]+" este pe locul "+k+".\n";
+							if(aux!=scores_copy[j]){
+								k++; scoremax-=5;
+							}
+							x=users[j]+" - locul "+k+" - "+scoremax*10+" de puncte.\n";
 							info.push(x);
 							aux=scores_copy[j];
+							request.post('http://localhost/ProTw/FunWeb/scores/score/', {form:{user_id:uid,quiz_id:1,result:scoremax}}, function(err,httpResponse,body){
+							});
 						}
 					}
 				}

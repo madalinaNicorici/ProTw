@@ -231,8 +231,8 @@ function startClient()
 	socket.on('right ans',function(username,user_id){
 		if(user_id!=user_id_global){
 			opponent_count++;
-			document.getElementById('opponent-wrong'+opponent_coun).style.display='none';
-			document.getElementById('opponent-right'+opponent_coun).style.display='';
+			document.getElementById('opponent-wrong'+opponent_count).style.display='none';
+			document.getElementById('opponent-right'+opponent_count)style.display='';
 			document.getElementById('opponent-ans'+opponent_count).innerHTML=username;
 		}
 	});
