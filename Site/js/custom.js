@@ -19,4 +19,11 @@ function ajaxRequest()
 		return false
 }
 
+function goHome() {
+	var user_id=window.location.href;
+	user_id=user_id.split('=')[1];
+	var param = "?user_id="+user_id;
+	location.href='http://localhost/ProTw/Site/form-parts/user_logged.html'+param;
+}
+
 

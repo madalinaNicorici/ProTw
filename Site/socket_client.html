@@ -28,12 +28,12 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="http://localhost/ProTw/Site/form-parts/user_logged.html">Fun@Web</a>
+					<a class="navbar-brand" href="javascript:goHome()">Fun@Web</a>
 				</div>
 				
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="http://localhost/ProTw/Site/form-parts/user_logged.html">Home</a>
+						<li class="active"><a href="javascript:goHome()">Home</a>
 						<li><a href="#about" data-toggle="modal">About</a>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Play game<b class="caret"></b></a>
@@ -46,6 +46,7 @@
 						<li><a href="#">Learning</a>
 						<li><a href="#contact" data-toggle="modal">Contact</a>
 						<li><a href="#profile" data-toggle="modal" onclick="getUserInfo()">Profile</a>
+						<li><a href="http://localhost/ProTw/Site/">Sign Out</a></li>
 					</ul>
 				</div>
 			</div>
@@ -204,20 +205,20 @@
 						<h3>Previous Question</h3>
 						<div id="right-wrong">
 							<p id="your-ans">You</p>
-							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50" id="you-wrong" style="display:none">
-							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50" id="you-right" style="display:none">
+							<img src="http://localhost/ProTw/Site/images/wrong.png" class="img-rounded" alt="Wrong" width="50" height="50" id="you-wrong" style="display:none">
+							<img src="http://localhost/ProTw/Site/images/right.png" class="img-rounded" alt="Right" width="50" height="50" id="you-right" style="display:none">
 							
 							<p id="opponent-ans1"></p>
-							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-wrong1" style="display:none">
-							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-right1" style="display:none">
+							<img src="http://localhost/ProTw/Site/images/wrong.png" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-wrong1" style="display:none">
+							<img src="http://localhost/ProTw/Site/images/right.png" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-right1" style="display:none">
 							
 							<p id="opponent-ans2"></p>
-							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-wrong2" style="display:none">
-							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-right2" style="display:none">
+							<img src="http://localhost/ProTw/Site/images/wrong.png" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-wrong2" style="display:none">
+							<img src="http://localhost/ProTw/Site/images/right.png" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-right2" style="display:none">
 							
 							<p id="opponent-ans3"></p>
-							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAA1BMVEW9Ey1OzE1+AAAAGUlEQVRIie3BAQ0AAADCoPdPbQ8HFAAA/wYJ9gABtUW7+gAAAABJRU5ErkJggg==" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-wrong3" style="display:none">
-							<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQZcb-LxMgeQ5xPRCJhusngjg8ggKuJ9j58Z_ZC1TzsRlsJsbRA" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-right3" style="display:none">
+							<img src="http://localhost/ProTw/Site/images/wrong.png" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-wrong3" style="display:none">
+							<img src="http://localhost/ProTw/Site/images/right.png" class="img-rounded" alt="Wrong" width="50" height="50" id="opponent-right3" style="display:none">
 						</div>
 					</div>	
 					<div class="col-sm-4">
@@ -395,9 +396,7 @@
 		<script src="http://localhost/ProTw/Site/js/custom.js"></script>
 		<script src="http://localhost/ProTw/Site/js/singlePlayer.js"></script>
 		
-		<script src="http://localhost/ProTw/Site/js/multiPlayer.js"></script>
-		
-		<script src="http://localhost/Protw/Site/js/openContact.js"></script>
+				<script src="http://localhost/Protw/Site/js/openContact.js"></script>
 		<script src="http://localhost/Protw/Site/js/userProfile.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>

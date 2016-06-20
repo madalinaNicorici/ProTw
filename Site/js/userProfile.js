@@ -1,6 +1,9 @@
 function getUserInfo()
 {
 	var getInfo = new ajaxRequest()
+	var user_id=window.location.href;
+	user_id=user_id.split('=')[1];
+	var param = "?user_id="+user_id;
 	
 	getInfo.onreadystatechange=function()
 	{
@@ -24,7 +27,7 @@ function getUserInfo()
 		}
 	}
 	
-	getInfo.open("GET", "http://localhost/ProTw/FunWeb/users/user/"+localStorage.user_id, true)
+	getInfo.open("GET", "http://localhost/ProTw/FunWeb/users/user/"+user_id, true)
 	getInfo.setRequestHeader("X-API-Key", "123456")
 	getInfo.send()
 	
@@ -52,7 +55,7 @@ function getUserInfo()
 		}
 	}
 	
-	getStatus.open("GET", "http://localhost/ProTw/FunWeb/scores/score/"+localStorage.user_id, true)
+	getStatus.open("GET", "http://localhost/ProTw/FunWeb/scores/score/"+user_id, true)
 	getStatus.setRequestHeader("X-API-Key", "123456")
 	getStatus.send()
 	

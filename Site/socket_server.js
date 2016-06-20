@@ -29,7 +29,29 @@ io.on('connection', function(socket)
     rooms=[];
     scores_copy=[];
 	first_question=0;
+	
+	//showing the existing rooms when user is connecting
+	//MAKE PROCEDURE
+	/*
+	var rooms_in_db=1;
+	client.get("http://localhost/ProTw/FunWeb/rooms/room/"+rooms_in_db, function (date, response)
+	{
+		while(date.status=="success"){
+			client.get("http://localhost/ProTw/FunWeb/rooms/room/"+rooms_in_db, function (date, response)
+			{
+				if(date.status=="success"){
+					var room_status=date.message.status;
+					if(room_status=='active'){
+						io.emit('show initial rooms',date.message.room_id,date.message.name,date.message.room_password,date.message.player1,date.message.player2,date.message.player3,date.message.player4);
+					}
+					rooms_in_db++;
+				}
+			});
+		}
+	});*/
+	
 	//making a room
+	
 	socket.on('create room',function(msg)
 	{	
 		var room; 
