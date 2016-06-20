@@ -45,8 +45,7 @@ class Rooms extends REST_Controller
 		$room=$this->Model_rooms->get_by(array('room_id'=>$room_id));
 		if(isset($room['room_id']))
 		{
-			$data['status']='deleted';
-			$deleted = $this->Model_rooms->update($room_id,$data);
+			$deleted = $this->Model_rooms->delete($room_id);
 			if(!$deleted)
 			{
 				$this->response(array('status'=>'failure','message'=>'An unexpected error occured while trying to delete the room'),REST_Controller::HTTP_INTERNAL_SERVER_ERROR);
