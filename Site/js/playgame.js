@@ -39,6 +39,14 @@ function openPlaySingle()
 
 function openPlayMulti() 
 {
-	var param = "?user_id="+localStorage.user_id;
-	location.href = "http://localhost:3000"+param;
+	var user_id=window.location.href;
+	user_id=user_id.split('=')[1];
+			
+	if (user_id != null)
+	{
+		var param = "?user_id="+user_id;
+		location.href = "http://localhost:3000"+param;
+	}
+	else
+		alert("You need to Sign In or Register");
 }

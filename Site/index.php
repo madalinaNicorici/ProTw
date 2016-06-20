@@ -41,7 +41,7 @@
 							<ul class="dropdown-menu">
 								<li class="dropdown-header">Game</li>
 								<li><a href="javascript:gotoSingle()">Single player</a></li>
-								<li><a href="http://localhost:3000">Multiplayer</a></li>
+								<li><a href="javascript:openPlayMulti()">Multiplayer</a></li>
 							</ul>
 						</li>
 						<li><a href="http://profs.info.uaic.ro/~busaco/teach/courses/web/web-film.html" target="_blank">Learning</a></li>
@@ -208,6 +208,7 @@
 		<script src="http://localhost/Protw/Site/js/openSignup.js"></script>
 		<script src="http://localhost/Protw/Site/js/singlePlayer.js"></script>
 		<script src="http://localhost/Protw/Site/js/openContact.js"></script>
+		<script src="http://localhost/Protw/Site/js/playgame.js"></script>
 		<script src="http://localhost/Protw/Site/js/userProfile.js"></script>
 			
   </body>
