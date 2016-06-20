@@ -202,7 +202,7 @@ function getScore(){
 		{
 			if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1)
 			{
-				document.getElementById("finalScore").innerHTML = "You answered correctly "+localStorage.playerScore+" questions.";
+				document.getElementById("finalScore").innerHTML = "You answered correctly "+localStorage.playerScore+" questions. You receive "+(localStorage.playerScore*10)+" points.";
 			}
 			else
 			{
