@@ -1,0 +1,243 @@
+#%RAML 0.8
+title: FunWeb
+version: 1
+baseUri: http://localhost/ProTw/FunWeb
+documentation:
+  - title: Welcome
+    content: |
+      Welcome to the FunWeb Documentation. 
+securitySchemes:
+  - Unauthenticated: !include unauthenticated.raml
+  - oauth_1_0:
+      description: OAuth 1.0 continues to be supported for all API requests, but OAuth 2.0 is now preferred.
+      type: OAuth 1.0
+      settings:
+        requestTokenUri: https://api.dropbox.com/1/oauth/request_token
+        authorizationUri: https://www.dropbox.com/1/oauth/authorize
+        tokenCredentialsUri: https://api.dropbox.com/1/oauth/access_token
+traits:
+  - paged:
+      queryParameters:
+        page_size:
+          description: The number of items per page
+          type: number
+          default: 20
+        page:
+          description: The page to return
+          type: number
+          default: 0
+      headers:
+        TESTING:
+          type: string
+          description: does a trait render its headers?
+/users:
+  displayName: USERS
+  
+  description: |
+    Represents the users from the database.
+
+  /user:
+    post:
+      description: Add a user to the database or checks if the users exists
+      body:
+        application/json:
+          example: |
+            {
+              "status": "succes",
+              "message": "52"
+            }
+      responses:
+        404:
+          description: User not found
+
+    /{userid}:
+      uriParameters:
+        userid:
+          type: integer
+          description: user identifier
+      get:
+        description: Gets a user from the database
+        body:
+          application/json:
+            example: |
+              {
+                "user_id": "45",
+                "name": "ana",
+                "surname": "are",
+                "username": "mirelaa",
+                "email": "a@a.c",
+                "user_password": "0607634221d5e458a845965ae95194e9",
+                "status": "active",
+                "is_admin": "0",
+                "is_log": "0"
+              }
+        responses:
+          404:
+            description: User is not found
+
+      delete:
+        description: Delete the user
+        
+/quizzes:
+  displayName: QUIZZES
+  
+  description: |
+    Represents a quiz with questions from the database.
+
+  /quiz:
+    /{quiz_id}:
+      uriParameters:
+        quiz_id:
+          type: integer
+          description: quiz identifier
+      get:
+        description: Gets a quiz from the database
+        body:
+          application/json:
+            example: |
+              {
+                {
+                  "status": "success",
+                  "message": {
+                    "quiz_id": "1",
+                    "level_id": "1",
+                    "questions_list": "4,33,19,65,66,6,28,54,53,36,"
+                  }
+                }
+              }
+        responses:
+          404:
+            description: Quiz is not found
+      delete:
+        description: Delete a quiz       
+
+/questions:
+    displayName: QUESTIONS
+    
+    description: Represents a question from a quiz
+
+    /question:
+      /{questionid}:
+        uriParameters:
+          questionid:
+            type: integer
+            description: question identifier
+        get:
+          description: Gets a question from the database
+          body:
+            application/json:
+              example: |
+                {
+                  {
+                    "status": "success",
+                    "message": {
+                      "question_id": "1",
+                      "q_body": "What does HTML stand for?",
+                      "answer_r": "Hyper Text Markup Language",
+                      "answer_w1": "Hyperlinks and Text Markup Language",
+                      "answer_w2": "Home Tool Markup Language",
+                      "answer_w3": "Heading Text Markup Language",
+                      "level_id": "1",
+                      "hint": "HTML is a markup language for describing web documents.",
+                      "source": "http://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML",
+                      "points": "10"
+                    }
+                  }
+                }
+          responses:
+            404:
+              description: Question is not found
+
+/scores:
+  displayName: SCORES
+    
+  description: Represents the final score from a quiz
+
+  /score:
+    post:
+      description: Add a score to user to the database or checks if the users exists
+      responses:
+        404:
+          description: User or quiz not found
+    /{userid}:
+      uriParameters:
+          userid:
+            type: integer
+            description: user identifier
+      get:
+        description: Gets the points from a user from the database
+        body:
+          application/json:
+            example: |
+              {
+                {
+                  "status": "success",
+                  "message": {
+                    "user_id": "1",
+                    "points": "100",
+                    "level_id": "1"
+                  }
+                }
+              }
+        responses:
+          404:
+            description: User is not found
+/rooms:
+  displayName: ROOMS
+    
+  description: Represents the a room from a multiplayer game
+
+  /room:
+    post:
+      description: Add a room in the database
+      body:
+          application/json:
+            example: |
+              {
+                {
+                  "status": "success",
+                  "message": 8
+                }
+              }
+    /{roomid}:
+      uriParameters:
+          roomid:
+            type: integer
+            description: room identifier
+      get:
+        description: Add a room in the database
+        body:
+          application/json:
+            example: |
+              {
+                {
+                  "status": "success",
+                  "message": {
+                    "room_id": "1",
+                    "name": "room",
+                    "room_password": "",
+                    "status": "active",
+                    "player1": "3",
+                    "player2": "4",
+                    "player3": null,
+                    "player4": null
+                  }
+                }
+              }
+        responses:
+          404:
+            description: Room is not found
+      delete:
+        description: Deletes a room in the database
+        body:
+          application/json:
+            example: |
+              {
+                {
+                  "status": "success",
+                  "message": "deleted"
+                }
+              }
+        responses:
+          404:
+            description: Room is not found

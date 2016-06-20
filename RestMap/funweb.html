@@ -1,0 +1,224 @@
+<!DOCTYPE HTML><html><head><title>FunWeb API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/kevinrenskers/raml2html 2.4.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>FunWeb API documentation <small>version 1</small></h1><p>http://localhost/ProTw/FunWeb</p><h3 id="Welcome"><a href="#Welcome">Welcome</a></h3><p>Welcome to the FunWeb Documentation.</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="users" class="panel-title">USERS</h3></div><div class="panel-body"><div class="top-resource-description"><p>Represents the users from the database.</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users_user"><span class="parent">/users</span>/user</a> <span class="methods"><a href="#users_user_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_users_user" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users_user_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add a user to the database or checks if the users exists</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_user_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/users</span>/user</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a user to the database or checks if the users exists</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users_user_post_request" data-toggle="tab">Request</a></li><li><a href="#users_user_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users_user_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "status": "succes",
+  "message": "52"
+}
+</code></pre></div><div class="tab-pane" id="users_user_post_response"><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>User not found</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users_user__userid_"><span class="parent">/users/user</span>/{userid}</a> <span class="methods"><a href="#users_user__userid__get"><span class="badge badge_get">get</span></a> <a href="#users_user__userid__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_users_user__userid_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users_user__userid__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Gets a user from the database</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#users_user__userid__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete the user</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_user__userid__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users/user</span>/{userid}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Gets a user from the database</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users_user__userid__get_request" data-toggle="tab">Request</a></li><li><a href="#users_user__userid__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users_user__userid__get_request"><h3>URI Parameters</h3><ul><li><strong>userid</strong>: <em>required (integer)</em><p>user identifier</p></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "user_id": "45",
+  "name": "ana",
+  "surname": "are",
+  "username": "mirelaa",
+  "email": "a@a.c",
+  "user_password": "0607634221d5e458a845965ae95194e9",
+  "status": "active",
+  "is_admin": "0",
+  "is_log": "0"
+}
+</code></pre></div><div class="tab-pane" id="users_user__userid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>User is not found</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_user__userid__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/users/user</span>/{userid}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete the user</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users_user__userid__delete_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users_user__userid__delete_request"><h3>URI Parameters</h3><ul><li><strong>userid</strong>: <em>required (integer)</em><p>user identifier</p></li></ul></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="quizzes" class="panel-title">QUIZZES</h3></div><div class="panel-body"><div class="top-resource-description"><p>Represents a quiz with questions from the database.</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_quizzes_quiz__quiz_id_"><span class="parent">/quizzes/quiz</span>/{quiz_id}</a> <span class="methods"><a href="#quizzes_quiz__quiz_id__get"><span class="badge badge_get">get</span></a> <a href="#quizzes_quiz__quiz_id__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_quizzes_quiz__quiz_id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#quizzes_quiz__quiz_id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Gets a quiz from the database</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#quizzes_quiz__quiz_id__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete a quiz</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="quizzes_quiz__quiz_id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/quizzes/quiz</span>/{quiz_id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Gets a quiz from the database</p></div><ul class="nav nav-tabs"><li class="active"><a href="#quizzes_quiz__quiz_id__get_request" data-toggle="tab">Request</a></li><li><a href="#quizzes_quiz__quiz_id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="quizzes_quiz__quiz_id__get_request"><h3>URI Parameters</h3><ul><li><strong>quiz_id</strong>: <em>required (integer)</em><p>quiz identifier</p></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  {
+    "status": "success",
+    "message": {
+      "quiz_id": "1",
+      "level_id": "1",
+      "questions_list": "4,33,19,65,66,6,28,54,53,36,"
+    }
+  }
+}
+</code></pre></div><div class="tab-pane" id="quizzes_quiz__quiz_id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Quiz is not found</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="quizzes_quiz__quiz_id__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/quizzes/quiz</span>/{quiz_id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete a quiz</p></div><ul class="nav nav-tabs"><li class="active"><a href="#quizzes_quiz__quiz_id__delete_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="quizzes_quiz__quiz_id__delete_request"><h3>URI Parameters</h3><ul><li><strong>quiz_id</strong>: <em>required (integer)</em><p>quiz identifier</p></li></ul></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="questions" class="panel-title">QUESTIONS</h3></div><div class="panel-body"><div class="top-resource-description"><p>Represents a question from a quiz</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_questions_question__questionid_"><span class="parent">/questions/question</span>/{questionid}</a> <span class="methods"><a href="#questions_question__questionid__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_questions_question__questionid_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#questions_question__questionid__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Gets a question from the database</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="questions_question__questionid__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/questions/question</span>/{questionid}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Gets a question from the database</p></div><ul class="nav nav-tabs"><li class="active"><a href="#questions_question__questionid__get_request" data-toggle="tab">Request</a></li><li><a href="#questions_question__questionid__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="questions_question__questionid__get_request"><h3>URI Parameters</h3><ul><li><strong>questionid</strong>: <em>required (integer)</em><p>question identifier</p></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  {
+    "status": "success",
+    "message": {
+      "question_id": "1",
+      "q_body": "What does HTML stand for?",
+      "answer_r": "Hyper Text Markup Language",
+      "answer_w1": "Hyperlinks and Text Markup Language",
+      "answer_w2": "Home Tool Markup Language",
+      "answer_w3": "Heading Text Markup Language",
+      "level_id": "1",
+      "hint": "HTML is a markup language for describing web documents.",
+      "source": "http://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML",
+      "points": "10"
+    }
+  }
+}
+</code></pre></div><div class="tab-pane" id="questions_question__questionid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Question is not found</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="scores" class="panel-title">SCORES</h3></div><div class="panel-body"><div class="top-resource-description"><p>Represents the final score from a quiz</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_scores_score"><span class="parent">/scores</span>/score</a> <span class="methods"><a href="#scores_score_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_scores_score" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#scores_score_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add a score to user to the database or checks if the users exists</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="scores_score_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/scores</span>/score</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a score to user to the database or checks if the users exists</p></div><ul class="nav nav-tabs"><li class="active"><a href="#scores_score_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="scores_score_post_response"><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>User or quiz not found</p></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_scores_score__userid_"><span class="parent">/scores/score</span>/{userid}</a> <span class="methods"><a href="#scores_score__userid__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_scores_score__userid_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#scores_score__userid__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Gets the points from a user from the database</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="scores_score__userid__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/scores/score</span>/{userid}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Gets the points from a user from the database</p></div><ul class="nav nav-tabs"><li class="active"><a href="#scores_score__userid__get_request" data-toggle="tab">Request</a></li><li><a href="#scores_score__userid__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="scores_score__userid__get_request"><h3>URI Parameters</h3><ul><li><strong>userid</strong>: <em>required (integer)</em><p>user identifier</p></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  {
+    "status": "success",
+    "message": {
+      "user_id": "1",
+      "points": "100",
+      "level_id": "1"
+    }
+  }
+}
+</code></pre></div><div class="tab-pane" id="scores_score__userid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>User is not found</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="rooms" class="panel-title">ROOMS</h3></div><div class="panel-body"><div class="top-resource-description"><p>Represents the a room from a multiplayer game</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_rooms_room"><span class="parent">/rooms</span>/room</a> <span class="methods"><a href="#rooms_room_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_rooms_room" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#rooms_room_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Add a room in the database</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="rooms_room_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/rooms</span>/room</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a room in the database</p></div><ul class="nav nav-tabs"><li class="active"><a href="#rooms_room_post_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="rooms_room_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  {
+    "status": "success",
+    "message": 8
+  }
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_rooms_room__roomid_"><span class="parent">/rooms/room</span>/{roomid}</a> <span class="methods"><a href="#rooms_room__roomid__get"><span class="badge badge_get">get</span></a> <a href="#rooms_room__roomid__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_rooms_room__roomid_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#rooms_room__roomid__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Add a room in the database</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#rooms_room__roomid__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Deletes a room in the database</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="rooms_room__roomid__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/rooms/room</span>/{roomid}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a room in the database</p></div><ul class="nav nav-tabs"><li class="active"><a href="#rooms_room__roomid__get_request" data-toggle="tab">Request</a></li><li><a href="#rooms_room__roomid__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="rooms_room__roomid__get_request"><h3>URI Parameters</h3><ul><li><strong>roomid</strong>: <em>required (integer)</em><p>room identifier</p></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  {
+    "status": "success",
+    "message": {
+      "room_id": "1",
+      "name": "room",
+      "room_password": "",
+      "status": "active",
+      "player1": "3",
+      "player2": "4",
+      "player3": null,
+      "player4": null
+    }
+  }
+}
+</code></pre></div><div class="tab-pane" id="rooms_room__roomid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Room is not found</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="rooms_room__roomid__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/rooms/room</span>/{roomid}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Deletes a room in the database</p></div><ul class="nav nav-tabs"><li class="active"><a href="#rooms_room__roomid__delete_request" data-toggle="tab">Request</a></li><li><a href="#rooms_room__roomid__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="rooms_room__roomid__delete_request"><h3>URI Parameters</h3><ul><li><strong>roomid</strong>: <em>required (integer)</em><p>room identifier</p></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  {
+    "status": "success",
+    "message": "deleted"
+  }
+}
+</code></pre></div><div class="tab-pane" id="rooms_room__roomid__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Room is not found</p></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#users">USERS</a></li><li><a href="#quizzes">QUIZZES</a></li><li><a href="#questions">QUESTIONS</a></li><li><a href="#scores">SCORES</a></li><li><a href="#rooms">ROOMS</a></li></ul></div></div></div></div></body></html>
