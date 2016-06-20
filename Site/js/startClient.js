@@ -275,7 +275,7 @@ function startClient()
 	socket.on('getWinner',function(msg)
 	{
 		var back_location=window.location.href;
-		var paragraph='<table border="1" style="width:100%">';
+		var paragraph='<table class="table table-striped custab" style="width:100%; padding-bottom:10px;">';
 		for(var i=0;i<msg.length; i++)
 			paragraph+=('<tr><td>'+msg[i]+'</td></tr>');
 		paragraph+='</table><button type="button" class="btn btn-success" onclick=location.href="'+back_location+'">Play Again</button><button type="button" class="btn btn-primary" onclick=location.href="'+back_location+'">Back</button>';
