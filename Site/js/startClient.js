@@ -251,7 +251,7 @@ function startClient()
 	//right answer
 
 	socket.on('right ans',function(username,user_id){
-		if(user_id!=user_id_global){
+		if(user_id!=user_id_global&&times_global<10){
 			opponent_count++;
 			document.getElementById('opponent-wrong'+opponent_count).style.display='none';
 			document.getElementById('opponent-right'+opponent_count).style.display='';
@@ -262,7 +262,7 @@ function startClient()
 	//wrong answer
 	
 	socket.on('wrong ans',function(username,user_id){
-		if(user_id!=user_id_global){
+		if(user_id!=user_id_global&&times_global<10){
 			opponent_count++;
 			document.getElementById('opponent-right'+opponent_count).style.display='none';
 			document.getElementById('opponent-wrong'+opponent_count).style.display='';
@@ -274,9 +274,10 @@ function startClient()
 	
 	socket.on('getWinner',function(msg)
 	{
-		var paragraph="";
+		var paragraph='<table border="1" style="width:100%">';
 		for(var i=0;i<msg.length; i++)
-			paragraph+=("<p>"+msg[i]+"</p>");
+			paragraph+=('<tr class="col-sm-12"><td>'+msg[i]+'</td></tr>');
+		paragraph+='</table>';
 		document.getElementById("playsingle").innerHTML = paragraph;
 	});
 }
@@ -306,6 +307,7 @@ function getResult()
 		times_global++;
 	else
 	{
+		times_global++;
 		if(rightAns==1)
 			if (document.getElementById('r1').checked) {
 				score=score+1;

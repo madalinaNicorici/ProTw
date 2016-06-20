@@ -119,7 +119,7 @@ function getQuestion(){
 					questionHint=json.message.hint;
 					document.getElementById("source").innerHTML = '<a href="'+json.message.source+'">Click here!</a>';
 					rightAns = Math.floor((Math.random() * 4) + 1);
-					document.getElementById("question").innerHTML = escapeHtml(json.message.q_body);
+					document.getElementById("question").innerHTML = (i+1)+". "+escapeHtml(json.message.q_body);
 					if(rightAns==1){
 						document.getElementById("q1").innerHTML = escapeHtml(json.message.answer_r);
 						document.getElementById("q2").innerHTML = escapeHtml(json.message.answer_w1);
