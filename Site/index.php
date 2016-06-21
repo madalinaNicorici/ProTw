@@ -185,7 +185,7 @@
 								<p>Daca ai incredere in cunostintele tale si nu iti place sa joci singur atunci alege varianta MULTI PLAYER. 
 								Acum incepe competitia!!!
 								Jocul contine tot 10 intrebari doar ca fiecare intrebare trebuie rezolvata intr-un anumit timp.
-								Daca vei parasi jocul inainte de incheierea acestuia, nu vei influenta cu nimic experinta celorlalti jucatori, ci vei primi 0 puncte pentru fiecare intrebare.</p>
+								</p>
 								<p>In concluzie, joaca!!! Ai doar de castigat!!!</p>
 							</div>
 						</div>
